@@ -1161,8 +1161,7 @@ void task1(void* pdata)
 000002bc <task2>:
 }
 
-void task2(void* pdata)
-{
+void task2(void* pdata) {
      2bc:	defffd04 	addi	sp,sp,-12
      2c0:	dfc00215 	stw	ra,8(sp)
      2c4:	df000115 	stw	fp,4(sp)
@@ -1186,13 +1185,11 @@ void task2(void* pdata)
 000002f4 <main>:
 }
 
-int main(void)
-{
+int main(void) {
      2f4:	defff904 	addi	sp,sp,-28
      2f8:	dfc00615 	stw	ra,24(sp)
      2fc:	df000515 	stw	fp,20(sp)
      300:	df000504 	addi	fp,sp,20
-  
   OSTaskCreateExt(task1,
      304:	d8000415 	stw	zero,16(sp)
      308:	d8000315 	stw	zero,12(sp)
@@ -1239,6 +1236,7 @@ int main(void)
                   0);
   OSStart();
      384:	00049280 	call	4928 <OSStart>
+
   return 0;
      388:	0005883a 	mov	r2,zero
 }

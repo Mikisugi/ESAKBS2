@@ -20,8 +20,7 @@ void task1(void* pdata)
   }
 }
 
-void task2(void* pdata)
-{
+void task2(void* pdata) {
   while (1)
   { 
     printf("Hello from task2\n");
@@ -29,9 +28,7 @@ void task2(void* pdata)
   }
 }
 
-int main(void)
-{
-  
+int main(void) {
   OSTaskCreateExt(task1,
                   NULL,
                   (void *)&task1_stk[TASK_STACKSIZE-1],
@@ -53,5 +50,6 @@ int main(void)
                   NULL,
                   0);
   OSStart();
+
   return 0;
 }
