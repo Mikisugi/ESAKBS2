@@ -70,16 +70,20 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					printf(" ■ ");
 					break;
 				case FRIENDLY :
-					printf(" ⛀ ");
+					//printf(" ⛀ "); :(
+					printf(" F ");
 					break;
 				case FRIENDLYKING :
-					printf(" ⛁ ");
+					//printf(" ⛁ ");
+					printf("F K");
 					break;
 				case ENEMY :
-					printf(" ⛂ ");
+					//printf(" ⛂ ");
+					printf(" E ");
 					break;
 				case ENEMYKING :
-					printf(" ⛃ ");
+					//printf(" ⛃ ");
+					printf("E K");
 					break;
 				default : 
 					printf("   ");
