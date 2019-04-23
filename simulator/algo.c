@@ -1,61 +1,33 @@
 #include <math.h>
 #include <stdio.h>
 
-#define empty 0
-#define black 1
-#define friendly 2
-#define friendlyKing 3
-#define enemy 4
-#define enemyKing 5
+#define EMPTY 0
+#define BLACK 1
+#define FRIENDLY 2
+#define FRIENDLYKING 3
+#define ENEMY 4
+#define ENEMYKING 5
+#define FRIENDLYDIRECTION -1
+#define ENEMYDIRECTION 1
 
 
 unsigned char board [10][10];
 
-
-void algorithm(){
-	unsigned char possibleEnemyRow, possibleEnemyField, possibleNewRow, possibleNewField, captured;
+void printCountPieces(){
+	unsigned char enemyCount = 0;
+	unsigned char friendlyCount = 0;
 	for(unsigned char row = 0; row < 10; row++){
-	//	printf("friest for\n");
 		for(unsigned char field = 0; field < 10; field++){
-			captured = 0;
-		//	printf("friendly check\n");
-			// piece check if a piece can capture
-			if(board[row][field] == friendly){
-			//	printf("friendly\n");
-				// check front left
-				for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
-					for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
-						possibleEnemyRow = row + rowDirection;
-						possibleEnemyField = field + fieldDirection;
-						// Dont check the side for enemies you cant capture them there
-						if(possibleEnemyRow > 0 && possibleEnemyRow < 99 && possibleEnemyField > 0 && possibleEnemyRow < 99){						
-						//	printf("%s %d%c", "enemy in range?", board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing, '\n');
-							if(board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing){
-							//	printf("%s %d%c%d%c", "beeb boob enemy detected at",  possibleEnemyRow, '.', possibleEnemyField, '\n');
-								possibleNewRow = possibleEnemyRow + rowDirection;
-								possibleNewField = possibleEnemyField + fieldDirection;
-								if(board[possibleNewRow][possibleNewField] == black){
-								//	printf("charge!!!!!!!!!\n");
-									board[possibleNewRow][possibleNewField] = board[row][field];
-									board[row][field] = black;
-									board[possibleEnemyRow][possibleEnemyField] = black;
-									printBoard(possibleNewRow, possibleNewField, row, field);	
-									printf("%s %d %s %d%c", "old row", row, "old field", field,'\n');
-									printf("%s %d %s %d%c", "new row", possibleNewRow, "new field", possibleNewField,'\n');
-									printCountPieces();
-									captured = 1;
-									break;
-								}
-							}
-						}	
-					}
-					if(captured == 1){
-						break;
-					}
-				}
+			if(board[row][field] == FRIENDLY){
+				friendlyCount++;
+			}else if(board[row][field] == ENEMY){
+				enemyCount++;
 			}
 		}
-	}	
+	}
+	
+	printf("%s %d%c", "Enemy #", enemyCount, '\n');
+	printf("%s %d%c", "Friendly #", friendlyCount, '\n');	
 }
 
 
@@ -73,19 +45,19 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 				printf("\x1b[35m");
 			}
 			switch(board[row][field]){
-				case black :
+				case BLACK :
 					printf("■■");
 					break;
-				case friendly :
+				case FRIENDLY :
 					printf("F ");
 					break;
-				case friendlyKing :
+				case FRIENDLYKING :
 					printf("FK");
 					break;
-				case enemy :
+				case ENEMY :
 					printf("E ");
 					break;
-				case enemyKing :
+				case ENEMYKING :
 					printf("EK");
 					break;
 				default : 
@@ -102,38 +74,136 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 		printf("--|");
 	}
 	printf("\n\n\n");
-
 }
 
+unsigned char manCapture(unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
+	unsigned char possibleEnemyRow, possibleEnemyField, possibleNewRow, possibleNewField;
+	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
+		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
+			possibleEnemyRow = row + rowDirection;
+			possibleEnemyField = field + fieldDirection;
+			// Dont check the side for enemies you cant capture them there
+			if(possibleEnemyRow > 0 && possibleEnemyRow < 9 && possibleEnemyField > 0 && possibleEnemyField < 9){						
+			//	printf("%s %d%c", "enemy in range?", board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing, '\n');
+				if(board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing){
+				//	printf("%s %d%c%d%c", "beeb boob enemy detected at",  possibleEnemyRow, '.', possibleEnemyField, '\n');
+					possibleNewRow = possibleEnemyRow + rowDirection;
+					possibleNewField = possibleEnemyField + fieldDirection;
+					if(board[possibleNewRow][possibleNewField] == BLACK){
+					//	printf("charge!!!!!!!!!\n");
+						board[possibleNewRow][possibleNewField] = board[row][field];
+						board[row][field] = BLACK;
+						board[possibleEnemyRow][possibleEnemyField] = BLACK;
+						printBoard(possibleNewRow, possibleNewField, row, field);	
+						printf("%s %d %s %d%c", "old row", row, "old field", field,'\n');
+						printf("%s %d %s %d%c", "new row", possibleNewRow, "new field", possibleNewField,'\n');
+						printCountPieces();
+						manCapture(possibleNewRow, possibleNewField, friendly, friendlyKing, enemy, enemyKing);
+						return 1;
+					}
+				}
+			}	
+		}	
+	}
+	return 0;
+}
 
-void printCountPieces(){
-	unsigned char enemyCount = 0;
-	unsigned char friendlyCount = 0;
-	for(unsigned char row = 0; row < 10; row++){
-		for(unsigned char field = 0; field < 10; field++){
-			if(board[row][field] == friendly){
-				friendlyCount++;
-			}else if(board[row][field] == enemy){
-				enemyCount++;
+unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
+	signed char possibleNewField;
+	signed char possibleNewRow = row + direction;
+	
+	if(possibleNewRow > -1 && possibleNewRow < 10){
+		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
+			possibleNewField = field + fieldDirection;
+		
+			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){	
+				board[possibleNewRow][possibleNewField] = board[row][field];
+				board[row][field] = BLACK;
+				printBoard(possibleNewRow, possibleNewField, row, field);	
+				return 1;
 			}
 		}
+	}	
+	return 0;
+}
+
+unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+	unsigned char captured = 0;
+	unsigned char moved = 0;
+	unsigned char couldNotCapture = 0;
+	unsigned char couldNotMove = 0;
+	while(couldNotMove == 0){
+		for(unsigned char row = 0; row < 10; row++){
+		//	printf("friest for\n");
+			for(unsigned char field = 0; field < 10; field++){
+			//	printf("friendly check\n");
+				// piece check if a piece can capture
+				if(board[row][field] == friendly){
+				//	printf("friendly\n");
+					if(couldNotCapture == 0){
+						captured = manCapture(row, field, friendly, friendlyKing, enemy, enemyKing);
+					}else{
+						moved = manMove(row, field, friendly, friendlyKing, enemy, enemyKing, direction);
+					}
+					
+					if(moved == 1 || captured == 1){
+						printf("moved or captured\n");
+						return 1;
+					}
+				}
+			}
+		}
+		if(couldNotCapture == 1 && moved == 0){				
+			couldNotMove = 1;
+			printf("could not move\n");
+		}else if(captured == 0){
+			couldNotCapture = 1;
+			printf("could not capture\n");
+		}
 	}
-	
-	printf("%s %d%c", "Enemy #", enemyCount, '\n');
-	printf("%s %d%c", "Friendly #", friendlyCount, '\n');	
+	return 0;
+}
+
+void play(){
+	unsigned char friendlyMoved = 1;
+	unsigned char enemyMoved = 1;
+	unsigned char turn = 0;
+	unsigned char turnCounter = 0;
+	while(friendlyMoved == 1 && enemyMoved == 1){
+		if(turn == 0){
+			printf("FRIENDLY\n");
+			friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+			turn = 1;
+		}else{
+			printf("ENEMY\n");
+			enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			turn = 0;
+		}
+		turnCounter++;
+	}
+
+	if(friendlyMoved == 0){
+		printf("YOU LOST\n");
+	}else{
+		printf("YOU WON\n");
+	}
+	turnCounter--;
+	printf("%s %d %s", "the game lasted for # turns", turnCounter, "\n"); 
 }
 
 int main(){
 	unsigned char x = 1;
 	unsigned char y = 0;
 	unsigned char even = 1;
+	unsigned char captured = 1; 
+	unsigned char moved = 0;
 	while(y < 10){
-		board[y][x] = black;
+		board[y][x] = BLACK;
 		if(y < 4){
-			board[y][x] = enemy;
+			board[y][x] = ENEMY;
 		}
 		if(y > 5){		
-			board[y][x] = friendly;
+			board[y][x] = FRIENDLY;
 		}
 
 		if(x + 2 < 10 ){
@@ -147,20 +217,13 @@ int main(){
 			}
 		}	
 	}
-	board[1][2] = friendly;
-	board[2][3] = friendly;
-	board[2][5] = friendly;
-	board[0][3] = black;
-	board[5][4] = enemy;
-	board[5][8] = enemy;
-	board[4][5] = friendly;
 
-	printBoard(100,100,100,100);	
-	printCountPieces();
+//	printBoard(100,100,100,100);	
+//	printCountPieces();
 
-	algorithm();
+	play();
 
-	printBoard(100,100,100,100);
-	printCountPieces();
+//	printBoard(100,100,100,100);
+//	printCountPieces();	
 	return 0;
 }	
