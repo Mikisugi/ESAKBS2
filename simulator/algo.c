@@ -10,7 +10,6 @@
 #define FRIENDLYDIRECTION -1
 #define ENEMYDIRECTION 1
 
-
 unsigned char board [10][10];
 
 void printCountPieces(){
@@ -33,45 +32,67 @@ void printCountPieces(){
 
 void printBoard(unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
 	for(unsigned char row = 0; row < 10; row++){
-		printf("|");
+		//printf("|");
 		for(unsigned char o = 0; o < 10; o++){
-			printf("--|");
+			//printf("--|");
 		}
-		printf("\n|");
+		//printf("\n|");
 		for(unsigned char field = 0; field < 10; field++){
+		
+			switch(board[row][field]){
+				case BLACK :
+					printf("\e[30;40m");
+					break;
+				case FRIENDLY :
+					printf("\e[37;40m");
+					break;
+				case FRIENDLYKING :
+					printf("\e[37;40m");
+					break;
+				case ENEMY :
+					printf("\e[37;40m");
+					break;
+				case ENEMYKING :
+					printf("\e[37;40m");
+					break;
+				default : 
+					printf("\e[37;47m");
+					break;
+			}
+			
 			if(row == changedRow && field == changedField){	
-				printf("\x1b[31m");
+				printf("\x1b[33m");
 			}else if(row == oldRow && field == oldField){
-				printf("\x1b[35m");
+				printf("\x1b[33m");
 			}
 			switch(board[row][field]){
 				case BLACK :
-					printf("■■");
+					printf(" ■ ");
 					break;
 				case FRIENDLY :
-					printf("F ");
+					printf(" F ");
 					break;
 				case FRIENDLYKING :
-					printf("FK");
+					printf("F K");
 					break;
 				case ENEMY :
-					printf("E ");
+					printf(" E ");
 					break;
 				case ENEMYKING :
-					printf("EK");
+					printf("E K");
 					break;
 				default : 
-					printf("  ");
+					printf("   ");
 					break;
 			}
 			printf("\x1b[0m");
-			printf("|");
+			//printf("|");
 		}
 		printf("\n");
 	}
-	printf("|");
+	//printf("|");
 	for(unsigned char o = 0; o < 10; o++){
-		printf("--|");
+		//printf("--|");
 	}
 	printf("\n\n\n");
 }
@@ -171,11 +192,11 @@ void play(){
 	unsigned char turnCounter = 0;
 	while(friendlyMoved == 1 && enemyMoved == 1){
 		if(turn == 0){
-			printf("FRIENDLY\n");
+			printf("FRIENDLY TURN\n");
 			friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			turn = 1;
 		}else{
-			printf("ENEMY\n");
+			printf("ENEMY TURN\n");
 			enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
 			turn = 0;
 		}
