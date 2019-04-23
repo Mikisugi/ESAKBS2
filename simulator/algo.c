@@ -70,16 +70,16 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					printf(" ■ ");
 					break;
 				case FRIENDLY :
-					printf(" F ");
+					printf(" ⛀ ");
 					break;
 				case FRIENDLYKING :
-					printf("F K");
+					printf(" ⛁ ");
 					break;
 				case ENEMY :
-					printf(" E ");
+					printf(" ⛂ ");
 					break;
 				case ENEMYKING :
-					printf("E K");
+					printf(" ⛃ ");
 					break;
 				default : 
 					printf("   ");
@@ -243,7 +243,7 @@ int main(){
 //	printCountPieces();
 
 	play();
-
+	
 //	printBoard(100,100,100,100);
 //	printCountPieces();	
 	return 0;
