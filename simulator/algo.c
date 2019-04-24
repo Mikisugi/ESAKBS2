@@ -1,6 +1,9 @@
 #include <math.h>
 #include <stdio.h>
 
+#define UNICODE_ENABLED 0
+#define COLORS_ENABLED 0
+
 #define EMPTY 0
 #define BLACK 1
 #define FRIENDLY 2
@@ -32,37 +35,39 @@ void printCountPieces(){
 
 void printBoard(unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
 	for(unsigned char row = 0; row < 10; row++){
-		//printf("|");
+		if(!COLORS_ENABLED) printf("|");
 		for(unsigned char o = 0; o < 10; o++){
-			//printf("--|");
+			if(!COLORS_ENABLED) printf("---|");
 		}
-		//printf("\n|");
+		if(!COLORS_ENABLED) printf("\n|");
 		for(unsigned char field = 0; field < 10; field++){
-		
-			switch(board[row][field]){
-				case BLACK :
-					printf("\e[30;40m");
-					break;
-				case FRIENDLY :
-					printf("\e[37;40m");
-					break;
-				case FRIENDLYKING :
-					printf("\e[37;40m");
-					break;
-				case ENEMY :
-					printf("\e[37;40m");
-					break;
-				case ENEMYKING :
-					printf("\e[37;40m");
-					break;
-				default : 
-					printf("\e[37;47m");
-					break;
+			
+			if(COLORS_ENABLED){
+				switch(board[row][field]){
+					case BLACK :
+						printf("\e[30;40m");
+						break;
+					case FRIENDLY :
+						printf("\e[37;40m");
+						break;
+					case FRIENDLYKING :
+						printf("\e[37;40m");
+						break;
+					case ENEMY :
+						printf("\e[37;40m");
+						break;
+					case ENEMYKING :
+						printf("\e[37;40m");
+						break;
+					default : 
+						printf("\e[37;47m");
+						break;
+				}
 			}
 			
-			if(row == changedRow && field == changedField){	
+			if(COLORS_ENABLED && row == changedRow && field == changedField){	
 				printf("\x1b[33m");
-			}else if(row == oldRow && field == oldField){
+			}else if(COLORS_ENABLED && row == oldRow && field == oldField){
 				printf("\x1b[33m");
 			}
 			switch(board[row][field]){
@@ -70,33 +75,33 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					printf(" ■ ");
 					break;
 				case FRIENDLY :
-					//printf(" ⛀ "); :(
-					printf(" F ");
+					if(UNICODE_ENABLED) printf(" ⛀ ");
+					else printf(" F ");
 					break;
 				case FRIENDLYKING :
-					//printf(" ⛁ ");
-					printf("F K");
+					if(UNICODE_ENABLED) printf(" ⛁ ");
+					else printf("F K");
 					break;
 				case ENEMY :
-					//printf(" ⛂ ");
-					printf(" E ");
+					if(UNICODE_ENABLED) printf(" ⛂ ");
+					else printf(" E ");
 					break;
 				case ENEMYKING :
-					//printf(" ⛃ ");
-					printf("E K");
+					if(UNICODE_ENABLED) printf(" ⛃ ");
+					else printf("E K");
 					break;
 				default : 
 					printf("   ");
 					break;
 			}
-			printf("\x1b[0m");
-			//printf("|");
+			if(COLORS_ENABLED) printf("\x1b[0m");
+			else printf("|");
 		}
 		printf("\n");
 	}
-	//printf("|");
+	if(!COLORS_ENABLED) printf("|");
 	for(unsigned char o = 0; o < 10; o++){
-		//printf("--|");
+		if(!COLORS_ENABLED) printf("---|");
 	}
 	printf("\n\n\n");
 }
