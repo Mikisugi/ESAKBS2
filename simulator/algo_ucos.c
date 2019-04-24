@@ -1,5 +1,6 @@
-#include <math.h>
 #include <stdio.h>
+#include "includes.h"
+#include <math.h>
 
 #define UNICODE_ENABLED 0
 #define COLORS_ENABLED 0
@@ -12,6 +13,13 @@
 #define ENEMYKING 5
 #define FRIENDLYDIRECTION -1
 #define ENEMYDIRECTION 1
+
+/* Definition of Task Stacks */
+#define   TASK_STACKSIZE       2048
+OS_STK    task1_stk[TASK_STACKSIZE];
+
+/* Definition of Task Priorities */
+#define TASK1_PRIORITY      1
 
 unsigned char board [10][10];
 
@@ -31,7 +39,6 @@ void printCountPieces(){
 	printf("%s %d%c", "Enemy #", enemyCount, '\n');
 	printf("%s %d%c", "Friendly #", friendlyCount, '\n');	
 }
-
 
 void printBoard(unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
 	for(unsigned char row = 0; row < 10; row++){
@@ -222,12 +229,15 @@ void play(){
 	printf("%s %d %s", "the game lasted for # turns", turnCounter, "\n"); 
 }
 
-int main(){
+/* Task 1 is de main van het C algoritme */
+void task1(void* pdata)
+{
 	unsigned char x = 1;
 	unsigned char y = 0;
 	unsigned char even = 1;
 	unsigned char captured = 1; 
 	unsigned char moved = 0;
+	
 	while(y < 10){
 		board[y][x] = BLACK;
 		if(y < 4){
@@ -255,6 +265,21 @@ int main(){
 	play();
 	
 //	printBoard(100,100,100,100);
-//	printCountPieces();	
-	return 0;
-}	
+//	printCountPieces();
+}
+
+/* The main function creates two task and starts multi-tasking */
+int main(void)
+{
+  OSTaskCreateExt(task1,
+                  NULL,
+                  (void *)&task1_stk[TASK_STACKSIZE-1],
+                  TASK1_PRIORITY,
+                  TASK1_PRIORITY,
+                  task1_stk,
+                  TASK_STACKSIZE,
+                  NULL,
+                  0);
+  OSStart();
+  return 0;
+}
