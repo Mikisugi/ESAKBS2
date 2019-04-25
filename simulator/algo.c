@@ -1,7 +1,9 @@
-#include <math.h>
 #include <stdio.h>
+#include <math.h>
 
+// Print damstenen i.p.v. text
 #define UNICODE_ENABLED 0
+// Maak het dambord met kleuren i.p.v lijnen.
 #define COLORS_ENABLED 0
 
 #define EMPTY 0
@@ -18,6 +20,7 @@ unsigned char board [10][10];
 void printCountPieces(){
 	unsigned char enemyCount = 0;
 	unsigned char friendlyCount = 0;
+	
 	for(unsigned char row = 0; row < 10; row++){
 		for(unsigned char field = 0; field < 10; field++){
 			if(board[row][field] == FRIENDLY){
@@ -65,7 +68,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 				}
 			}
 			
-			if(COLORS_ENABLED && row == changedRow && field == changedField){	
+			if(COLORS_ENABLED && row == changedRow && field == changedField){
 				printf("\x1b[33m");
 			}else if(COLORS_ENABLED && row == oldRow && field == oldField){
 				printf("\x1b[33m");
@@ -107,12 +110,21 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 	printf("\n\n\n");
 }
 
-unsigned char manCapture(unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
-	unsigned char possibleEnemyRow, possibleEnemyField, possibleNewRow, possibleNewField;
+unsigned char manCapture(unsigned char row, 
+		unsigned char field, 
+		unsigned char friendly, 
+		unsigned char friendlyKing, 
+		unsigned char enemy, 
+		unsigned char 
+		enemyKing){
+	unsigned char possibleEnemyRow, possibleEnemyField, 
+		possibleNewRow, possibleNewField;
+	
 	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
 		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
 			possibleEnemyRow = row + rowDirection;
 			possibleEnemyField = field + fieldDirection;
+			
 			// Dont check the side for enemies you cant capture them there
 			if(possibleEnemyRow > 0 && possibleEnemyRow < 9 && possibleEnemyField > 0 && possibleEnemyField < 9){						
 			//	printf("%s %d%c", "enemy in range?", board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing, '\n');
@@ -163,6 +175,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	unsigned char moved = 0;
 	unsigned char couldNotCapture = 0;
 	unsigned char couldNotMove = 0;
+	
 	while(couldNotMove == 0){
 		for(unsigned char row = 0; row < 10; row++){
 		//	printf("friest for\n");
@@ -200,6 +213,7 @@ void play(){
 	unsigned char enemyMoved = 1;
 	unsigned char turn = 0;
 	unsigned char turnCounter = 0;
+	
 	while(friendlyMoved == 1 && enemyMoved == 1){
 		if(turn == 0){
 			printf("FRIENDLY TURN\n");
@@ -222,12 +236,11 @@ void play(){
 	printf("%s %d %s", "the game lasted for # turns", turnCounter, "\n"); 
 }
 
-int main(){
+void createBoard(){
 	unsigned char x = 1;
 	unsigned char y = 0;
 	unsigned char even = 1;
-	unsigned char captured = 1; 
-	unsigned char moved = 0;
+	
 	while(y < 10){
 		board[y][x] = BLACK;
 		if(y < 4){
@@ -248,9 +261,13 @@ int main(){
 			}
 		}	
 	}
+}
 
+int main(){
 //	printBoard(100,100,100,100);	
 //	printCountPieces();
+
+	createBoard();
 
 	play();
 	

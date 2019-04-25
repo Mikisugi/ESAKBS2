@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "includes.h"
 #include <math.h>
+#include "includes.h"
 
 #define UNICODE_ENABLED 0
 #define COLORS_ENABLED 0
@@ -15,17 +15,18 @@
 #define ENEMYDIRECTION 1
 
 /* Definition of Task Stacks */
-#define   TASK_STACKSIZE       2048
+#define   TASK_STACKSIZE       1028
 OS_STK    task1_stk[TASK_STACKSIZE];
 
 /* Definition of Task Priorities */
-#define TASK1_PRIORITY      1
+#define TASK1_PRIORITY      5
 
 unsigned char board [10][10];
 
 void printCountPieces(){
 	unsigned char enemyCount = 0;
 	unsigned char friendlyCount = 0;
+
 	for(unsigned char row = 0; row < 10; row++){
 		for(unsigned char field = 0; field < 10; field++){
 			if(board[row][field] == FRIENDLY){
@@ -35,10 +36,11 @@ void printCountPieces(){
 			}
 		}
 	}
-	
+
 	printf("%s %d%c", "Enemy #", enemyCount, '\n');
-	printf("%s %d%c", "Friendly #", friendlyCount, '\n');	
+	printf("%s %d%c", "Friendly #", friendlyCount, '\n');
 }
+
 
 void printBoard(unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
 	for(unsigned char row = 0; row < 10; row++){
@@ -48,7 +50,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 		}
 		if(!COLORS_ENABLED) printf("\n|");
 		for(unsigned char field = 0; field < 10; field++){
-			
+
 			if(COLORS_ENABLED){
 				switch(board[row][field]){
 					case BLACK :
@@ -66,13 +68,13 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					case ENEMYKING :
 						printf("\e[37;40m");
 						break;
-					default : 
+					default :
 						printf("\e[37;47m");
 						break;
 				}
 			}
-			
-			if(COLORS_ENABLED && row == changedRow && field == changedField){	
+
+			if(COLORS_ENABLED && row == changedRow && field == changedField){
 				printf("\x1b[33m");
 			}else if(COLORS_ENABLED && row == oldRow && field == oldField){
 				printf("\x1b[33m");
@@ -98,7 +100,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					if(UNICODE_ENABLED) printf(" ⛃ ");
 					else printf("E K");
 					break;
-				default : 
+				default :
 					printf("   ");
 					break;
 			}
@@ -114,14 +116,23 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 	printf("\n\n\n");
 }
 
-unsigned char manCapture(unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
-	unsigned char possibleEnemyRow, possibleEnemyField, possibleNewRow, possibleNewField;
+unsigned char manCapture(unsigned char row,
+		unsigned char field,
+		unsigned char friendly,
+		unsigned char friendlyKing,
+		unsigned char enemy,
+		unsigned char
+		enemyKing){
+	unsigned char possibleEnemyRow, possibleEnemyField,
+		possibleNewRow, possibleNewField;
+
 	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
 		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
 			possibleEnemyRow = row + rowDirection;
 			possibleEnemyField = field + fieldDirection;
+
 			// Dont check the side for enemies you cant capture them there
-			if(possibleEnemyRow > 0 && possibleEnemyRow < 9 && possibleEnemyField > 0 && possibleEnemyField < 9){						
+			if(possibleEnemyRow > 0 && possibleEnemyRow < 9 && possibleEnemyField > 0 && possibleEnemyField < 9){
 			//	printf("%s %d%c", "enemy in range?", board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing, '\n');
 				if(board[possibleEnemyRow][possibleEnemyField] == enemy || board[possibleEnemyRow][possibleEnemyField] == enemyKing){
 				//	printf("%s %d%c%d%c", "beeb boob enemy detected at",  possibleEnemyRow, '.', possibleEnemyField, '\n');
@@ -132,7 +143,7 @@ unsigned char manCapture(unsigned char row, unsigned char field, unsigned char f
 						board[possibleNewRow][possibleNewField] = board[row][field];
 						board[row][field] = BLACK;
 						board[possibleEnemyRow][possibleEnemyField] = BLACK;
-						printBoard(possibleNewRow, possibleNewField, row, field);	
+						printBoard(possibleNewRow, possibleNewField, row, field);
 						printf("%s %d %s %d%c", "old row", row, "old field", field,'\n');
 						printf("%s %d %s %d%c", "new row", possibleNewRow, "new field", possibleNewField,'\n');
 						printCountPieces();
@@ -140,8 +151,8 @@ unsigned char manCapture(unsigned char row, unsigned char field, unsigned char f
 						return 1;
 					}
 				}
-			}	
-		}	
+			}
+		}
 	}
 	return 0;
 }
@@ -149,19 +160,19 @@ unsigned char manCapture(unsigned char row, unsigned char field, unsigned char f
 unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 	signed char possibleNewField;
 	signed char possibleNewRow = row + direction;
-	
+
 	if(possibleNewRow > -1 && possibleNewRow < 10){
 		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
 			possibleNewField = field + fieldDirection;
-		
-			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){	
+
+			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){
 				board[possibleNewRow][possibleNewField] = board[row][field];
 				board[row][field] = BLACK;
-				printBoard(possibleNewRow, possibleNewField, row, field);	
+				printBoard(possibleNewRow, possibleNewField, row, field);
 				return 1;
 			}
 		}
-	}	
+	}
 	return 0;
 }
 
@@ -170,6 +181,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	unsigned char moved = 0;
 	unsigned char couldNotCapture = 0;
 	unsigned char couldNotMove = 0;
+
 	while(couldNotMove == 0){
 		for(unsigned char row = 0; row < 10; row++){
 		//	printf("friest for\n");
@@ -183,7 +195,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 					}else{
 						moved = manMove(row, field, friendly, friendlyKing, enemy, enemyKing, direction);
 					}
-					
+
 					if(moved == 1 || captured == 1){
 						printf("moved or captured\n");
 						return 1;
@@ -191,7 +203,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 				}
 			}
 		}
-		if(couldNotCapture == 1 && moved == 0){				
+		if(couldNotCapture == 1 && moved == 0){
 			couldNotMove = 1;
 			printf("could not move\n");
 		}else if(captured == 0){
@@ -207,6 +219,7 @@ void play(){
 	unsigned char enemyMoved = 1;
 	unsigned char turn = 0;
 	unsigned char turnCounter = 0;
+
 	while(friendlyMoved == 1 && enemyMoved == 1){
 		if(turn == 0){
 			printf("FRIENDLY TURN\n");
@@ -226,60 +239,57 @@ void play(){
 		printf("YOU WON\n");
 	}
 	turnCounter--;
-	printf("%s %d %s", "the game lasted for # turns", turnCounter, "\n"); 
+	printf("%s %d %s", "the game lasted for # turns", turnCounter, "\n");
 }
 
-/* Task 1 is de main van het C algoritme */
-void task1(void* pdata)
-{
+void createBoard(){
 	unsigned char x = 1;
 	unsigned char y = 0;
 	unsigned char even = 1;
-	unsigned char captured = 1; 
-	unsigned char moved = 0;
-	
+
 	while(y < 10){
 		board[y][x] = BLACK;
 		if(y < 4){
 			board[y][x] = ENEMY;
 		}
-		if(y > 5){		
+		if(y > 5){
 			board[y][x] = FRIENDLY;
 		}
 
 		if(x + 2 < 10 ){
 			x = x + 2;
 		}else{
-			y++;	
+			y++;
 			x = 0;
 			even = !even;
 			if(even > 0){
 				x++;
 			}
-		}	
+		}
 	}
+}
 
-//	printBoard(100,100,100,100);	
-//	printCountPieces();
+//
 
+/* Task 1 is de main van het C algoritme */
+void task1(void* pdata){
+	createBoard();
 	play();
-	
-//	printBoard(100,100,100,100);
-//	printCountPieces();
+
+	printf("\n\nbelow is jibberish, please ignore\n");
+	for(int i = 0;i<=200;i++){
+		if(i % 30 == 1) printf("\n");
+		printf("%i, ",i);
+	}
 }
 
-/* The main function creates two task and starts multi-tasking */
-int main(void)
-{
-  OSTaskCreateExt(task1,
-                  NULL,
-                  (void *)&task1_stk[TASK_STACKSIZE-1],
-                  TASK1_PRIORITY,
-                  TASK1_PRIORITY,
-                  task1_stk,
-                  TASK_STACKSIZE,
-                  NULL,
-                  0);
-  OSStart();
-  return 0;
+/* The main function creates task and starts multi-tasking */
+int main(void){
+
+	OSTaskCreate(task1, NULL, (void *)&task1_stk[TASK_STACKSIZE-1], TASK1_PRIORITY);
+
+	OSStart();
+
+	return 0;
 }
+
