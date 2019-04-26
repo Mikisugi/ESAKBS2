@@ -4,10 +4,10 @@
 // Print unicode checkers instead of text
 #define UNICODE_ENABLED 1
 // Draw the board with colors instead of lines
-#define COLORS_ENABLED 1
+#define COLORS_ENABLED 0
 
 // if 0, computer will play against itself
-#define PLAYER_INPUT 1
+#define PLAYER_INPUT 0
 
 #define EMPTY 0
 #define BLACK 1
@@ -59,15 +59,21 @@ oldRow		= The row where the piece previously was
 oldField	= The field where the piece previously was
 */
 void printBoard(unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
-	if(COLORS_ENABLED) printf("  0  1  2  3  4  5  6  7  8  9\n");
+	
+	if(COLORS_ENABLED) printf("  0  1  2  3  4  5  6  7  8  9");
 	else printf("   0   1   2   3   4   5   6   7   8   9\n");
+	
 	for(unsigned char row = 0; row < 10; row++){
+		
 		if(!COLORS_ENABLED) printf(" |");
+		
 		for(unsigned char o = 0; o < 10; o++){
 			if(!COLORS_ENABLED) printf("---|");
 		}
-		if(COLORS_ENABLED) printf("%i",row);
+		
+		if(COLORS_ENABLED) printf("\n%i",row);
 		else printf("\n%i|",row);
+	
 		for(unsigned char field = 0; field < 10; field++){
 			
 			/*
@@ -139,7 +145,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 		}
 		
 		//Next row
-		printf("\n");
+		if(!COLORS_ENABLED) printf("\n");
 	}
 	
 	//Print the last line
@@ -255,6 +261,33 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 		}
 	}
 	return 0;
+}
+
+unsigned char algorithm2(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+	
+	for(unsigned char row = 0; row < 10; row++){
+	
+		for(unsigned char field = 0; field < 10; field++){
+		
+			if(board[row][field] == friendly){
+			
+				if(checkIfMustCapture(row,field,0)){
+				
+					manCapture(row,field,friendly,friendlyKing,enemy,enemyKing);
+				}else{
+				
+					
+					if(checkIfCanMove(row,field,0)){
+					
+						//manMove(row,field,friendly,friendlyKing,enemy,enemyKing);
+					}else{
+					
+						//TODO NEXT
+					}
+				}
+			}
+		}
+	}
 }
 
 //TODO: fly
@@ -468,7 +501,7 @@ void createBoard(){
 }
 
 int main(){
-//	printBoard(100,100,100,100);	
+//	printBoard(100,100,100,100);
 //	printCountPieces();
 
 	createBoard();
