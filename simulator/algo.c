@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
 
 // Print unicode checkers instead of text
 #define UNICODE_ENABLED 1
 // Draw the board with colors instead of lines
-#define COLORS_ENABLED 0
+#define COLORS_ENABLED 1
 
 // if 0, computer will play against itself
-#define PLAYER_INPUT 0
+#define PLAYER_INPUT 1
 
 #define EMPTY 0
 #define BLACK 1
@@ -225,6 +227,87 @@ unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly,
 	return 0;
 }
 
+
+//TODO: fly
+int capture(int row,int field,int king){
+	
+	if((board[row-1][field-1] == ENEMY || board[row-1][field-1] == ENEMYKING)
+	&&
+	(board[row-2][field-2] == BLACK || board[row-2][field-2] == BLACK)){
+	
+		board[row-2][field-2] = board[row][field];
+		board[row-1][field-1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard(row-2,field-2,row,field);
+		return 1;
+	}
+	
+	else if((board[row-1][field+1] == ENEMY || board[row-1][field+1] == ENEMYKING)
+	&&
+	(board[row-2][field+2] == BLACK || board[row-2][field+2] == BLACK)){
+	
+		board[row-2][field+2] = board[row][field];
+		board[row-1][field+1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard(row-2,field+2,row,field);
+		return 1;
+	}
+		
+	else if((board[row+1][field-1] == ENEMY || board[row+1][field-1] == ENEMYKING)
+	&&
+	(board[row+2][field-2] == BLACK || board[row+2][field-2] == BLACK)){
+		
+		board[row+2][field-2] = board[row][field];
+		board[row+1][field-1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard(row+2,field-2,row,field);
+		return 1;
+	}
+	
+	else if((board[row+1][field+1] == ENEMY || board[row+1][field+1] == ENEMYKING)
+	&&
+	(board[row+2][field+2] == BLACK || board[row+2][field+2] == BLACK)){
+		
+		board[row+2][field+2] = board[row][field];
+		board[row+1][field+1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard(row+2,field+2,row,field);
+		return 1;
+	}
+	
+	else return 0;
+}
+
+int checkIfCanMove(int row,int field,int king,int dir){
+	
+	if(board[row][field] == FRIENDLY && (dir == 3 || dir == 4)){
+		return 0;
+	}
+	
+	switch(dir){
+		case 1:
+			if(board[row-1][field-1] == BLACK){
+				return 1;
+			}else return 0;
+			break;
+		case 2:
+			if(board[row-1][field+1] == BLACK){
+				return 1;
+			}else return 0;
+			break;
+		case 3:
+			if(board[row+1][field-1] == BLACK){
+				return 1;
+			}else return 0;
+			break;
+		case 4:
+			if(board[row+1][field+1] == BLACK){
+				return 1;
+			}else return 0;
+			break;
+	}
+}
+
 unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 	unsigned char captured = 0;
 	unsigned char moved = 0;
@@ -263,97 +346,118 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	return 0;
 }
 
-unsigned char algorithm2(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+
+	//TODO: Singly linked list with option struct as data, add all friendly items (unless you can capture)
+	//TODO: multiple captures
+	//TODO: King & Flying
+	//TODO: Caspers code merge
+	//TODO: Go past every item in the singly linked list and predict every future scenario. Positive futures means a high score for the initial move
+	//TODO: singly linked list with moves, not items
+	
+	typedef struct option {
+		int row;
+		int field;
+		int score;
+	} option_t;
+	
+	typedef struct node {
+		struct option * o;
+		struct node * next;
+	} node_t;
+	
+	
+	node_t * head = NULL;
+	head = malloc(sizeof(node_t));
+	
+	
+	node_t * current = head;
+	
 	
 	for(unsigned char row = 0; row < 10; row++){
-	
+
 		for(unsigned char field = 0; field < 10; field++){
 		
-			if(board[row][field] == friendly){
-			
-				if(checkIfMustCapture(row,field,0)){
+			if(board[row][field] == friendly || board[row][field] == friendlyKing){
 				
-					manCapture(row,field,friendly,friendlyKing,enemy,enemyKing);
+				//TODO: Don't use capture(), it's made for black only, for playerInput()
+				if(capture(row,field,0)){
+					printf("Captured\n");
+					return 1;
 				}else{
-				
-					
-					if(checkIfCanMove(row,field,0)){
-					
-						//manMove(row,field,friendly,friendlyKing,enemy,enemyKing);
-					}else{
-					
-						//TODO NEXT
-					}
+				//TODO: fix Segfault
+					/*
+					current->o->row = row;
+					current->o->field = field;
+					current->o->score = 0;
+					current = current->next;
+					*/
 				}
+				
 			}
 		}
 	}
-}
-
-//TODO: fly
-int checkIfMustCapture(int row,int field,int king){
 	
-	if((board[row-1][field-1] == ENEMY || board[row-1][field-1] == ENEMYKING)
-	&&
-	(board[row-2][field-2] == BLACK || board[row-2][field-2] == BLACK))
-		return 1;
-	
-	else if((board[row-1][field+1] == ENEMY || board[row-1][field+1] == ENEMYKING)
-	&&
-	(board[row-2][field+2] == BLACK || board[row-2][field+2] == BLACK))
-		return 2;
-	
-	else if((board[row+1][field-1] == ENEMY || board[row+1][field-1] == ENEMYKING)
-	&&
-	(board[row+2][field-2] == BLACK || board[row+2][field-2] == BLACK))
-		return 3;
-	
-	else if((board[row+1][field+1] == ENEMY || board[row+1][field+1] == ENEMYKING)
-	&&
-	(board[row+2][field+2] == BLACK || board[row+2][field+2] == BLACK))
-		return 4;
-	
-	else return 0;
-}
-
-int checkIfCanMove(int row,int field,int king,int dir){
-	
-	if(board[row][field] == FRIENDLY && (dir == 3 || dir == 4)){
-		return 0;
+	current = head;
+	while (current != NULL) {
+		printf("Item:\n\tRow: %d\n\tField: %d\n\tScore: %d\n\n", 
+			current->o->row,current->o->field,current->o->score);
+		current = current->next;
 	}
 	
-	switch(dir){
-		case 1:
-			if(board[row-1][field-1] == BLACK){
-				return 1;
-			}else return 0;
-			break;
-		case 2:
-			if(board[row-1][field+1] == BLACK){
-				return 1;
-			}else return 0;
-			break;
-		case 3:
-			if(board[row+1][field-1] == BLACK){
-				return 1;
-			}else return 0;
-			break;
-		case 4:
-			if(board[row+1][field+1] == BLACK){
-				return 1;
-			}else return 0;
-			break;
-	}
+	return 1;
 }
 
 unsigned char playerInput(){
+
+	for(int row = 0; row < 10; row++){
+	
+		for(int field = 0; field < 10; field++){
+		
+			if(board[row][field] == FRIENDLY){
+			
+				if(capture(row,field,0)) return 1;
+			}
+			else if(board[row][field] == FRIENDLYKING){
+			
+				if(capture(row,field,1)) return 1;
+			}
+		}
+	}
+	
+	int pRow = -1;
+	int pField = -1;
 	
 	printf("Row to select: ");
-	int pRow = -1;
-	scanf("%d", &pRow);
+
+	char *p, s[100];
+    	while (fgets(s, sizeof(s), stdin)) {
+    	    pRow = strtol(s, &p, 10);
+    	    if (p == s || *p != '\n') {
+    	        printf("Please enter a number: ");
+    	    } else break;
+    	}
+    	
+    	if(pRow < 0 || pRow > 9){
+    	
+    		printf("Invalid number, try again\n");
+    		return playerInput();
+    	}
+	
 	printf("Field to select: ");
-	int pField = -1;
-	scanf("%d", &pField);
+
+    	while (fgets(s, sizeof(s), stdin)) {
+    	    pField = strtol(s, &p, 10);
+    	    if (p == s || *p != '\n') {
+    	        printf("Please enter a number: ");
+    	    } else break;
+    	}
+    	
+    	if(pField < 0 || pField > 9){
+    	
+    		printf("Invalid number, try again\n");
+    		return playerInput();
+    	}
 	
 	int stone = board[pRow][pField];
 	
@@ -362,41 +466,6 @@ unsigned char playerInput(){
 		int isKing;
 		if(stone == FRIENDLYKING) isKing = 1;
 		else isKing = 0;
-		
-		int mustMove = 0;
-		
-		int printB = 1;
-		switch(checkIfMustCapture(pRow,pField,isKing)){
-			case 0:
-				printB = 0;
-				break;
-			case 1:
-				board[pRow-2][pField-2] = stone;
-				board[pRow-1][pField-1] = BLACK;
-				printBoard(pRow-2,pField-2,pRow,pField);
-				break;
-			case 2:
-				board[pRow-2][pField+2] = stone;
-				board[pRow-1][pField+1] = BLACK;
-				printBoard(pRow-2,pField+2,pRow,pField);
-				break;
-			case 3:
-				board[pRow+2][pField-2] = stone;
-				board[pRow+1][pField-1] = BLACK;
-				printBoard(pRow+2,pField-2,pRow,pField);
-				break;
-			case 4:
-				board[pRow+2][pField+2] = stone;
-				board[pRow+1][pField+1] = BLACK;
-				printBoard(pRow+2,pField+2,pRow,pField);
-				break;
-		}
-		
-		//wordt bij 1 2 3 en 4 gedaan, niet bij 0
-		if(printB){
-			board[pRow][pField] = BLACK;
-			return 1;
-		}
 		
 		printf("\n1   2\n");
 		printf(" \\ /\n");
@@ -433,10 +502,10 @@ unsigned char playerInput(){
 			return 1;
 		}else{
 			printf("Can't move to that field! Try again.\n");
-				return playerInput();
+			return playerInput();
 		}			
 	}else{
-		printf("Wrong piece selected, try again");
+		printf("Wrong piece selected, try again\n");
 		return playerInput();
 	}
 }
@@ -453,12 +522,14 @@ void play(){
 			if(PLAYER_INPUT){
 				friendlyMoved = playerInput();	
 			}else{
-				friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			}
 			turn = 1;
 		}else{
 			printf("ENEMY TURN\n");
-			enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
 			turn = 0;
 		}
 		turnCounter++;
