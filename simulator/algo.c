@@ -3,23 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-// Print unicode checkers instead of text
-#define UNICODE_ENABLED 1
-// Draw the board with colors instead of lines
-#define COLORS_ENABLED 1
-
-// if 0, computer will play against itself
-#define PLAYER_INPUT 1
-
-#define EMPTY 0
-#define BLACK 1
-#define FRIENDLY 2
-#define FRIENDLYKING 3
-#define ENEMY 4
-#define ENEMYKING 5
-
-#define FRIENDLYDIRECTION -1
-#define ENEMYDIRECTION 1
+#include "constants.h"
+#include "vector.h"
 
 unsigned char board [10][10];
 
@@ -128,7 +113,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 					if(UNICODE_ENABLED) printf(" ⛁ ");
 					else printf("F K");
 					break;
-				case ENEMY :
+				 case ENEMY :
 					if(UNICODE_ENABLED) printf(" ⛂ ");
 					else printf(" E ");
 					break;
@@ -163,6 +148,7 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 /*
 	Capture an enemy with a man
 */
+/*
 unsigned char manCapture(unsigned char row, 
 		unsigned char field, 
 		unsigned char friendly,
@@ -170,6 +156,66 @@ unsigned char manCapture(unsigned char row,
 		unsigned char enemy, 
 		unsigned char enemyKing){
 	
+				}
+			}
+	}	
+}
+*/
+
+Vector kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
+	Vector captureVector;
+	vectorInit(&captureVector);
+	Location possibleEnemy, possibleLanding;
+	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
+		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
+		//	printf("Row direction: %d, Field Direction: %d\n", rowDirection, fieldDirection);
+			possibleEnemy.row = currentLocation.row;
+			possibleEnemy.field = currentLocation.field;
+			while(possibleEnemy.row + rowDirection > 0 && possibleEnemy.row + rowDirection < 9 && possibleEnemy.field + fieldDirection > 0 && possibleEnemy.field + fieldDirection < 9){
+				possibleEnemy.row += rowDirection;
+				possibleEnemy.field += fieldDirection;
+		//		printf("possible enemy row: %d, possible enemy field: %d\n", possibleEnemy.row, possibleEnemy.field);
+				if(tempBoard[possibleEnemy.row][possibleEnemy.field] == enemy || tempBoard[possibleEnemy.row][possibleEnemy.field] == enemyKing){
+		//			printf("beeb boop enemy detected\n");
+					possibleLanding.row = possibleEnemy.row;
+					possibleLanding.field = possibleEnemy.field;
+					
+					unsigned char i = 0;
+					while(possibleLanding.row + rowDirection > -1 && possibleLanding.row + rowDirection < 10 && possibleLanding.field + fieldDirection > -1 && possibleLanding.field + fieldDirection < 10){
+						possibleLanding.row += rowDirection;
+						possibleLanding.field += fieldDirection;
+						if(tempBoard[possibleLanding.row][possibleLanding.field] == BLACK){
+							printf("LANDINGMAYDAYMAYDAY %d \n", i);
+							i++;	
+						
+							printf("LandROW : %d\n LandField: %d\n\n", possibleLanding.row, possibleLanding.field);
+							Capture *capture = malloc(sizeof(Capture)) ;
+							capture->oldLocation = currentLocation;
+							capture->captureLocation = possibleEnemy;
+							capture->newLocation = possibleLanding;
+							capture->piece = tempBoard[possibleEnemy.row][possibleEnemy.field];
+							tempBoard[currentLocation.row][currentLocation.field] = BLACK;
+							tempBoard[possibleLanding.row][possibleLanding.field] = friendlyKing;
+							tempBoard[possibleEnemy.row][possibleEnemy.field] = BLACK;
+
+							capture->nextCaptures = kingCapture(possibleLanding, tempBoard,friendly, friendlyKing, enemy, enemyKing);
+							vectorAdd(&captureVector, (void*)capture);
+							
+							tempBoard[currentLocation.row][currentLocation.field] = friendlyKing;
+							tempBoard[possibleLanding.row][possibleLanding.field] = BLACK;
+							tempBoard[possibleEnemy.row][possibleEnemy.field] = capture->piece;
+						}
+					}
+					break;	
+				}
+			}
+	
+		}
+	}		
+	return captureVector;
+}
+
+unsigned char manCapture(unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
 	unsigned char possibleEnemyRow, possibleEnemyField, possibleNewRow, possibleNewField;
 	
 	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
@@ -571,15 +617,36 @@ void createBoard(){
 	}
 }
 
+
 int main(){
 //	printBoard(100,100,100,100);
 //	printCountPieces();
 
 	createBoard();
-	
-	printBoard(100,100,100,100);
+	board[8][7] = ENEMY;
+	board[6][5] = FRIENDLYKING;
+	board[5][4] = ENEMY;
+	board[5][2] = ENEMY;
+	board[2][5] = ENEMY;
 
-	play();
+	Vector testVector;
+	vectorInit(&testVector);
+	Capture capture;
+	vectorAdd(&testVector, (void*)&capture);
+
+	printBoard(100,100,100,100);
+	
+	Location location;
+	location.row = 6;
+	location.field = 5;
+	Vector vector;
+	vector = kingCapture(location,board ,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING);
+	
+	printVector(&vector);
+
+//	vector->size;
+//	printBoard(100,100,100,100);
+//	play();
 	
 //	printBoard(100,100,100,100);
 //	printCountPieces();	
