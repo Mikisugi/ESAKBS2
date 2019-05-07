@@ -355,21 +355,17 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 	//TODO: Go past every item in the singly linked list and predict every future scenario. Positive futures means a high score for the initial move
 	//TODO: singly linked list with moves, not items
 	
-	typedef struct option {
+	typedef struct node {
+		struct node * next;
 		int row;
 		int field;
+		int dir;
 		int score;
-	} option_t;
-	
-	typedef struct node {
-		struct option * o;
-		struct node * next;
 	} node_t;
 	
 	
 	node_t * head = NULL;
 	head = malloc(sizeof(node_t));
-	
 	
 	node_t * current = head;
 	
@@ -380,30 +376,52 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 		
 			if(board[row][field] == friendly || board[row][field] == friendlyKing){
 				
-				//TODO: Don't use capture(), it's made for black only, for playerInput()
-				if(capture(row,field,0)){
-					printf("Captured\n");
-					return 1;
-				}else{
-				//TODO: fix Segfault
-					/*
-					current->o->row = row;
-					current->o->field = field;
-					current->o->score = 0;
-					current = current->next;
-					*/
-				}
-				
+				//TODO: Don't use capture(), it's made for blacks only, for playerInput()
+				//if(capture(row,field,0)){
+				//	
+				//	printf("Captured\n");
+				//	return 1;
+				//}else{
+					if(checkIfCanMove(row,field,0,3) == 1){
+					
+						current = head;
+						while (current->next != NULL)
+							current = current->next;
+						current->next = malloc(sizeof(node_t));
+						current->next->row = row;
+						current->next->field = field;
+						current->next->dir = 3;
+						current->next->score = 0;
+						current->next->next = NULL;
+					}
+					if(checkIfCanMove(row,field,0,4) == 1){
+					
+						current = head;
+						while (current->next != NULL)
+							current = current->next;
+						current->next = malloc(sizeof(node_t));
+						current->next->row = row;
+						current->next->field = field;
+						current->next->dir = 4;
+						current->next->score = 0;
+						current->next->next = NULL;
+					}
+				//}
 			}
 		}
 	}
 	
+	/*
+	// Print the linked list
 	current = head;
 	while (current != NULL) {
 		printf("Item:\n\tRow: %d\n\tField: %d\n\tScore: %d\n\n", 
-			current->o->row,current->o->field,current->o->score);
+			current->row,current->field,current->score);
 		current = current->next;
 	}
+	*/
+	
+	free(head);
 	
 	return 1;
 }
