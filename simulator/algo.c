@@ -387,6 +387,7 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 						current = head;
 						while (current->next != NULL)
 							current = current->next;
+						
 						current->next = malloc(sizeof(node_t));
 						current->next->row = row;
 						current->next->field = field;
@@ -399,6 +400,7 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 						current = head;
 						while (current->next != NULL)
 							current = current->next;
+						
 						current->next = malloc(sizeof(node_t));
 						current->next->row = row;
 						current->next->field = field;
