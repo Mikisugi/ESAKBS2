@@ -380,6 +380,31 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	return 0;
 }
 
+void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char dir, unsigned char isKing, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+
+	tempBoard[row][field] = BLACK;
+	
+	int stone = -1;
+	if(isKing) stone = friendlyKing;
+	else stone = friendly;
+	
+	switch(dir){
+		case 1:
+			tempBoard[row-1][field-1] = stone;
+			break;
+		case 2:
+			tempBoard[row-1][field+1] = stone;
+			break;
+		case 3:
+			tempBoard[row+1][field-1] = stone;
+			break;
+		case 4:
+			tempBoard[row+1][field+1] = stone;
+			break;
+	}
+}
+	
+
 unsigned char bfAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 
 	//TODO: Go past every item in the singly linked list and predict every future scenario. Positive futures means a high score for the initial move
@@ -443,6 +468,52 @@ unsigned char bfAlgorithm(unsigned char * tempBoard[], unsigned char friendly, u
 	}
 	
 	//TODO go through linked list, make tempBoards out of them and check their value, then call bfAlgorithm
+	current = head;
+	unsigned char newBoard[10][10];
+	newBoard = tempBoard;
+	
+	while (current->next != NULL){
+	
+		//Make the move in current
+		unsigned char isKing = -1;
+		if(newBoard[current->row][current->field] == friendly) isKing = 0;
+		else if(newBoard[current->row][current->field] == friendlyKing) isKing = 1;
+		else printf("ERROR: Stone is not friendly or friendlyKing");
+		
+		move((unsigned char **)newBoard, current->row, current->field, current->dir, isKing, friendly, friendlyKing, enemy, enemyKing, current->direction);
+		
+		//Calculate the board's value
+		for(unsigned char row = 0;row<10;row++){
+			for(unsigned char field = 0;field<10;field++){
+				switch(newBoard[row][field]){
+					//friendly
+					case 2:
+						current->score = current->score + 1;
+						break;
+					//friendlyKing
+					case 3:
+						current->score = current->score + 5;
+						break;
+					//enemy
+					case 4:
+						current->score = current->score - 2;
+						break;
+					//enemyKing
+					case 5:
+						current->score = current->score - 6;
+						break;
+				}
+			}
+		}
+		
+		//call bfAlgorithm recursively
+		bfAlgorithm((unsigned char **)newBoard, friendly, friendlyKing, enemy, enemyKing, direction);
+		
+		//bfAlgorithm should return the node with the highest score
+		
+		
+		current = current->next;
+	}
 	
 	/*
 	// Print the linked list
@@ -530,26 +601,8 @@ unsigned char playerInput(){
 		printf("\n");
 		
 		if(checkIfCanMove((unsigned char **)board,pRow,pField,isKing,pDir)){
-		
-			board[pRow][pField] = BLACK;
-			switch(pDir){
-				case 1:
-					board[pRow-1][pField-1] = FRIENDLY;
-					printBoard(pRow-1,pField-1,pRow,pField);
-					break;
-				case 2:
-					board[pRow-1][pField+1] = FRIENDLY;
-					printBoard(pRow-1,pField+1,pRow,pField);
-					break;
-				case 3:
-					board[pRow+1][pField-1] = FRIENDLY;
-					printBoard(pRow+1,pField-1,pRow,pField);
-					break;
-				case 4:
-					board[pRow+1][pField+1] = FRIENDLY;
-					printBoard(pRow+1,pField+1,pRow,pField);
-					break;
-			}
+			
+			move((unsigned char **)board,pRow,pField,pDir,isKing, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			return 1;
 		}else{
 			printf("Can't move to that field! Try again.\n");
