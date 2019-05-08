@@ -1,3 +1,6 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include "constants.h"
 
 #define VECTOR_INITIAL_CAPACITY 5
@@ -22,13 +25,14 @@ typedef struct {
 	unsigned char piece;
 } Capture;
 
-void vectorInit(Vector*);
-int vectorCount(Vector*);
-void vectorAdd(Vector*, void*);
-void vectorSet(Vector*, int index, void*);
-void *vectorGet(Vector*, int index);
-void vectorDelete(Vector*, int index);
-void vectorFree(Vector*);
+void vectorInit(Vector * v);
+int vectorCount(Vector * v);
+void vectorAdd(Vector * v, void * e);
+void vectorSet(Vector * v, int index, void * e);
+void *vectorGet(Vector * v, int index);
+void vectorDelete(Vector * v, int index);
+void vectorFree(Vector * v);
+void printVector(Vector *vector);
 
 
 /*
@@ -57,3 +61,5 @@ void printCapture(Capture *capture);
 
 void printVector(Vector *vector);
 */
+
+#endif

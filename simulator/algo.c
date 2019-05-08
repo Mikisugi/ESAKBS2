@@ -145,22 +145,10 @@ void printBoard(unsigned char changedRow, unsigned char changedField, unsigned c
 	printf("\n\n\n");
 }
 
-/*
-	Capture an enemy with a man
-*/
-/*
-unsigned char manCapture(unsigned char row, 
-		unsigned char field, 
-		unsigned char friendly,
-		unsigned char friendlyKing, 
-		unsigned char enemy, 
-		unsigned char enemyKing){
+int checkIfGetsHit(){
+
 	
-				}
-			}
-	}	
 }
-*/
 
 Vector kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
 	Vector captureVector;
@@ -324,30 +312,30 @@ int capture(int row,int field,int king){
 	else return 0;
 }
 
-int checkIfCanMove(int row,int field,int king,int dir){
+int checkIfCanMove(unsigned char * tempBoard[], int row,int field,int king,int dir){
 	
-	if(board[row][field] == FRIENDLY && (dir == 3 || dir == 4)){
+	if(tempBoard[row][field] == FRIENDLY && (dir == 3 || dir == 4)){
 		return 0;
 	}
 	
 	switch(dir){
 		case 1:
-			if(board[row-1][field-1] == BLACK){
+			if(tempBoard[row-1][field-1] == BLACK){
 				return 1;
 			}else return 0;
 			break;
 		case 2:
-			if(board[row-1][field+1] == BLACK){
+			if(tempBoard[row-1][field+1] == BLACK){
 				return 1;
 			}else return 0;
 			break;
 		case 3:
-			if(board[row+1][field-1] == BLACK){
+			if(tempBoard[row+1][field-1] == BLACK){
 				return 1;
 			}else return 0;
 			break;
 		case 4:
-			if(board[row+1][field+1] == BLACK){
+			if(tempBoard[row+1][field+1] == BLACK){
 				return 1;
 			}else return 0;
 			break;
@@ -392,12 +380,8 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	return 0;
 }
 
-unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+unsigned char bfAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 
-	//TODO: Singly linked list with option struct as data, add all friendly items (unless you can capture)
-	//TODO: multiple captures
-	//TODO: King & Flying
-	//TODO: Caspers code merge
 	//TODO: Go past every item in the singly linked list and predict every future scenario. Positive futures means a high score for the initial move
 	//TODO: singly linked list with moves, not items
 	
@@ -415,20 +399,19 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 	
 	node_t * current = head;
 	
-	
 	for(unsigned char row = 0; row < 10; row++){
 
 		for(unsigned char field = 0; field < 10; field++){
 		
-			if(board[row][field] == friendly || board[row][field] == friendlyKing){
+			if(tempBoard[row][field] == friendly || tempBoard[row][field] == friendlyKing){
 				
-				//TODO: Don't use capture(), it's made for blacks only, for playerInput()
+				//TODO: Don't use capture(), it's made for blacks only. use manCapture & kingCapture when finished
 				//if(capture(row,field,0)){
 				//	
 				//	printf("Captured\n");
 				//	return 1;
 				//}else{
-					if(checkIfCanMove(row,field,0,3) == 1){
+					if(checkIfCanMove((unsigned char **)tempBoard,row,field,0,3) == 1){
 					
 						current = head;
 						while (current->next != NULL)
@@ -441,7 +424,7 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 						current->next->score = 0;
 						current->next->next = NULL;
 					}
-					if(checkIfCanMove(row,field,0,4) == 1){
+					if(checkIfCanMove((unsigned char **)tempBoard,row,field,0,4) == 1){
 					
 						current = head;
 						while (current->next != NULL)
@@ -458,6 +441,8 @@ unsigned char bfAlgorithm(unsigned char friendly, unsigned char friendlyKing, un
 			}
 		}
 	}
+	
+	//TODO go through linked list, make tempBoards out of them and check their value, then call bfAlgorithm
 	
 	/*
 	// Print the linked list
@@ -544,8 +529,8 @@ unsigned char playerInput(){
 		scanf("%i", &pDir);
 		printf("\n");
 		
-		if(checkIfCanMove(pRow,pField,isKing,pDir)){
-					
+		if(checkIfCanMove((unsigned char **)board,pRow,pField,isKing,pDir)){
+		
 			board[pRow][pField] = BLACK;
 			switch(pDir){
 				case 1:
@@ -588,14 +573,14 @@ void play(){
 			if(PLAYER_INPUT){
 				friendlyMoved = playerInput();	
 			}else{
-				friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				//friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			}
 			turn = 1;
 		}else{
 			printf("ENEMY TURN\n");
-			enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
-			//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			//enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
 			turn = 0;
 		}
 		turnCounter++;
@@ -642,6 +627,7 @@ int main(){
 //	printBoard(100,100,100,100);
 //	printCountPieces();
 
+	/*
 	createBoard();
 	board[8][7] = ENEMY;
 	board[6][5] = FRIENDLYKING;
@@ -663,12 +649,16 @@ int main(){
 	vector = kingCapture(location,board ,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING);
 	
 	printVector(&vector);
-
+	*/
 //	vector->size;
-//	printBoard(100,100,100,100);
-//	play();
+
+
+	createBoard();
+	printBoard(100,100,100,100);
+	play();
 	
 //	printBoard(100,100,100,100);
 //	printCountPieces();	
 	return 0;
-}	
+}
+

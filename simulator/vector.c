@@ -4,19 +4,19 @@
 
 #include "vector.h"
 
-void vectorInit(Vector *v)
+void vectorInit(Vector * v)
 {
 	v->data = NULL;
 	v->size = 0;
 	v->count = 0;
 }
 
-int vectorCount(Vector *v)
+int vectorCount(Vector * v)
 {
 	return v->count;
 }
 
-void vectorAdd(Vector *v, void *e)
+void vectorAdd(Vector * v, void * e)
 {
 	if (v->size == 0) {
 		v->size = 10;
@@ -44,7 +44,7 @@ void vectorSet(Vector *v, int index, void *e)
 	v->data[index] = e;
 }
 
-void *vectorGet(Vector *v, int index)
+void * vectorGet(Vector *v, int index)
 {
 	if (index >= v->count) {
 		return NULL;
