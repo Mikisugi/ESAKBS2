@@ -314,6 +314,7 @@ int capture(int row,int field,int king){
 
 int checkIfCanMove(unsigned char * tempBoard[], int row,int field,int king,int dir){
 	
+	//TODO direction
 	if(tempBoard[row][field] == FRIENDLY && (dir == 3 || dir == 4)){
 		return 0;
 	}
@@ -403,8 +404,87 @@ void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, u
 			break;
 	}
 }
-	
 
+unsigned char minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+	printf("in minimax\n");
+	/*
+	typedef struct move_ {
+		unsigned char row;
+		unsigned char field;
+		unsigned char direction;
+	} Move;
+	
+	Vector * v;
+	vectorInit(v);
+	vectorAdd(v,tempBoard);
+	
+	for(unsigned char row = 0; row < 10; row++){
+		for(unsigned char field = 0; field < 10; field++){
+			if(tempBoard[row][field] == friendly){
+				//TODO capture?
+				
+				//Dir is either 1 and 2 OR 3 and 4
+				int dir = 1;
+				if(direction == 1) dir = dir + 2;
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,0,dir) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = dir;
+					vectorAdd(v,m);
+				}
+				dir++;
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,0,dir) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = dir;
+					vectorAdd(v,m);
+				}	
+			}else if(tempBoard[row][field] == friendlyKing){
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,1,1) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = 1;
+					vectorAdd(v,m);
+				}
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,1,2) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = 2;
+					vectorAdd(v,m);
+				}
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,1,3) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = 3;
+					vectorAdd(v,m);
+				}
+				if(checkIfCanMove((unsigned char **)tempBoard,row,field,1,4) == 1){
+					Move * m;
+					m->row = row;
+					m->field = field;
+					m->direction = 4;
+					vectorAdd(v,m);
+				}
+			}
+		}
+	}
+	
+	//Now we have a vector with a board and every possible move one can make in that round
+	for(int i = v->count; i>0; i--){
+		Move * mm = (Move *) vectorGet(v,i);
+		if(mm == NULL) printf("NULL");
+		//printf("Row: %d\nField: %d\nDir: %d\n\n",mm->row,mm->field,mm->direction);
+	}
+	*/
+	return 1;
+}
+	
+/*
 unsigned char bfAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 
 	//TODO: Go past every item in the singly linked list and predict every future scenario. Positive futures means a high score for the initial move
@@ -523,12 +603,13 @@ unsigned char bfAlgorithm(unsigned char * tempBoard[], unsigned char friendly, u
 			current->row,current->field,current->score);
 		current = current->next;
 	}
-	*/
+	*
 	
 	free(head);
 	
 	return 1;
 }
+*/
 
 unsigned char playerInput(){
 
@@ -601,7 +682,6 @@ unsigned char playerInput(){
 		printf("\n");
 		
 		if(checkIfCanMove((unsigned char **)board,pRow,pField,isKing,pDir)){
-			
 			move((unsigned char **)board,pRow,pField,pDir,isKing, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			return 1;
 		}else{
@@ -627,13 +707,17 @@ void play(){
 				friendlyMoved = playerInput();	
 			}else{
 				//friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-				friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+				//friendlyMoved = 1;
+				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			}
 			turn = 1;
 		}else{
 			printf("ENEMY TURN\n");
 			//enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
-			enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			enemyMoved = minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			//enemyMoved = 1;
+			//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
 			turn = 0;
 		}
 		turnCounter++;
