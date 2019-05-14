@@ -109,19 +109,19 @@ void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned 
 					else printf("   ");
 					break;
 				case FRIENDLY :
-					if(UNICODE_ENABLED) printf(" ⛀ ");
+					if(UNICODE_ENABLED) printf(" ⛂ ");
 					else printf(" F ");
 					break;
 				case FRIENDLYKING :
-					if(UNICODE_ENABLED) printf(" ⛁ ");
+					if(UNICODE_ENABLED) printf(" ⛃ ");
 					else printf("F K");
 					break;
 				 case ENEMY :
-					if(UNICODE_ENABLED) printf(" ⛂ ");
+					if(UNICODE_ENABLED) printf(" ⛀ ");
 					else printf(" E ");
 					break;
 				case ENEMYKING :
-					if(UNICODE_ENABLED) printf(" ⛃ ");
+					if(UNICODE_ENABLED) printf(" ⛁ ");
 					else printf("E K");
 					break;
 				default : 
@@ -496,17 +496,23 @@ struct move
 	unsigned char dir;
 };
 
-struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
+Vector * minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
-	printf("depth @ beginning: %d\n",depth);
+	printf("entering function, depth: %d\n\n",depth);
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 	
-	struct move best;
-	best.score = 0;
-	best.row = 0;
-	best.field = 0;
-	best.dir = 0;
+	
+	Vector * best;
+	vectorInit(best);
+	int score = 0;
+	vectorAdd(best,score);
+	int row = 0;
+	vectorAdd(best,row);
+	int field = 0;
+	vectorAdd(best,field);
+	int dir = 0;
+	vectorAdd(best,dir);
 	
 	if(depth > 0)
 	{
@@ -516,6 +522,8 @@ struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char
 			{
 				if(b[row][field] == friendly)
 				{
+					//TODO: Capture
+					
 					for(int d = 1;d<=4;d++)
 					{
 						if(checkIfCanMove((unsigned char **)b, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction) == 1)
@@ -527,19 +535,31 @@ struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char
 							//swap direction
 							if(direction == FRIENDLYDIRECTION) direction = ENEMYDIRECTION;
 							if(direction == ENEMYDIRECTION) direction = FRIENDLYDIRECTION;
-							struct move s = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, direction, depth-1);
-							if(best.score > s.score)
+							Vector * s = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, direction, depth-1);
+							if((int)vectorGet(best,0) == (int)vectorGet(s,0))
 							{
-								printf("New score %i is better than best score %i, overwriting\n",s.score,best.score);
+								printf("Scores %i and %i are equal, not overwriting\n",(int)vectorGet(s,0),(int)vectorGet(best,0));
 							}
-							else if(best.score == s.score)
+							else
 							{
-								printf("Scores %i and %i are equal, not overwriting\n",s.score,best.score);
-							}
-							else if(best.score < s.score)
-							{
-								printf("New score is bigger than best score %i, overwriting\n",s.score,best.score);
-								best = s;
+								//player's turn
+								if(direction == FRIENDLYDIRECTION)
+								{
+									if(best.score < s.score)
+									{
+										printf("New score is bigger than best score %i, overwriting\n",s.score,best.score);
+										best = s;
+									}
+								}
+								//robot's turn
+								else if(direction == ENEMYDIRECTION)
+								{
+									if(best.score > s.score)
+									{
+										printf("New score %i is lower than best score %i, overwriting\n",s.score,best.score);
+										best = s;
+									}
+								}
 							}
 						}
 					}
@@ -564,6 +584,7 @@ struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char
 				else if(b[row][field] == ENEMYKING)	best.score = best.score - (10-5*row);
 			}
 		}
+		printf("calculated new score: %i\n",best.score);
 	}
 	
 	for(int i = depth; i>0; i--) printf("\t");
@@ -574,11 +595,112 @@ struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char
 	printf("best.field = %d\n",best.field);
 	for(int i = depth; i>0; i--) printf("\t");
 	printf("best.dir = %d\n",best.dir);
-	for(int i = depth; i>0; i--) printf("\t");
-	printf("depth: %d\n\n",depth);
+	//for(int i = depth; i>0; i--) printf("\t");
+	printf("\nleaving function, depth: %d\n\n",depth);
 	
 	return best;
 }
+
+/*
+struct move minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
+{
+	printf("entering function, depth: %d\n\n",depth);
+	unsigned char b[10][10];
+	memcpy(b,tempBoard,100);
+	
+	struct move best;
+	best.score = 0;
+	best.row = 0;
+	best.field = 0;
+	best.dir = 0;
+	
+	if(depth > 0)
+	{
+		for(unsigned char row = 0; row < 10; row++)
+		{
+			for(unsigned char field = 0; field < 10; field++)
+			{
+				if(b[row][field] == friendly)
+				{
+					//TODO: Capture
+					
+					for(int d = 1;d<=4;d++)
+					{
+						if(checkIfCanMove((unsigned char **)b, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction) == 1)
+						{
+							//printf("can move\nrow: %d\nfield: %d\ndir: %d\n",row,field,d);
+							unsigned char newBoard[10][10];
+							memcpy(newBoard,b,100);
+							move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
+							//swap direction
+							if(direction == FRIENDLYDIRECTION) direction = ENEMYDIRECTION;
+							if(direction == ENEMYDIRECTION) direction = FRIENDLYDIRECTION;
+							struct move s = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, direction, depth-1);
+							if(best.score == s.score)
+							{
+								printf("Scores %i and %i are equal, not overwriting\n",s.score,best.score);
+							}
+							else
+							{
+								//player's turn
+								if(direction == FRIENDLYDIRECTION)
+								{
+									if(best.score < s.score)
+									{
+										printf("New score is bigger than best score %i, overwriting\n",s.score,best.score);
+										best = s;
+									}
+								}
+								//robot's turn
+								else if(direction == ENEMYDIRECTION)
+								{
+									if(best.score > s.score)
+									{
+										printf("New score %i is lower than best score %i, overwriting\n",s.score,best.score);
+										best = s;
+									}
+								}
+							}
+						}
+					}
+				}
+				else if(b[row][field] == friendlyKing)
+				{
+					//TODO: kingMove
+				}
+			}
+		}
+	}
+	else
+	{
+		//calculate score to return
+		for(unsigned char row = 0;row<10;row++)
+		{
+			for(unsigned char field = 0;field<10;field++)
+			{
+				if(b[row][field] == FRIENDLY)		best.score = best.score + row;
+				else if(b[row][field] == FRIENDLYKING)	best.score = best.score + 5*row;
+				else if(b[row][field] == ENEMY)		best.score = best.score - (10-row);
+				else if(b[row][field] == ENEMYKING)	best.score = best.score - (10-5*row);
+			}
+		}
+		printf("calculated new score: %i\n",best.score);
+	}
+	
+	for(int i = depth; i>0; i--) printf("\t");
+	printf("best.score = %d\n",best.score);
+	for(int i = depth; i>0; i--) printf("\t");
+	printf("best.row = %d\n",best.row);
+	for(int i = depth; i>0; i--) printf("\t");
+	printf("best.field = %d\n",best.field);
+	for(int i = depth; i>0; i--) printf("\t");
+	printf("best.dir = %d\n",best.dir);
+	//for(int i = depth; i>0; i--) printf("\t");
+	printf("\nleaving function, depth: %d\n\n",depth);
+	
+	return best;
+}
+*/
 
 int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
@@ -696,7 +818,7 @@ void play(){
 				friendlyMoved = playerInput();	
 			}else{
 				//friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,2);
+				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,4);
 				//friendlyMoved = 1;
 				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			}
@@ -704,7 +826,7 @@ void play(){
 		}else{
 			printf("ENEMY TURN\n");
 			//enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
-			enemyMoved = minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,2);
+			enemyMoved = minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
 			//enemyMoved = 1;
 			//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
 			turn = 0;
@@ -729,10 +851,10 @@ void createBoard(){
 	while(y < 10){
 		board[y][x] = BLACK;
 		if(y < 4){
-		//	board[y][x] = ENEMY;
+			board[y][x] = ENEMY;
 		}
 		if(y > 5){		
-		//	board[y][x] = FRIENDLY;
+			board[y][x] = FRIENDLY;
 		}
 
 		if(x + 2 < 10 ){
@@ -765,8 +887,7 @@ int main(){
 	vectorInit(&testVector);
 	Capture capture;
 	vectorAdd(&testVector, (void*)&capture);
-*/
-	printBoard((unsigned char **)board,100,100,100,100);
+*
 	
 	Location location;
 	location.row = 6;
@@ -780,7 +901,8 @@ int main(){
 
 //	vector->size;
 
-
+	*/
+	
 	createBoard();
 	printBoard((unsigned char **)board,100,100,100,100);
 	play();
