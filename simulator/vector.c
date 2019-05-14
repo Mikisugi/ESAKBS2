@@ -4,11 +4,13 @@
 
 #include "vector.h"
 
-void vectorInit(Vector * v)
+Vector * vectorInit()
 {
+	Vector *v = malloc(sizeof(Vector));
 	v->data = NULL;
 	v->size = 0;
 	v->count = 0;
+	return v;
 }
 
 int vectorCount(Vector * v)
@@ -23,14 +25,14 @@ void vectorAdd(Vector * v, void * e)
 		v->data = malloc(sizeof(void*) * v->size);
 		memset(v->data, '\0', sizeof(void) * v->size);
 	}
-
+	
 	// condition to increase v->data:
 	// last slot exhausted
 	if (v->size == v->count) {
 		v->size *= 2;
 		v->data = realloc(v->data, sizeof(void*) * v->size);
 	}
-
+	
 	v->data[v->count] = e;
 	v->count++;
 }

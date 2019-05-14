@@ -18,14 +18,14 @@ typedef struct vector_ {
 
 
 typedef struct {
-	Vector nextCaptures;
+	Vector *nextCaptures;
 	Location oldLocation;
 	Location captureLocation;
 	Location newLocation;
 	unsigned char piece;
 } Capture;
 
-void vectorInit(Vector * v);
+Vector *vectorInit();
 int vectorCount(Vector * v);
 void vectorAdd(Vector * v, void * e);
 void vectorSet(Vector * v, int index, void * e);

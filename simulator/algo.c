@@ -153,21 +153,21 @@ int checkIfGetsHit(){
 	
 }
 
-Vector kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
-	Vector captureVector;
-	vectorInit(&captureVector);
+Vector *kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
+	printf("begin king capture");
+	Vector *captureVector = vectorInit();
 	Location possibleEnemy, possibleLanding;
 	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
 		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
-		//	printf("Row direction: %d, Field Direction: %d\n", rowDirection, fieldDirection);
+			printf("Row direction: %d, Field Direction: %d\n", rowDirection, fieldDirection);
 			possibleEnemy.row = currentLocation.row;
 			possibleEnemy.field = currentLocation.field;
 			while(possibleEnemy.row + rowDirection > 0 && possibleEnemy.row + rowDirection < 9 && possibleEnemy.field + fieldDirection > 0 && possibleEnemy.field + fieldDirection < 9){
 				possibleEnemy.row += rowDirection;
 				possibleEnemy.field += fieldDirection;
-		//		printf("possible enemy row: %d, possible enemy field: %d\n", possibleEnemy.row, possibleEnemy.field);
+				printf("possible enemy row: %d, possible enemy field: %d\n", possibleEnemy.row, possibleEnemy.field);
 				if(tempBoard[possibleEnemy.row][possibleEnemy.field] == enemy || tempBoard[possibleEnemy.row][possibleEnemy.field] == enemyKing){
-		//			printf("beeb boop enemy detected\n");
+					printf("beeb boop enemy detected\n");
 					possibleLanding.row = possibleEnemy.row;
 					possibleLanding.field = possibleEnemy.field;
 					
@@ -190,8 +190,10 @@ Vector kingCapture(Location currentLocation, unsigned char tempBoard [10][10], u
 							tempBoard[possibleEnemy.row][possibleEnemy.field] = BLACK;
 
 							capture->nextCaptures = kingCapture(possibleLanding, tempBoard,friendly, friendlyKing, enemy, enemyKing);
-							vectorAdd(&captureVector, (void*)capture);
-							
+							printf("add stuff to vector\n");
+							vectorAdd(captureVector, (void*)capture);
+
+							printf("restore board");
 							tempBoard[currentLocation.row][currentLocation.field] = friendlyKing;
 							tempBoard[possibleLanding.row][possibleLanding.field] = BLACK;
 							tempBoard[possibleEnemy.row][possibleEnemy.field] = capture->piece;
@@ -204,6 +206,50 @@ Vector kingCapture(Location currentLocation, unsigned char tempBoard [10][10], u
 		}
 	}		
 	return captureVector;
+}
+
+void deleteKingCapture(Capture *capture){
+	if(capture->nextCaptures != NULL){
+		Vector * vector = capture->nextCaptures; 
+		for(unsigned char i = 0; i < vector->count; i++){
+			if(vector->data[i] != NULL){
+				deleteKingCapture(vector->data[i]);
+			}
+		}
+		vectorFree(vector);
+	}
+	free(capture);
+}
+
+unsigned char stripKingCapture(Vector *vector, unsigned char count){
+	unsigned char oldCount = 0;
+	count++;
+	for(unsigned char i = 0; i < vector->count; i++){
+		Capture *capture = ((Capture *)vector->data[i]);
+		if(capture->nextCaptures->count == 0){
+			vectorFree(capture->nextCaptures);
+			capture->nextCaptures = NULL;
+		}else if(((Capture *)vector->data[i])->nextCaptures != NULL){
+			unsigned char newCount = stripKingCapture(((Capture *)vector->data[i])->nextCaptures, count);
+			if(oldCount < newCount){
+				for(unsigned char delI = i; delI > 0; delI--){
+					if(vector->data[delI] != NULL){
+						deleteKingCapture(vector->data[delI]);
+						vector->data[delI] = NULL;		
+					}
+				}
+				oldCount = newCount;
+			}else if(oldCount > newCount){
+				if(vector->data[i] != NULL){
+					// delete recursive
+					deleteKingCapture(vector->data[i]);
+					vector->data[i] = NULL;	 	
+				}
+			}
+		}
+
+	}
+	return oldCount;
 }
 
 unsigned char manCapture(unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
@@ -683,10 +729,10 @@ void createBoard(){
 	while(y < 10){
 		board[y][x] = BLACK;
 		if(y < 4){
-			board[y][x] = ENEMY;
+		//	board[y][x] = ENEMY;
 		}
 		if(y > 5){		
-			board[y][x] = FRIENDLY;
+		//	board[y][x] = FRIENDLY;
 		}
 
 		if(x + 2 < 10 ){
@@ -715,21 +761,23 @@ int main(){
 	board[5][2] = ENEMY;
 	board[2][5] = ENEMY;
 
-	Vector testVector;
+/*	Vector testVector;
 	vectorInit(&testVector);
 	Capture capture;
 	vectorAdd(&testVector, (void*)&capture);
-
+*/
 	printBoard((unsigned char **)board,100,100,100,100);
 	
 	Location location;
 	location.row = 6;
 	location.field = 5;
-	Vector vector;
+	Vector *vector;
+	printf("test");
 	vector = kingCapture(location,board ,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING);
-	
-	printVector(&vector);
-	*/
+	printf("test");
+//	stripKingCapture(vector, 0);	
+//	printVector(&vector);
+
 //	vector->size;
 
 
