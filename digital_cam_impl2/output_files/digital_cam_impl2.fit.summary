@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed May 15 13:32:12 2019
+Quartus Prime Version : 16.1.2 Build 203 01/18/2017 SJ Lite Edition
+Revision Name : digital_cam_impl2
+Top-level Entity Name : digital_cam_impl2
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 976 / 114,480 ( < 1 % )
+    Total combinational functions : 896 / 114,480 ( < 1 % )
+    Dedicated logic registers : 524 / 114,480 ( < 1 % )
+Total registers : 524
+Total pins : 92 / 529 ( 17 % )
+Total virtual pins : 0
+Total memory bits : 3,149,824 / 3,981,312 ( 79 % )
+Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )

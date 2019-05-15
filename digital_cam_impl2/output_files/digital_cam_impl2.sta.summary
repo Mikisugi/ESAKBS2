@@ -1,0 +1,161 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'ov7670_pclk'
+Slack : -5.779
+TNS   : -2788.237
+
+Type  : Slow 1200mV 85C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -3.378
+TNS   : -4.376
+
+Type  : Slow 1200mV 85C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 1.626
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 12.151
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 0.360
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 0.370
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ov7670_pclk'
+Slack : 0.376
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ov7670_pclk'
+Slack : -3.000
+TNS   : -1618.107
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.706
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 9.708
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_50'
+Slack : 9.891
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 19.696
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ov7670_pclk'
+Slack : -5.252
+TNS   : -2526.944
+
+Type  : Slow 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.953
+TNS   : -2.953
+
+Type  : Slow 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 2.144
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 12.880
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ov7670_pclk'
+Slack : 0.282
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ov7670_pclk'
+Slack : -3.000
+TNS   : -1591.789
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.692
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 9.708
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_50'
+Slack : 9.887
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 19.687
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ov7670_pclk'
+Slack : -2.606
+TNS   : -1172.074
+
+Type  : Fast 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.288
+TNS   : -1.288
+
+Type  : Fast 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 5.197
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 16.381
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 0.151
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 0.155
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ov7670_pclk'
+Slack : 0.201
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ov7670_pclk'
+Slack : -3.000
+TNS   : -802.218
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.779
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_50'
+Slack : 9.574
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[2]'
+Slack : 9.753
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Inst_four_clocks_pll|altpll_component|auto_generated|pll1|clk[3]'
+Slack : 19.750
+TNS   : 0.000
+
+------------------------------------------------------------
