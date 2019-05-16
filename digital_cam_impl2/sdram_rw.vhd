@@ -35,23 +35,31 @@ entity sdram_rw is
     -- rw controls
     take_snapshot : in  STD_LOGIC; -- store to SDRAM;
     display_snapshot : in  STD_LOGIC; -- read/fetch from SDRAM;
-    led_done : out  STD_LOGIC
+    group_pixels : in  STD_LOGIC; -- read/fetch from SDRAM;
+    led_done : out  STD_LOGIC;
+	 
+	 -- for asking specific pixels
+	 -- address of the pixel
+	 pixel_addr : in std_logic_vector (16 downto 0)
   );
 end sdram_rw;
 
 
 architecture my_behavioral of sdram_rw is
 
-  constant START_WRITE_ST     : std_logic_vector(3 downto 0) := "0000";
-  constant WRITE_ST           : std_logic_vector(3 downto 0) := "0001";
-  constant WAIT_WRITE_ACK_ST  : std_logic_vector(3 downto 0) := "0010";
-  constant READ_ST            : std_logic_vector(3 downto 0) := "0011";
-  constant WAIT_READ_ACK_ST   : std_logic_vector(3 downto 0) := "0100";
-  constant WRITE_WAIT_ST      : std_logic_vector(3 downto 0) := "0101";
-  constant START_READ_ST      : std_logic_vector(3 downto 0) := "0110";
-  constant READ_WAIT_ST       : std_logic_vector(3 downto 0) := "0111";
-  constant DONE_ST            : std_logic_vector(3 downto 0) := "1000";
-  constant IDLE_ST            : std_logic_vector(3 downto 0) := "1001";
+  constant START_WRITE_ST     		: std_logic_vector(3 downto 0) := "0000";
+  constant WRITE_ST           		: std_logic_vector(3 downto 0) := "0001";
+  constant WAIT_WRITE_ACK_ST  		: std_logic_vector(3 downto 0) := "0010";
+  constant READ_ST            		: std_logic_vector(3 downto 0) := "0011";
+  constant READ_PIXEL_ST            : std_logic_vector(3 downto 0) := "0100";
+  constant WAIT_READ_ACK_ST   		: std_logic_vector(3 downto 0) := "0101";
+  constant WAIT_READ_ACK_PIXEL_ST   : std_logic_vector(3 downto 0) := "0110";
+  constant WRITE_WAIT_ST      		: std_logic_vector(3 downto 0) := "0111";
+  constant START_READ_ST      		: std_logic_vector(3 downto 0) := "1000";
+  constant START_READ_PIXEL_ST      : std_logic_vector(3 downto 0) := "1001";
+  constant READ_WAIT_ST       		: std_logic_vector(3 downto 0) := "1010";
+  constant DONE_ST            		: std_logic_vector(3 downto 0) := "1011";
+  constant IDLE_ST            		: std_logic_vector(3 downto 0) := "1100";
 
   -- we need to read 320x240 = 76800 words; we use 1 word in SDRAM per pixel
   -- even though right now pixel data is only 12 bits of useful info; 
@@ -118,6 +126,10 @@ begin
         addr_buf1_r <= (others => '0');
       elsif (display_snapshot = '1' and state = IDLE_ST) then
         state <= START_READ_ST;
+        led_done_r <= '0';
+        we_buf2_r <= '1';
+      elsif (group_pixels = '1' and state = IDLE_ST) then
+        state <= START_READ_PIXEL_ST;
         led_done_r <= '0';
         we_buf2_r <= '1';
         addr_buf2_r <= (others => '0');
@@ -211,6 +223,34 @@ begin
             else
               state <= DONE_ST;
             end if;
+				
+			
+            
+          -- part 2: states below related to read backs;
+          -- state START_READ_ST is visited once only for each frame;
+          when START_READ_PIXEL_ST => 
+            addr_i_r <= ("00000000" & pixel_addr); -- (others => '0');
+            we_i_r <= '0'; -- stays like that during read backs;
+            addr_buf2_r <= pixel_addr;
+            dout_buf2_r <= "110000000011"; -- Yellow;
+            we_buf2_r <= '1';
+            state <= READ_PIXEL_ST;
+				
+          when READ_PIXEL_ST => -- tell sdram_controller we want to read from addr_i_r
+            stb_i_r <= '1';
+            cyc_i_r <= '1';
+            we_i_r <= '0';
+            state <= WAIT_READ_ACK_PIXEL_ST;
+          
+          when WAIT_READ_ACK_PIXEL_ST =>
+            if (ack_o = '1') then
+              stb_i_r <= '0';
+              cyc_i_r <= '0';
+              dout_buf2_r <= dat_o_r(11 downto 0); -- what comes from sdram_controller is sent to buffer 2;
+              state <= DONE_ST;
+            end if;
+				
+				
                  
                  
           -- when arrived to this state, a whole frame was written or read and we should

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digital_cam_impl2
-Wed May 15 13:30:58 2019
+Thu May 16 14:46:03 2019
 Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 
 
@@ -66,16 +66,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 15 13:30:58 2019       ;
+; Analysis & Synthesis Status        ; Successful - Thu May 16 14:46:03 2019       ;
 ; Quartus Prime Version              ; 16.1.2 Build 203 01/18/2017 SJ Lite Edition ;
 ; Revision Name                      ; digital_cam_impl2                           ;
 ; Top-level Entity Name              ; digital_cam_impl2                           ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 982                                         ;
-;     Total combinational functions  ; 896                                         ;
-;     Dedicated logic registers      ; 524                                         ;
-; Total registers                    ; 524                                         ;
-; Total pins                         ; 92                                          ;
+; Total logic elements               ; 1,189                                       ;
+;     Total combinational functions  ; 1,061                                       ;
+;     Dedicated logic registers      ; 611                                         ;
+; Total registers                    ; 611                                         ;
+; Total pins                         ; 135                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 3,149,824                                   ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -186,45 +186,47 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                   ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
-; sdram_rw.vhd                     ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_rw.vhd              ;         ;
-; sdram_controller.vhd             ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd      ;         ;
-; debounce.vhd                     ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/debounce.vhd              ;         ;
-; vga.vhd                          ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/vga.vhd                   ;         ;
-; top_level.vhd                    ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd             ;         ;
-; RGB.vhd                          ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/RGB.vhd                   ;         ;
-; ov7670_registers.vhd             ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_registers.vhd      ;         ;
-; ov7670_controller.vhd            ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_controller.vhd     ;         ;
-; ov7670_capture.vhd               ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_capture.vhd        ;         ;
-; i2c_sender.vhd                   ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/i2c_sender.vhd            ;         ;
-; frame_buffer.vhd                 ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/frame_buffer.vhd          ;         ;
-; address_Generator.vhd            ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/address_Generator.vhd     ;         ;
-; my_frame_buffer_15to0.vhd        ; yes             ; User Wizard-Generated File   ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd ;         ;
-; my_altpll.vhd                    ; yes             ; User Wizard-Generated File   ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd             ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf                              ;         ;
-; aglobal161.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                          ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_pll.inc                         ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratixii_pll.inc                       ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/cycloneii_pll.inc                       ;         ;
-; db/my_altpll_altpll.v            ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/my_altpll_altpll.v     ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                          ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                   ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                             ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                          ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                           ;         ;
-; altrom.inc                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                              ;         ;
-; altram.inc                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                              ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                            ;         ;
-; db/altsyncram_iip3.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_iip3.tdf    ;         ;
-; db/decode_rsa.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/decode_rsa.tdf         ;         ;
-; db/decode_k8a.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/decode_k8a.tdf         ;         ;
-; db/mux_mob.tdf                   ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/mux_mob.tdf            ;         ;
-; db/altsyncram_8h11.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_8h11.tdf    ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------+---------+
+; segment.vhd                      ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/segment.vhd               ;         ;
+; Colour_Recognition.vhd           ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/Colour_Recognition.vhd    ;         ;
+; sdram_rw.vhd                     ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_rw.vhd              ;         ;
+; sdram_controller.vhd             ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd      ;         ;
+; debounce.vhd                     ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/debounce.vhd              ;         ;
+; vga.vhd                          ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/vga.vhd                   ;         ;
+; top_level.vhd                    ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd             ;         ;
+; RGB.vhd                          ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/RGB.vhd                   ;         ;
+; ov7670_registers.vhd             ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_registers.vhd      ;         ;
+; ov7670_controller.vhd            ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_controller.vhd     ;         ;
+; ov7670_capture.vhd               ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_capture.vhd        ;         ;
+; i2c_sender.vhd                   ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/i2c_sender.vhd            ;         ;
+; frame_buffer.vhd                 ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/frame_buffer.vhd          ;         ;
+; address_Generator.vhd            ; yes             ; User VHDL File               ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/address_Generator.vhd     ;         ;
+; my_frame_buffer_15to0.vhd        ; yes             ; User Wizard-Generated File   ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd ;         ;
+; my_altpll.vhd                    ; yes             ; User Wizard-Generated File   ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd             ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf                             ;         ;
+; aglobal161.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                         ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_pll.inc                        ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratixii_pll.inc                      ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/cycloneii_pll.inc                      ;         ;
+; db/my_altpll_altpll.v            ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/my_altpll_altpll.v     ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                         ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                  ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                            ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                         ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                          ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                             ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                             ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                           ;         ;
+; db/altsyncram_iip3.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_iip3.tdf    ;         ;
+; db/decode_rsa.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/decode_rsa.tdf         ;         ;
+; db/decode_k8a.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/decode_k8a.tdf         ;         ;
+; db/mux_mob.tdf                   ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/mux_mob.tdf            ;         ;
+; db/altsyncram_8h11.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_8h11.tdf    ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -232,23 +234,23 @@ agreement for further details.
 +---------------------------------------------+---------------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                                   ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 982                                                                                                     ;
+; Estimated Total logic elements              ; 1,189                                                                                                   ;
 ;                                             ;                                                                                                         ;
-; Total combinational functions               ; 896                                                                                                     ;
+; Total combinational functions               ; 1061                                                                                                    ;
 ; Logic element usage by number of LUT inputs ;                                                                                                         ;
-;     -- 4 input functions                    ; 411                                                                                                     ;
-;     -- 3 input functions                    ; 147                                                                                                     ;
-;     -- <=2 input functions                  ; 338                                                                                                     ;
+;     -- 4 input functions                    ; 473                                                                                                     ;
+;     -- 3 input functions                    ; 201                                                                                                     ;
+;     -- <=2 input functions                  ; 387                                                                                                     ;
 ;                                             ;                                                                                                         ;
 ; Logic elements by mode                      ;                                                                                                         ;
-;     -- normal mode                          ; 676                                                                                                     ;
-;     -- arithmetic mode                      ; 220                                                                                                     ;
+;     -- normal mode                          ; 804                                                                                                     ;
+;     -- arithmetic mode                      ; 257                                                                                                     ;
 ;                                             ;                                                                                                         ;
-; Total registers                             ; 524                                                                                                     ;
-;     -- Dedicated logic registers            ; 524                                                                                                     ;
+; Total registers                             ; 611                                                                                                     ;
+;     -- Dedicated logic registers            ; 611                                                                                                     ;
 ;     -- I/O registers                        ; 0                                                                                                       ;
 ;                                             ;                                                                                                         ;
-; I/O pins                                    ; 92                                                                                                      ;
+; I/O pins                                    ; 135                                                                                                     ;
 ; Total memory bits                           ; 3149824                                                                                                 ;
 ;                                             ;                                                                                                         ;
 ; Embedded Multiplier 9-bit elements          ; 0                                                                                                       ;
@@ -257,9 +259,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1                                                                                                       ;
 ;                                             ;                                                                                                         ;
 ; Maximum fan-out node                        ; my_altpll:Inst_four_clocks_pll|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 879                                                                                                     ;
-; Total fan-out                               ; 16390                                                                                                   ;
-; Average fan-out                             ; 8.11                                                                                                    ;
+; Maximum fan-out                             ; 966                                                                                                     ;
+; Total fan-out                               ; 17157                                                                                                   ;
+; Average fan-out                             ; 7.27                                                                                                    ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------------+
 
 
@@ -268,22 +270,23 @@ agreement for further details.
 +--------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
 ; Compilation Hierarchy Node                       ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                               ; Entity Name           ; Library Name ;
 +--------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
-; |digital_cam_impl2                               ; 896 (153)           ; 524 (48)                  ; 3149824     ; 0            ; 0       ; 0         ; 92   ; 0            ; |digital_cam_impl2                                                                                                                                                                ; digital_cam_impl2     ; work         ;
+; |digital_cam_impl2                               ; 1061 (155)          ; 611 (63)                  ; 3149824     ; 0            ; 0       ; 0         ; 135  ; 0            ; |digital_cam_impl2                                                                                                                                                                ; digital_cam_impl2     ; work         ;
 ;    |Address_Generator:Inst_Address_Generator|    ; 20 (20)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|Address_Generator:Inst_Address_Generator                                                                                                                       ; Address_Generator     ; work         ;
+;    |Colour_Recognition:Inst_Colour_Recognition|  ; 102 (102)           ; 72 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|Colour_Recognition:Inst_Colour_Recognition                                                                                                                     ; Colour_Recognition    ; work         ;
 ;    |RGB:Inst_RGB|                                ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|RGB:Inst_RGB                                                                                                                                                   ; RGB                   ; work         ;
 ;    |VGA:Inst_VGA|                                ; 45 (45)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|VGA:Inst_VGA                                                                                                                                                   ; VGA                   ; work         ;
 ;    |debounce:Inst_debounce_resend|               ; 32 (32)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|debounce:Inst_debounce_resend                                                                                                                                  ; debounce              ; work         ;
 ;    |debounce:Inst_debounce_reset|                ; 32 (32)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|debounce:Inst_debounce_reset                                                                                                                                   ; debounce              ; work         ;
 ;    |frame_buffer:Inst_frame_buf_1|               ; 148 (120)           ; 3 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1                                                                                                                                  ; frame_buffer          ; work         ;
-;       |my_frame_buffer_15to0:Inst_buffer_bottom| ; 11 (0)              ; 3 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom                                                                                         ; my_frame_buffer_15to0 ; work         ;
-;          |altsyncram:altsyncram_component|       ; 11 (0)              ; 3 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component                                                         ; altsyncram            ; work         ;
-;             |altsyncram_iip3:auto_generated|     ; 11 (0)              ; 3 (3)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated                          ; altsyncram_iip3       ; work         ;
-;                |decode_k8a:rden_decode_b|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b ; decode_k8a            ; work         ;
+;       |my_frame_buffer_15to0:Inst_buffer_bottom| ; 12 (0)              ; 3 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom                                                                                         ; my_frame_buffer_15to0 ; work         ;
+;          |altsyncram:altsyncram_component|       ; 12 (0)              ; 3 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component                                                         ; altsyncram            ; work         ;
+;             |altsyncram_iip3:auto_generated|     ; 12 (0)              ; 3 (3)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated                          ; altsyncram_iip3       ; work         ;
+;                |decode_k8a:rden_decode_b|        ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b ; decode_k8a            ; work         ;
 ;                |decode_rsa:decode2|              ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_rsa:decode2       ; decode_rsa            ; work         ;
-;       |my_frame_buffer_15to0:Inst_buffer_top|    ; 17 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top                                                                                            ; my_frame_buffer_15to0 ; work         ;
-;          |altsyncram:altsyncram_component|       ; 17 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component                                                            ; altsyncram            ; work         ;
-;             |altsyncram_iip3:auto_generated|     ; 17 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated                             ; altsyncram_iip3       ; work         ;
-;                |decode_k8a:rden_decode_b|        ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b    ; decode_k8a            ; work         ;
+;       |my_frame_buffer_15to0:Inst_buffer_top|    ; 16 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top                                                                                            ; my_frame_buffer_15to0 ; work         ;
+;          |altsyncram:altsyncram_component|       ; 16 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component                                                            ; altsyncram            ; work         ;
+;             |altsyncram_iip3:auto_generated|     ; 16 (0)              ; 0 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated                             ; altsyncram_iip3       ; work         ;
+;                |decode_k8a:rden_decode_b|        ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b    ; decode_k8a            ; work         ;
 ;                |decode_rsa:decode2|              ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_rsa:decode2          ; decode_rsa            ; work         ;
 ;    |frame_buffer:Inst_frame_buf_2|               ; 28 (0)              ; 3 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_2                                                                                                                                  ; frame_buffer          ; work         ;
 ;       |my_frame_buffer_15to0:Inst_buffer_bottom| ; 12 (0)              ; 3 (0)                     ; 786432      ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_bottom                                                                                         ; my_frame_buffer_15to0 ; work         ;
@@ -306,7 +309,8 @@ agreement for further details.
 ;          |altsyncram:Mux0_rtl_0|                 ; 0 (0)               ; 0 (0)                     ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|ov7670_registers:Inst_ov7670_registers|altsyncram:Mux0_rtl_0                                                          ; altsyncram            ; work         ;
 ;             |altsyncram_8h11:auto_generated|     ; 0 (0)               ; 0 (0)                     ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|ov7670_registers:Inst_ov7670_registers|altsyncram:Mux0_rtl_0|altsyncram_8h11:auto_generated                           ; altsyncram_8h11       ; work         ;
 ;    |sdram_controller:Inst_sdram_controller|      ; 165 (165)           ; 144 (144)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller                                                                                                                         ; sdram_controller      ; work         ;
-;    |sdram_rw:Inst_sdram_rw|                      ; 129 (129)           ; 107 (107)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw                                                                                                                                         ; sdram_rw              ; work         ;
+;    |sdram_rw:Inst_sdram_rw|                      ; 174 (174)           ; 107 (107)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw                                                                                                                                         ; sdram_rw              ; work         ;
+;    |segment:Inst_segment|                        ; 16 (16)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digital_cam_impl2|segment:Inst_segment                                                                                                                                           ; segment               ; work         ;
 +--------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -329,7 +333,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------+---------------------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                                           ; IP Include File           ;
 +--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------+---------------------------+
-; Altera ; ALTPLL       ; 13.1    ; N/A          ; N/A          ; |digital_cam_impl2|my_altpll:Inst_four_clocks_pll                                         ; my_altpll.vhd             ;
+; Altera ; ALTPLL       ; 16.1    ; N/A          ; N/A          ; |digital_cam_impl2|my_altpll:Inst_four_clocks_pll                                         ; my_altpll.vhd             ;
 ; Altera ; RAM: 2-PORT  ; 13.1    ; N/A          ; N/A          ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom ; my_frame_buffer_15to0.vhd ;
 ; Altera ; RAM: 2-PORT  ; 13.1    ; N/A          ; N/A          ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top    ; my_frame_buffer_15to0.vhd ;
 ; Altera ; RAM: 2-PORT  ; 13.1    ; N/A          ; N/A          ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_bottom ; my_frame_buffer_15to0.vhd ;
@@ -343,16 +347,59 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Register name                                                                                                                                       ; Reason for Removal                                                                                                                                                 ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; my_altpll:Inst_four_clocks_pll|altpll:altpll_component|my_altpll_altpll:auto_generated|pll_lock_sync                                                ; Stuck at VCC due to stuck port data_in                                                                                                                             ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_green[4..30]                                                                                        ; Merged with Colour_Recognition:Inst_Colour_Recognition|temp_green[3]                                                                                               ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_red[4..30]                                                                                          ; Merged with Colour_Recognition:Inst_Colour_Recognition|temp_red[3]                                                                                                 ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[17..30]                                                                                     ; Merged with Colour_Recognition:Inst_Colour_Recognition|temp_address[16]                                                                                            ;
 ; frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[2] ; Merged with frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[2] ;
 ; frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[1] ; Merged with frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[1] ;
 ; frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[0] ; Merged with frame_buffer:Inst_frame_buf_2|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[0] ;
 ; frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[2] ; Merged with frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[2] ;
 ; frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[1] ; Merged with frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[1] ;
 ; frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[0] ; Merged with frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_bottom|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|address_reg_b[0] ;
+; Colour_Recognition:Inst_Colour_Recognition|colour[7]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|colour[3]                                                                                                   ;
+; Colour_Recognition:Inst_Colour_Recognition|colour[6]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|colour[2]                                                                                                   ;
+; Colour_Recognition:Inst_Colour_Recognition|colour[5]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|colour[1]                                                                                                   ;
+; Colour_Recognition:Inst_Colour_Recognition|colour[4]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|colour[0]                                                                                                   ;
+; Colour_Recognition:Inst_Colour_Recognition|green[3]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[3]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[2]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[2]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[1]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[1]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[0]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[0]                                                                                                     ;
 ; sdram_rw:Inst_sdram_rw|stb_i_r                                                                                                                      ; Merged with sdram_rw:Inst_sdram_rw|cyc_i_r                                                                                                                         ;
+; Colour_Recognition:Inst_Colour_Recognition|green[31]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[31]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[30]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[30]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[29]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[29]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[28]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[28]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[27]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[27]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[26]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[26]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[25]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[25]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[24]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[24]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[23]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[23]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[22]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[22]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[21]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[21]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[20]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[20]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[19]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[19]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[18]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[18]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[17]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[17]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[16]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[16]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[15]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[15]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[14]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[14]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[13]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[13]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[12]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[12]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[11]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[11]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[10]                                                                                                ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[10]                                                                                                    ;
+; Colour_Recognition:Inst_Colour_Recognition|green[9]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[9]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[8]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[8]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[7]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[7]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[6]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[6]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[5]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[5]                                                                                                     ;
+; Colour_Recognition:Inst_Colour_Recognition|green[4]                                                                                                 ; Merged with Colour_Recognition:Inst_Colour_Recognition|blue[4]                                                                                                     ;
 ; sdram_controller:Inst_sdram_controller|dat_i_r[13..31]                                                                                              ; Merged with sdram_controller:Inst_sdram_controller|dat_i_r[12]                                                                                                     ;
 ; sdram_rw:Inst_sdram_rw|dat_i_r[13..31]                                                                                                              ; Merged with sdram_rw:Inst_sdram_rw|dat_i_r[12]                                                                                                                     ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[0]                                                                      ; Stuck at VCC due to stuck port data_in                                                                                                                             ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[0]                                                                                          ; Lost fanout                                                                                                                                                        ;
+; address_main[0]                                                                                                                                     ; Lost fanout                                                                                                                                                        ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[1]                                                                                          ; Lost fanout                                                                                                                                                        ;
+; address_main[1]                                                                                                                                     ; Lost fanout                                                                                                                                                        ;
 ; sdram_rw:Inst_sdram_rw|dat_i_r[12]                                                                                                                  ; Stuck at GND due to stuck port data_in                                                                                                                             ;
 ; sdram_controller:Inst_sdram_controller|dat_i_r[12]                                                                                                  ; Stuck at GND due to stuck port data_in                                                                                                                             ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[12..15]                                                                                            ; Stuck at GND due to stuck port data_in                                                                                                                             ;
@@ -360,6 +407,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; sdram_controller:Inst_sdram_controller|address_r[0]                                                                                                 ; Stuck at GND due to stuck port data_in                                                                                                                             ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[1]                                                                      ; Merged with ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|busy_sr[0]                                                                         ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[2]                                                                      ; Merged with ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|busy_sr[1]                                                                         ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_green[31]                                                                                           ; Lost fanout                                                                                                                                                        ;
+; Colour_Recognition:Inst_Colour_Recognition|blue[4..31]                                                                                              ; Lost fanout                                                                                                                                                        ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_red[31]                                                                                             ; Lost fanout                                                                                                                                                        ;
+; Colour_Recognition:Inst_Colour_Recognition|red[4..31]                                                                                               ; Lost fanout                                                                                                                                                        ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[2]~en                                                                                              ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[1]~en                                                                                              ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[3]~en                                                                                              ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
@@ -375,23 +426,79 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[13]~en                                                                                             ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[14]~en                                                                                             ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
 ; sdram_controller:Inst_sdram_controller|dram_dq_r[15]~en                                                                                             ; Merged with sdram_controller:Inst_sdram_controller|dram_dq_r[0]~en                                                                                                 ;
-; Total Number of Removed Registers = 72                                                                                                              ;                                                                                                                                                                    ;
+; Total Number of Removed Registers = 238                                                                                                             ;                                                                                                                                                                    ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                            ;
-+------------------------------------+---------------------------+-------------------------------------------------------+
-; Register name                      ; Reason for Removal        ; Registers Removed due to This Register                ;
-+------------------------------------+---------------------------+-------------------------------------------------------+
-; sdram_rw:Inst_sdram_rw|dat_i_r[12] ; Stuck at GND              ; sdram_controller:Inst_sdram_controller|dat_i_r[12],   ;
-;                                    ; due to stuck port data_in ; sdram_controller:Inst_sdram_controller|dram_dq_r[12], ;
-;                                    ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[13], ;
-;                                    ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[14], ;
-;                                    ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[15]  ;
-; sdram_rw:Inst_sdram_rw|addr_i_r[0] ; Stuck at GND              ; sdram_controller:Inst_sdram_controller|address_r[0]   ;
-;                                    ; due to stuck port data_in ;                                                       ;
-+------------------------------------+---------------------------+-------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                    ;
++------------------------------------------------------------+---------------------------+-------------------------------------------------------+
+; Register name                                              ; Reason for Removal        ; Registers Removed due to This Register                ;
++------------------------------------------------------------+---------------------------+-------------------------------------------------------+
+; Colour_Recognition:Inst_Colour_Recognition|blue[31]        ; Lost Fanouts              ; Colour_Recognition:Inst_Colour_Recognition|blue[30],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[29],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[28],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[27],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[26],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[25],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[24],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[23],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[22],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[21],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[20],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[19],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[18],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[17],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[16],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[15],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[14],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[13],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[12],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[11],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[10],  ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[9],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[8],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[7],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[6],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[5],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|blue[4]    ;
+; Colour_Recognition:Inst_Colour_Recognition|red[31]         ; Lost Fanouts              ; Colour_Recognition:Inst_Colour_Recognition|red[30],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[29],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[28],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[27],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[26],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[25],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[24],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[23],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[22],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[21],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[20],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[19],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[18],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[17],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[16],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[15],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[14],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[13],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[12],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[11],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[10],   ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[9],    ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[8],    ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[7],    ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[6],    ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[5],    ;
+;                                                            ;                           ; Colour_Recognition:Inst_Colour_Recognition|red[4]     ;
+; sdram_rw:Inst_sdram_rw|dat_i_r[12]                         ; Stuck at GND              ; sdram_controller:Inst_sdram_controller|dat_i_r[12],   ;
+;                                                            ; due to stuck port data_in ; sdram_controller:Inst_sdram_controller|dram_dq_r[12], ;
+;                                                            ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[13], ;
+;                                                            ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[14], ;
+;                                                            ;                           ; sdram_controller:Inst_sdram_controller|dram_dq_r[15]  ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[0] ; Lost Fanouts              ; address_main[0]                                       ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[1] ; Lost Fanouts              ; address_main[1]                                       ;
+; sdram_rw:Inst_sdram_rw|addr_i_r[0]                         ; Stuck at GND              ; sdram_controller:Inst_sdram_controller|address_r[0]   ;
+;                                                            ; due to stuck port data_in ;                                                       ;
++------------------------------------------------------------+---------------------------+-------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -399,12 +506,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 524   ;
-; Number of registers using Synchronous Clear  ; 186   ;
+; Total registers                              ; 611   ;
+; Number of registers using Synchronous Clear  ; 162   ;
 ; Number of registers using Synchronous Load   ; 42    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 282   ;
+; Number of registers using Clock Enable       ; 321   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -416,9 +523,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------------+---------+
 ; VGA:Inst_VGA|Vcnt[9]                                                            ; 5       ;
 ; VGA:Inst_VGA|Vcnt[3]                                                            ; 4       ;
-; sdram_rw:Inst_sdram_rw|state[0]                                                 ; 58      ;
-; sdram_rw:Inst_sdram_rw|state[3]                                                 ; 17      ;
+; sdram_rw:Inst_sdram_rw|state[2]                                                 ; 45      ;
+; sdram_rw:Inst_sdram_rw|state[3]                                                 ; 38      ;
+; Colour_Recognition:Inst_Colour_Recognition|pixelCounter[0]                      ; 3       ;
+; Colour_Recognition:Inst_Colour_Recognition|pixelCounter[31]                     ; 3       ;
+; Colour_Recognition:Inst_Colour_Recognition|blue[0]                              ; 2       ;
+; Colour_Recognition:Inst_Colour_Recognition|red[0]                               ; 2       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|divider[0]  ; 4       ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_green[0]                        ; 1       ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_address[31]                     ; 1       ;
+; Colour_Recognition:Inst_Colour_Recognition|temp_red[0]                          ; 1       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[31] ; 1       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[30] ; 1       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[29] ; 1       ;
@@ -448,7 +562,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[5]  ; 1       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[4]  ; 1       ;
 ; ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[3]  ; 1       ;
-; Total number of inverted registers = 34                                         ;         ;
+; Total number of inverted registers = 41                                         ;         ;
 +---------------------------------------------------------------------------------+---------+
 
 
@@ -466,27 +580,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|divider[5]  ;
-; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|busy_sr[20] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|init_pre_cntr[0]                         ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |digital_cam_impl2|Address_Generator:Inst_Address_Generator|val[3]                                 ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|trcd_cntr[2]                             ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|wait_200us_cntr[2]                       ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dat_o_r[11]                              ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_capture:Inst_ov7670_capture|href_last[0]                                 ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|trc_cntr[0]                              ;
-; 5:1                ; 12 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|data_to_rgb[4]                                                                  ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|divider[4]  ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|busy_sr[25] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|init_pre_cntr[3]                         ;
+; 3:1                ; 90 bits   ; 180 LEs       ; 90 LEs               ; 90 LEs                 ; Yes        ; |digital_cam_impl2|Colour_Recognition:Inst_Colour_Recognition|red[2]                               ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |digital_cam_impl2|Address_Generator:Inst_Address_Generator|val[1]                                 ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|trcd_cntr[0]                             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|wait_200us_cntr[12]                      ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dat_o_r[3]                               ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_capture:Inst_ov7670_capture|href_last[2]                                 ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|trc_cntr[3]                              ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|data_to_rgb[5]                                                                  ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dram_addr_r[12]                          ;
-; 4:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|rfsh_int_cntr[5]                         ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dram_addr_r[9]                           ;
-; 17:1               ; 12 bits   ; 132 LEs       ; 12 LEs               ; 120 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|dout_buf2_r[8]                                           ;
-; 16:1               ; 41 bits   ; 410 LEs       ; 41 LEs               ; 369 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_i_r[1]                                              ;
-; 18:1               ; 17 bits   ; 204 LEs       ; 17 LEs               ; 187 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_buf1_r[4]                                           ;
-; 18:1               ; 17 bits   ; 204 LEs       ; 17 LEs               ; 187 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_buf2_r[2]                                           ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[23] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[19] ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dram_dq_r[10]                            ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|q[8]                                              ;
+; 4:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|rfsh_int_cntr[7]                         ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dram_addr_r[7]                           ;
+; 16:1               ; 12 bits   ; 120 LEs       ; 12 LEs               ; 108 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|dout_buf2_r[7]                                           ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 8 LEs                ; 72 LEs                 ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_i_r[23]                                             ;
+; 15:1               ; 16 bits   ; 160 LEs       ; 16 LEs               ; 144 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_i_r[9]                                              ;
+; 16:1               ; 17 bits   ; 170 LEs       ; 17 LEs               ; 153 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|rw_cntr[13]                                              ;
+; 18:1               ; 17 bits   ; 204 LEs       ; 17 LEs               ; 187 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_buf1_r[16]                                          ;
+; 17:1               ; 17 bits   ; 187 LEs       ; 17 LEs               ; 170 LEs                ; Yes        ; |digital_cam_impl2|sdram_rw:Inst_sdram_rw|addr_buf2_r[10]                                          ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[28] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |digital_cam_impl2|ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender|data_sr[4]  ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; Yes        ; |digital_cam_impl2|sdram_controller:Inst_sdram_controller|dram_dq_r[2]                             ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |digital_cam_impl2|Colour_Recognition:Inst_Colour_Recognition|pixelCounter[0]                      ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |digital_cam_impl2|frame_buffer:Inst_frame_buf_1|q[6]                                              ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |digital_cam_impl2|segment:Inst_segment|hex1[2]                                                    ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |digital_cam_impl2|segment:Inst_segment|hex5[2]                                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
 
 
@@ -1331,30 +1451,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 92                          ;
-; cycloneiii_ff         ; 524                         ;
-;     ENA               ; 162                         ;
-;     ENA SCLR          ; 95                          ;
+; boundary_port         ; 135                         ;
+; cycloneiii_ff         ; 611                         ;
+;     ENA               ; 225                         ;
+;     ENA SCLR          ; 71                          ;
 ;     ENA SLD           ; 25                          ;
 ;     SCLR              ; 91                          ;
 ;     SLD               ; 17                          ;
-;     plain             ; 134                         ;
+;     plain             ; 182                         ;
 ; cycloneiii_io_obuf    ; 17                          ;
-; cycloneiii_lcell_comb ; 898                         ;
-;     arith             ; 220                         ;
-;         2 data inputs ; 218                         ;
-;         3 data inputs ; 2                           ;
-;     normal            ; 678                         ;
+; cycloneiii_lcell_comb ; 1067                        ;
+;     arith             ; 257                         ;
+;         2 data inputs ; 249                         ;
+;         3 data inputs ; 8                           ;
+;     normal            ; 810                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 18                          ;
-;         2 data inputs ; 102                         ;
-;         3 data inputs ; 145                         ;
-;         4 data inputs ; 411                         ;
+;         1 data inputs ; 28                          ;
+;         2 data inputs ; 114                         ;
+;         3 data inputs ; 193                         ;
+;         4 data inputs ; 473                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 400                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.75                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 2.89                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1373,57 +1493,64 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
-    Info: Processing started: Wed May 15 13:30:33 2019
+    Info: Processing started: Thu May 16 14:45:37 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digital_cam_impl2 -c digital_cam_impl2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file segment.vhd
+    Info (12022): Found design unit 1: segment-segmentout File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/segment.vhd Line: 19
+    Info (12023): Found entity 1: segment File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/segment.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file colour_recognition.vhd
+    Info (12022): Found design unit 1: Colour_Recognition-Recognize File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/Colour_Recognition.vhd Line: 16
+    Info (12023): Found entity 1: Colour_Recognition File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/Colour_Recognition.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file sdram_rw.vhd
-    Info (12022): Found design unit 1: sdram_rw-my_behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_rw.vhd Line: 43
-    Info (12023): Found entity 1: sdram_rw File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_rw.vhd Line: 13
+    Info (12022): Found design unit 1: sdram_rw-my_behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_rw.vhd Line: 48
+    Info (12023): Found entity 1: sdram_rw File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_rw.vhd Line: 13
 Info (12021): Found 2 design units, including 1 entities, in source file sdram_controller.vhd
-    Info (12022): Found design unit 1: sdram_controller-my_behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 52
-    Info (12023): Found entity 1: sdram_controller File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 22
+    Info (12022): Found design unit 1: sdram_controller-my_behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 52
+    Info (12023): Found entity 1: sdram_controller File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file debounce.vhd
-    Info (12022): Found design unit 1: debounce-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/debounce.vhd Line: 19
-    Info (12023): Found entity 1: debounce File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/debounce.vhd Line: 10
+    Info (12022): Found design unit 1: debounce-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/debounce.vhd Line: 19
+    Info (12023): Found entity 1: debounce File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/debounce.vhd Line: 10
 Info (12021): Found 2 design units, including 1 entities, in source file vga.vhd
-    Info (12022): Found design unit 1: VGA-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/vga.vhd Line: 21
-    Info (12023): Found entity 1: VGA File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/vga.vhd Line: 9
+    Info (12022): Found design unit 1: VGA-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/vga.vhd Line: 21
+    Info (12023): Found entity 1: VGA File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/vga.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
-    Info (12022): Found design unit 1: digital_cam_impl2-my_structural File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 72
-    Info (12023): Found entity 1: digital_cam_impl2 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 23
+    Info (12022): Found design unit 1: digital_cam_impl2-my_structural File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 83
+    Info (12023): Found entity 1: digital_cam_impl2 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 26
 Info (12021): Found 2 design units, including 1 entities, in source file rgb.vhd
-    Info (12022): Found design unit 1: RGB-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/RGB.vhd Line: 17
-    Info (12023): Found entity 1: RGB File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/RGB.vhd Line: 7
+    Info (12022): Found design unit 1: RGB-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/RGB.vhd Line: 17
+    Info (12023): Found entity 1: RGB File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/RGB.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file ov7670_registers.vhd
-    Info (12022): Found design unit 1: ov7670_registers-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_registers.vhd Line: 33
-    Info (12023): Found entity 1: ov7670_registers File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_registers.vhd Line: 22
+    Info (12022): Found design unit 1: ov7670_registers-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_registers.vhd Line: 33
+    Info (12023): Found entity 1: ov7670_registers File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_registers.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file ov7670_controller.vhd
-    Info (12022): Found design unit 1: ov7670_controller-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_controller.vhd Line: 22
-    Info (12023): Found entity 1: ov7670_controller File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_controller.vhd Line: 9
+    Info (12022): Found design unit 1: ov7670_controller-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_controller.vhd Line: 22
+    Info (12023): Found entity 1: ov7670_controller File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_controller.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file ov7670_capture.vhd
-    Info (12022): Found design unit 1: ov7670_capture-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_capture.vhd Line: 24
-    Info (12023): Found entity 1: ov7670_capture File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_capture.vhd Line: 12
+    Info (12022): Found design unit 1: ov7670_capture-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_capture.vhd Line: 24
+    Info (12023): Found entity 1: ov7670_capture File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_capture.vhd Line: 12
 Info (12021): Found 2 design units, including 1 entities, in source file i2c_sender.vhd
-    Info (12022): Found design unit 1: i2c_sender-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/i2c_sender.vhd Line: 21
-    Info (12023): Found entity 1: i2c_sender File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/i2c_sender.vhd Line: 9
+    Info (12022): Found design unit 1: i2c_sender-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/i2c_sender.vhd Line: 21
+    Info (12023): Found entity 1: i2c_sender File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/i2c_sender.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file frame_buffer.vhd
-    Info (12022): Found design unit 1: frame_buffer-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/frame_buffer.vhd Line: 28
-    Info (12023): Found entity 1: frame_buffer File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/frame_buffer.vhd Line: 15
+    Info (12022): Found design unit 1: frame_buffer-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/frame_buffer.vhd Line: 28
+    Info (12023): Found entity 1: frame_buffer File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/frame_buffer.vhd Line: 15
 Info (12021): Found 2 design units, including 1 entities, in source file address_generator.vhd
-    Info (12022): Found design unit 1: Address_Generator-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/address_Generator.vhd Line: 17
-    Info (12023): Found entity 1: Address_Generator File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/address_Generator.vhd Line: 6
+    Info (12022): Found design unit 1: Address_Generator-Behavioral File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/address_Generator.vhd Line: 17
+    Info (12023): Found entity 1: Address_Generator File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/address_Generator.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file my_frame_buffer_15to0.vhd
-    Info (12022): Found design unit 1: my_frame_buffer_15to0-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 56
-    Info (12023): Found entity 1: my_frame_buffer_15to0 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 42
+    Info (12022): Found design unit 1: my_frame_buffer_15to0-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 56
+    Info (12023): Found entity 1: my_frame_buffer_15to0 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 42
 Info (12021): Found 2 design units, including 1 entities, in source file my_altpll.vhd
-    Info (12022): Found design unit 1: my_altpll-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd Line: 56
-    Info (12023): Found entity 1: my_altpll File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd Line: 42
+    Info (12022): Found design unit 1: my_altpll-SYN File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd Line: 57
+    Info (12023): Found entity 1: my_altpll File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd Line: 43
 Info (12127): Elaborating entity "digital_cam_impl2" for the top level hierarchy
-Info (12128): Elaborating entity "my_altpll" for hierarchy "my_altpll:Inst_four_clocks_pll" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 306
-Info (12128): Elaborating entity "altpll" for hierarchy "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd Line: 164
-Info (12130): Elaborated megafunction instantiation "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd Line: 164
-Info (12133): Instantiated megafunction "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" with the following parameter: File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_altpll.vhd Line: 164
+Warning (10541): VHDL Signal Declaration warning at top_level.vhd(331): used implicit default value for signal "pixel_addr_top" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 331
+Info (12128): Elaborating entity "my_altpll" for hierarchy "my_altpll:Inst_four_clocks_pll" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 357
+Info (12128): Elaborating entity "altpll" for hierarchy "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd Line: 165
+Info (12130): Elaborated megafunction instantiation "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd Line: 165
+Info (12133): Instantiated megafunction "my_altpll:Inst_four_clocks_pll|altpll:altpll_component" with the following parameter: File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_altpll.vhd Line: 165
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -1492,14 +1619,14 @@ Info (12133): Instantiated megafunction "my_altpll:Inst_four_clocks_pll|altpll:a
     Info (12134): Parameter "self_reset_on_loss_lock" = "OFF"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/my_altpll_altpll.v
-    Info (12023): Found entity 1: my_altpll_altpll File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/my_altpll_altpll.v Line: 31
+    Info (12023): Found entity 1: my_altpll_altpll File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/my_altpll_altpll.v Line: 31
 Info (12128): Elaborating entity "my_altpll_altpll" for hierarchy "my_altpll:Inst_four_clocks_pll|altpll:altpll_component|my_altpll_altpll:auto_generated" File: d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "debounce" for hierarchy "debounce:Inst_debounce_resend" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 320
-Info (12128): Elaborating entity "frame_buffer" for hierarchy "frame_buffer:Inst_frame_buf_1" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 383
-Info (12128): Elaborating entity "my_frame_buffer_15to0" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/frame_buffer.vhd Line: 54
-Info (12128): Elaborating entity "altsyncram" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
-Info (12130): Elaborated megafunction instantiation "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
-Info (12133): Instantiated megafunction "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" with the following parameter: File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:Inst_debounce_resend" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 371
+Info (12128): Elaborating entity "frame_buffer" for hierarchy "frame_buffer:Inst_frame_buf_1" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 450
+Info (12128): Elaborating entity "my_frame_buffer_15to0" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/frame_buffer.vhd Line: 54
+Info (12128): Elaborating entity "altsyncram" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
+Info (12130): Elaborated megafunction instantiation "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
+Info (12133): Instantiated megafunction "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component" with the following parameter: File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/my_frame_buffer_15to0.vhd Line: 63
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -1551,38 +1678,41 @@ Info (12133): Instantiated megafunction "frame_buffer:Inst_frame_buf_1|my_frame_
     Info (12134): Parameter "lpm_hint" = "UNUSED"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_iip3.tdf
-    Info (12023): Found entity 1: altsyncram_iip3 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 34
+    Info (12023): Found entity 1: altsyncram_iip3 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 34
 Info (12128): Elaborating entity "altsyncram_iip3" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated" File: d:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_rsa.tdf
-    Info (12023): Found entity 1: decode_rsa File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/decode_rsa.tdf Line: 23
-Info (12128): Elaborating entity "decode_rsa" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_rsa:decode2" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 46
+    Info (12023): Found entity 1: decode_rsa File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/decode_rsa.tdf Line: 23
+Info (12128): Elaborating entity "decode_rsa" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_rsa:decode2" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 46
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_k8a.tdf
-    Info (12023): Found entity 1: decode_k8a File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/decode_k8a.tdf Line: 23
-Info (12128): Elaborating entity "decode_k8a" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 47
+    Info (12023): Found entity 1: decode_k8a File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/decode_k8a.tdf Line: 23
+Info (12128): Elaborating entity "decode_k8a" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|decode_k8a:rden_decode_b" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 47
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_mob.tdf
-    Info (12023): Found entity 1: mux_mob File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/mux_mob.tdf Line: 23
-Info (12128): Elaborating entity "mux_mob" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|mux_mob:mux3" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 49
-Info (12128): Elaborating entity "ov7670_controller" for hierarchy "ov7670_controller:Inst_ov7670_controller" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 405
-Info (12128): Elaborating entity "i2c_sender" for hierarchy "ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_controller.vhd Line: 62
-Info (12128): Elaborating entity "ov7670_registers" for hierarchy "ov7670_controller:Inst_ov7670_controller|ov7670_registers:Inst_ov7670_registers" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/ov7670_controller.vhd Line: 77
-Info (12128): Elaborating entity "ov7670_capture" for hierarchy "ov7670_capture:Inst_ov7670_capture" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 416
-Info (12128): Elaborating entity "VGA" for hierarchy "VGA:Inst_VGA" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 428
-Info (12128): Elaborating entity "RGB" for hierarchy "RGB:Inst_RGB" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 438
-Info (12128): Elaborating entity "Address_Generator" for hierarchy "Address_Generator:Inst_Address_Generator" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 446
-Info (12128): Elaborating entity "sdram_controller" for hierarchy "sdram_controller:Inst_sdram_controller" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 458
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(294): signal "init_done" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 294
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(301): signal "wait_200us_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 301
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(311): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 311
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(312): signal "init_pre_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 312
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(325): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 325
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(345): signal "init_done" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 345
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(347): signal "do_refresh" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 347
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(349): signal "stb_i_r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 349
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(359): signal "trc_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 359
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(369): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 369
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(370): signal "we_i_r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 370
-Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(413): signal "trc_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/sdram_controller.vhd Line: 413
-Info (12128): Elaborating entity "sdram_rw" for hierarchy "sdram_rw:Inst_sdram_rw" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 491
+    Info (12023): Found entity 1: mux_mob File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/mux_mob.tdf Line: 23
+Info (12128): Elaborating entity "mux_mob" for hierarchy "frame_buffer:Inst_frame_buf_1|my_frame_buffer_15to0:Inst_buffer_top|altsyncram:altsyncram_component|altsyncram_iip3:auto_generated|mux_mob:mux3" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_iip3.tdf Line: 49
+Info (12128): Elaborating entity "ov7670_controller" for hierarchy "ov7670_controller:Inst_ov7670_controller" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 472
+Info (12128): Elaborating entity "i2c_sender" for hierarchy "ov7670_controller:Inst_ov7670_controller|i2c_sender:Inst_i2c_sender" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_controller.vhd Line: 62
+Info (12128): Elaborating entity "ov7670_registers" for hierarchy "ov7670_controller:Inst_ov7670_controller|ov7670_registers:Inst_ov7670_registers" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/ov7670_controller.vhd Line: 77
+Info (12128): Elaborating entity "ov7670_capture" for hierarchy "ov7670_capture:Inst_ov7670_capture" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 483
+Info (12128): Elaborating entity "VGA" for hierarchy "VGA:Inst_VGA" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 495
+Info (12128): Elaborating entity "RGB" for hierarchy "RGB:Inst_RGB" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 505
+Info (12128): Elaborating entity "Address_Generator" for hierarchy "Address_Generator:Inst_Address_Generator" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 513
+Info (12128): Elaborating entity "sdram_controller" for hierarchy "sdram_controller:Inst_sdram_controller" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 525
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(294): signal "init_done" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 294
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(301): signal "wait_200us_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 301
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(311): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 311
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(312): signal "init_pre_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 312
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(325): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 325
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(345): signal "init_done" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 345
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(347): signal "do_refresh" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 347
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(349): signal "stb_i_r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 349
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(359): signal "trc_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 359
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(369): signal "trcd_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 369
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(370): signal "we_i_r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 370
+Warning (10492): VHDL Process Statement warning at sdram_controller.vhd(413): signal "trc_cntr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/sdram_controller.vhd Line: 413
+Info (12128): Elaborating entity "sdram_rw" for hierarchy "sdram_rw:Inst_sdram_rw" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 558
+Info (12128): Elaborating entity "Colour_Recognition" for hierarchy "Colour_Recognition:Inst_Colour_Recognition" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 587
+Warning (10036): Verilog HDL or VHDL warning at Colour_Recognition.vhd(33): object "temp_blue" assigned a value but never read File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/Colour_Recognition.vhd Line: 33
+Info (12128): Elaborating entity "segment" for hierarchy "segment:Inst_segment" File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 594
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276031): Inferred altsyncram megafunction from the following design logic: "ov7670_controller:Inst_ov7670_controller|ov7670_registers:Inst_ov7670_registers|Mux0_rtl_0"
         Info (286033): Parameter OPERATION_MODE set to ROM
@@ -1602,29 +1732,39 @@ Info (12133): Instantiated megafunction "ov7670_controller:Inst_ov7670_controlle
     Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
     Info (12134): Parameter "INIT_FILE" = "digital_cam_impl2.digital_cam_impl20.rtl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8h11.tdf
-    Info (12023): Found entity 1: altsyncram_8h11 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/db/altsyncram_8h11.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_8h11 File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/db/altsyncram_8h11.tdf Line: 28
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED_dll_locked" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 28
-    Warning (13410): Pin "vga_sync_N" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 38
-    Warning (13410): Pin "ov7670_pwdn" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 48
-    Warning (13410): Pin "ov7670_reset" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 49
-    Warning (13410): Pin "DRAM_CKE" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 57
-    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 64
-    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test2/digital_cam_impl2/top_level.vhd Line: 65
+    Warning (13410): Pin "LED_dll_locked" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 31
+    Warning (13410): Pin "vga_sync_N" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 42
+    Warning (13410): Pin "ov7670_pwdn" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 52
+    Warning (13410): Pin "ov7670_reset" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 53
+    Warning (13410): Pin "DRAM_CKE" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 61
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 68
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 69
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 74
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 74
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 74
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 76
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 76
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 76
+    Warning (13410): Pin "HEX6[1]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 78
+    Warning (13410): Pin "HEX6[2]" is stuck at GND File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 78
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC File: D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/top_level.vhd Line: 78
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 62 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1488 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 16 input pins
-    Info (21059): Implemented 59 output pins
+Info (21057): Implemented 1738 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 17 input pins
+    Info (21059): Implemented 101 output pins
     Info (21060): Implemented 17 bidirectional pins
-    Info (21061): Implemented 995 logic cells
+    Info (21061): Implemented 1202 logic cells
     Info (21064): Implemented 400 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4856 megabytes
-    Info: Processing ended: Wed May 15 13:30:58 2019
-    Info: Elapsed time: 00:00:25
-    Info: Total CPU time (on all processors): 00:00:46
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Thu May 16 14:46:03 2019
+    Info: Elapsed time: 00:00:26
+    Info: Total CPU time (on all processors): 00:00:48
 
 
