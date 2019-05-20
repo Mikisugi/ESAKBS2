@@ -1,5 +1,5 @@
 Flow report for digital_cam_impl2
-Wed May 15 13:32:36 2019
+Thu May 16 14:48:00 2019
 Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 
 
@@ -41,18 +41,18 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed May 15 13:32:36 2019       ;
+; Flow Status                        ; Successful - Thu May 16 14:48:00 2019       ;
 ; Quartus Prime Version              ; 16.1.2 Build 203 01/18/2017 SJ Lite Edition ;
 ; Revision Name                      ; digital_cam_impl2                           ;
 ; Top-level Entity Name              ; digital_cam_impl2                           ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 976 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 896 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 524 / 114,480 ( < 1 % )                     ;
-; Total registers                    ; 524                                         ;
-; Total pins                         ; 92 / 529 ( 17 % )                           ;
+; Total logic elements               ; 1,168 / 114,480 ( 1 % )                     ;
+;     Total combinational functions  ; 1,061 / 114,480 ( < 1 % )                   ;
+;     Dedicated logic registers      ; 611 / 114,480 ( < 1 % )                     ;
+; Total registers                    ; 611                                         ;
+; Total pins                         ; 135 / 529 ( 26 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 3,149,824 / 3,981,312 ( 79 % )              ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/15/2019 13:30:34 ;
+; Start date & time ; 05/16/2019 14:45:37 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; digital_cam_impl2   ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 268490109088213.155791983315320        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 268490109088213.155801073714004        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                   ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
@@ -99,12 +99,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:24     ; 1.0                     ; 4856 MB             ; 00:00:45                           ;
-; Fitter                    ; 00:01:13     ; 1.0                     ; 5550 MB             ; 00:01:36                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 4713 MB             ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 1.2                     ; 4869 MB             ; 00:00:06                           ;
-; EDA Netlist Writer        ; 00:00:07     ; 1.0                     ; 4711 MB             ; 00:00:04                           ;
-; Total                     ; 00:01:55     ; --                      ; --                  ; 00:02:36                           ;
+; Analysis & Synthesis      ; 00:00:25     ; 1.0                     ; 4859 MB             ; 00:00:47                           ;
+; Fitter                    ; 00:01:21     ; 1.0                     ; 5546 MB             ; 00:01:40                           ;
+; Assembler                 ; 00:00:06     ; 1.0                     ; 4713 MB             ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.1                     ; 4874 MB             ; 00:00:06                           ;
+; EDA Netlist Writer        ; 00:00:13     ; 1.0                     ; 4718 MB             ; 00:00:06                           ;
+; Total                     ; 00:02:13     ; --                      ; --                  ; 00:02:44                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

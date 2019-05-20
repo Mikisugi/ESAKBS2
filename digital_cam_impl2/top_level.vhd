@@ -18,6 +18,9 @@
  
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+--use ieee.std_logic_arith.ALL;
+--use ieee.std_logic_unsigned.ALL;
+use ieee.numeric_std.ALL;
 
 
 entity digital_cam_impl2 is
@@ -28,6 +31,7 @@ entity digital_cam_impl2 is
     LED_dll_locked : out STD_LOGIC; -- PLL is locked now;
     btn_take_snapshot : in  STD_LOGIC; -- KEY0
     btn_display_snapshot : in  STD_LOGIC; -- KEY1
+    btn_group_pixels : in  STD_LOGIC; -- KEY2
 
     vga_hsync : out  STD_LOGIC;
     vga_vsync : out  STD_LOGIC;
@@ -64,7 +68,14 @@ entity digital_cam_impl2 is
     DRAM_LDQM : out  STD_LOGIC; 
     DRAM_UDQM : out  STD_LOGIC;
     DRAM_RAS_N : out  STD_LOGIC;
-    DRAM_WE_N : out  STD_LOGIC    
+    DRAM_WE_N : out  STD_LOGIC;
+	 
+    HEX1 : out  std_logic_vector(6 downto 0);
+    HEX2 : out  std_logic_vector(6 downto 0);
+    HEX3 : out  std_logic_vector(6 downto 0);
+    HEX4 : out  std_logic_vector(6 downto 0);
+    HEX5 : out  std_logic_vector(6 downto 0);
+    HEX6 : out  std_logic_vector(6 downto 0)
   );
 end digital_cam_impl2;
 
@@ -97,10 +108,15 @@ architecture my_structural of digital_cam_impl2 is
       -- rw controls
       take_snapshot : in  STD_LOGIC; -- store to SDRAM;
       display_snapshot : in  STD_LOGIC; -- read/fetch from SDRAM;
-      led_done : out  STD_LOGIC
+      group_pixels : in  STD_LOGIC; -- read/fetch from SDRAM;
+      led_done : out  STD_LOGIC;
+		
+		-- for asking specific pixels
+		-- address of the pixel
+		pixel_addr : in std_logic_vector (16 downto 0)
     );
   end COMPONENT;
-
+  
   COMPONENT sdram_controller 
     Port (
       clk_i: in  STD_LOGIC;
@@ -220,6 +236,27 @@ architecture my_structural of digital_cam_impl2 is
     locked    : OUT STD_LOGIC 
   );
   END COMPONENT;
+  
+  component Colour_Recognition
+  port(
+	 clk_i  	: in std_logic;
+    dpixel 	: in std_logic_vector(11 downto 0);    
+    address	: in std_logic_vector (16 downto 0);
+    colour 	: out std_logic_vector(11 downto 0)
+    );
+  end component;
+  
+  component segment
+  port(
+    avg_colour : in std_logic_vector(11 downto 0);
+    hex1 : out std_logic_vector(6 downto 0);
+    hex2 : out std_logic_vector(6 downto 0);
+    hex3 : out std_logic_vector(6 downto 0);
+    hex4 : out std_logic_vector(6 downto 0);
+    hex5 : out std_logic_vector(6 downto 0);
+    hex6 : out std_logic_vector(6 downto 0)
+    );
+  end component;
 
   -- use the Altera MegaWizard to generate the ALTPLL module; generate 3 clocks, 
   -- clk0 @ 100 MHz
@@ -251,6 +288,10 @@ architecture my_structural of digital_cam_impl2 is
   signal rdaddress_buf_2 : std_logic_vector(16 downto 0);
   signal rdaddress_from_sdram_rw : std_logic_vector(16 downto 0);
   signal rdaddress_from_addr_gen : std_logic_vector(16 downto 0);
+  
+  signal tempaddress_buf_2 : unsigned(16 downto 0) := (others => '0');
+  signal tempaddress_buf_2_int : integer;
+  signal tempaddress_buf_2_int2 : integer;
 
   -- user controls;
   signal resend_reg_values : std_logic;
@@ -258,6 +299,8 @@ architecture my_structural of digital_cam_impl2 is
   signal take_snapshot_synchronized : std_logic := '0';
   signal display_snapshot : std_logic;
   signal display_snapshot_synchronized : std_logic := '0';
+  signal group_pixels : std_logic;
+  signal group_pixels_synchronized : std_logic := '0';
 
   signal reset_global : std_logic;
   signal reset_manual : std_logic; -- by the user;
@@ -284,7 +327,14 @@ architecture my_structural of digital_cam_impl2 is
   signal ack_o: std_logic;
   signal stb_i: std_logic;
   signal cyc_i: std_logic;
-
+  
+  signal pixel_addr_top : std_logic_vector (16 downto 0);
+  
+  signal I : integer;
+  
+  signal dpixel_main: std_logic_vector(11 downto 0);
+  signal colour_main: std_logic_vector(11 downto 0);
+  signal address_main : std_logic_vector (16 downto 0);
 
 begin
 
@@ -292,6 +342,7 @@ begin
   -- a signal 111000111; with 1 with not pressed and 0 when pressed/pushed;
   take_snapshot <= not btn_take_snapshot; -- KEY0
   display_snapshot <= not btn_display_snapshot; -- KEY1
+  group_pixels <= not btn_group_pixels; -- KEY2
   
   vga_r <= red(7 downto 0);
   vga_g <= green(7 downto 0);
@@ -337,6 +388,7 @@ begin
   -- from different frames;
   take_snapshot_synchronized <= take_snapshot and (not vsync);
   display_snapshot_synchronized <= display_snapshot and (not vsync);
+  group_pixels_synchronized <= group_pixels and (not vsync);
 
 
   -- implementing muxes for rdaddress inputs of the frame buffers;
@@ -352,7 +404,22 @@ begin
         wren_buf_1 <= '0';
         rdaddress_buf_1 <= rdaddress_from_addr_gen;
         rdaddress_buf_2 <= rdaddress_from_addr_gen;
-        data_to_rgb <= rddata_buf_2; 
+        data_to_rgb <= rddata_buf_2;
+		elsif (group_pixels = '1') then
+        wren_buf_1 <= '0';
+        rdaddress_buf_1 <= rdaddress_from_addr_gen;
+        rdaddress_buf_2 <= rdaddress_from_addr_gen;
+		  address_main <= rdaddress_buf_2;
+		  data_to_rgb <= rddata_buf_2;
+--		  dpixel_main <= rddata_buf_2;
+		  
+		  
+--		  if(rdaddress_buf_2 = "00111010100110000") then
+--				data_to_rgb <= "000011110000";
+--				dpixel_main <= rddata_buf_2;
+--		  else
+--				data_to_rgb <= rddata_buf_2;
+--		  end if;
       else
         wren_buf_1 <= wren_buf1_from_ov7670_capture;
         rdaddress_buf_1 <= rdaddress_from_addr_gen;
@@ -368,7 +435,7 @@ begin
     if rising_edge (clk_100) then
       if (reset_global = '1') then
         reset_sdram_interface <= '1';
-      elsif (take_snapshot = '0' and display_snapshot = '0' and snapshot_done = '1') then
+      elsif (take_snapshot = '0' and display_snapshot = '0' and group_pixels = '0' and snapshot_done = '1') then
         reset_sdram_interface <= '1';
       else
         reset_sdram_interface <= '0';
@@ -509,7 +576,30 @@ begin
     -- rw controls
     take_snapshot => take_snapshot_synchronized,
     display_snapshot => display_snapshot_synchronized,
-    led_done => snapshot_done -- notify user on LEDGreen[1] that image from/to SDRAM is finished;
+    group_pixels => group_pixels_synchronized,
+    led_done => snapshot_done, -- notify user on LEDGreen[1] that image from/to SDRAM is finished;
+	 
+	 --  for asking specific pixels
+	 -- address of the pixel
+	 pixel_addr => pixel_addr_top
   );  
+  
+  Inst_Colour_Recognition: Colour_Recognition port map (
+		clk_i => clk_100,
+		dpixel => data_to_rgb,
+		address => address_main,
+		colour => colour_main
+  );
+  
+  Inst_segment: segment port map (
+		avg_colour => colour_main,
+--		avg_colour => dpixel_main,
+		hex1 => HEX1,
+		hex2 => HEX2,
+		hex3 => HEX3,
+		hex4 => HEX4,
+		hex5 => HEX5,
+		hex6 => HEX6
+  );
 
 end my_structural;
