@@ -148,11 +148,6 @@ void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned 
 	printf("\n\n\n");
 }
 
-int checkIfGetsHit(){
-
-	
-}
-
 Vector *kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
 	printf("begin king capture");
 	Vector *captureVector = vectorInit();
@@ -316,57 +311,6 @@ unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly,
 	return 0;
 }
 
-
-//TODO: fly
-int capture(int row,int field,int king){
-	
-	if((board[row-1][field-1] == ENEMY || board[row-1][field-1] == ENEMYKING)
-	&&
-	(board[row-2][field-2] == BLACK || board[row-2][field-2] == BLACK)){
-	
-		board[row-2][field-2] = board[row][field];
-		board[row-1][field-1] = BLACK;
-		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row-2,field-2,row,field);
-		return 1;
-	}
-	
-	else if((board[row-1][field+1] == ENEMY || board[row-1][field+1] == ENEMYKING)
-	&&
-	(board[row-2][field+2] == BLACK || board[row-2][field+2] == BLACK)){
-	
-		board[row-2][field+2] = board[row][field];
-		board[row-1][field+1] = BLACK;
-		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row-2,field+2,row,field);
-		return 1;
-	}
-		
-	else if((board[row+1][field-1] == ENEMY || board[row+1][field-1] == ENEMYKING)
-	&&
-	(board[row+2][field-2] == BLACK || board[row+2][field-2] == BLACK)){
-		
-		board[row+2][field-2] = board[row][field];
-		board[row+1][field-1] = BLACK;
-		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row+2,field-2,row,field);
-		return 1;
-	}
-	
-	else if((board[row+1][field+1] == ENEMY || board[row+1][field+1] == ENEMYKING)
-	&&
-	(board[row+2][field+2] == BLACK || board[row+2][field+2] == BLACK)){
-		
-		board[row+2][field+2] = board[row][field];
-		board[row+1][field+1] = BLACK;
-		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row+2,field+2,row,field);
-		return 1;
-	}
-	
-	else return 0;
-}
-
 int checkIfCanMove(unsigned char * tempBoard[], int row, int field, int dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 
 	int retVal = 0;
@@ -416,44 +360,57 @@ int checkIfCanMove(unsigned char * tempBoard[], int row, int field, int dir, uns
 	return retVal;
 }
 
-unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
-	unsigned char captured = 0;
-	unsigned char moved = 0;
-	unsigned char couldNotCapture = 0;
-	unsigned char couldNotMove = 0;
+//TODO: make this obsolete, replace with manCapture
+int capture(int row,int field,int king){
 	
-	while(couldNotMove == 0){
-		for(unsigned char row = 0; row < 10; row++){
-		//	printf("friest for\n");
-			for(unsigned char field = 0; field < 10; field++){
-			//	printf("friendly check\n");
-				// piece check if a piece can capture
-				if(board[row][field] == friendly){
-				//	printf("friendly\n");
-					if(couldNotCapture == 0){
-						captured = manCapture((unsigned char **)board, row, field, friendly, friendlyKing, enemy, enemyKing);
-					}else{
-						moved = manMove(row, field, friendly, friendlyKing, enemy, enemyKing, direction);
-					}
-					
-					if(moved == 1 || captured == 1){
-						printf("moved or captured\n");
-						return 1;
-					}
-				}
-			}
-		}
-		if(couldNotCapture == 1 && moved == 0){				
-			couldNotMove = 1;
-			printf("could not move\n");
-		}else if(captured == 0){
-			couldNotCapture = 1;
-			printf("could not capture\n");
-		}
+	if((board[row-1][field-1] == ENEMY || board[row-1][field-1] == ENEMYKING)
+	&&
+	(board[row-2][field-2] == BLACK || board[row-2][field-2] == BLACK)){
+	
+		board[row-2][field-2] = board[row][field];
+		board[row-1][field-1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard((unsigned char **)board,row-2,field-2,row,field);
+		return 1;
 	}
-	return 0;
+	
+	else if((board[row-1][field+1] == ENEMY || board[row-1][field+1] == ENEMYKING)
+	&&
+	(board[row-2][field+2] == BLACK || board[row-2][field+2] == BLACK)){
+	
+		board[row-2][field+2] = board[row][field];
+		board[row-1][field+1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard((unsigned char **)board,row-2,field+2,row,field);
+		return 1;
+	}
+		
+	else if((board[row+1][field-1] == ENEMY || board[row+1][field-1] == ENEMYKING)
+	&&
+	(board[row+2][field-2] == BLACK || board[row+2][field-2] == BLACK)){
+		
+		board[row+2][field-2] = board[row][field];
+		board[row+1][field-1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard((unsigned char **)board,row+2,field-2,row,field);
+		return 1;
+	}
+	
+	else if((board[row+1][field+1] == ENEMY || board[row+1][field+1] == ENEMYKING)
+	&&
+	(board[row+2][field+2] == BLACK || board[row+2][field+2] == BLACK)){
+		
+		board[row+2][field+2] = board[row][field];
+		board[row+1][field+1] = BLACK;
+		board[row][field] = BLACK;
+		printBoard((unsigned char **)board,row+2,field+2,row,field);
+		return 1;
+	}
+	
+	else return 0;
 }
 
+//TODO: make this obsolete, replace with manMove
 void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 
 	unsigned char b[10][10];
@@ -483,14 +440,6 @@ void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, u
 	}
 	memcpy(tempBoard,b,100);
 }
-
-struct move
-{
-	int score;
-	unsigned char row;
-	unsigned char field;
-	unsigned char dir;
-};
 
 typedef struct Node
 {
@@ -664,9 +613,6 @@ typedef struct NodeMove
 
 int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
-	struct move * best;
-	best = malloc(sizeof(struct move));
-	
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 	
@@ -819,6 +765,44 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	{
 		return 0;
 	}
+}
+
+unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
+	unsigned char captured = 0;
+	unsigned char moved = 0;
+	unsigned char couldNotCapture = 0;
+	unsigned char couldNotMove = 0;
+	
+	while(couldNotMove == 0){
+		for(unsigned char row = 0; row < 10; row++){
+		//	printf("friest for\n");
+			for(unsigned char field = 0; field < 10; field++){
+			//	printf("friendly check\n");
+				// piece check if a piece can capture
+				if(board[row][field] == friendly){
+				//	printf("friendly\n");
+					if(couldNotCapture == 0){
+						captured = manCapture((unsigned char **)board, row, field, friendly, friendlyKing, enemy, enemyKing);
+					}else{
+						moved = manMove(row, field, friendly, friendlyKing, enemy, enemyKing, direction);
+					}
+					
+					if(moved == 1 || captured == 1){
+						printf("moved or captured\n");
+						return 1;
+					}
+				}
+			}
+		}
+		if(couldNotCapture == 1 && moved == 0){				
+			couldNotMove = 1;
+			printf("could not move\n");
+		}else if(captured == 0){
+			couldNotCapture = 1;
+			printf("could not capture\n");
+		}
+	}
+	return 0;
 }
 
 unsigned char playerInput()
