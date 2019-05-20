@@ -292,7 +292,7 @@ unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigne
 	return 0;
 }
 
-unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
+unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 	signed char possibleNewField;
 	signed char possibleNewRow = row + direction;
 	
@@ -301,9 +301,9 @@ unsigned char manMove(unsigned char row, unsigned field, unsigned char friendly,
 			possibleNewField = field + fieldDirection;
 		
 			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){	
-				board[possibleNewRow][possibleNewField] = board[row][field];
-				board[row][field] = BLACK;
-				printBoard((unsigned char **)board,possibleNewRow, possibleNewField, row, field);	
+				tempBoard[possibleNewRow][possibleNewField] = tempBoard[row][field];
+				tempBoard[row][field] = BLACK;
+				printBoard((unsigned char **)tempBoard,possibleNewRow, possibleNewField, row, field);	
 				return 1;
 			}
 		}
@@ -438,6 +438,23 @@ void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, u
 			printBoard((unsigned char **)b,row+1,field+1,row,field);
 			break;
 	}
+	memcpy(tempBoard,b,100);
+}
+
+void createKing(unsigned char * tempBoard[])
+{
+	unsigned char b[10][10];
+	memcpy(b,tempBoard,100);
+	
+	for(unsigned char field = 0; field<10; field++)
+	{
+		if(b[0][field] == FRIENDLY)
+			b[0][field] = FRIENDLYKING;
+		
+		if(b[9][field] == ENEMY)
+			b[0][field] = ENEMYKING;
+	}
+	
 	memcpy(tempBoard,b,100);
 }
 
@@ -590,9 +607,9 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 			for(unsigned char field = 0;field<10;field++)
 			{
 				if(b[row][field] == FRIENDLY)		bestScore = bestScore + (9-row);
-				else if(b[row][field] == FRIENDLYKING)	bestScore = bestScore + 20;
+				else if(b[row][field] == FRIENDLYKING)	bestScore = bestScore + 9;
 				else if(b[row][field] == ENEMY)		bestScore = bestScore - row;
-				else if(b[row][field] == ENEMYKING)	bestScore = bestScore - 20;
+				else if(b[row][field] == ENEMYKING)	bestScore = bestScore - 9;
 			}
 		}
 		printf("R%i: calculated score: %i\n",depth,bestScore);
@@ -759,6 +776,9 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		{
 			move((unsigned char **)board, bestMove->row, bestMove->field, bestMove->dir, friendly, friendlyKing, enemy, enemyKing, direction);
 		}
+		
+		createKing((unsigned char **)board);
+		
 		return 1;
 	}
 	else
@@ -784,7 +804,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 					if(couldNotCapture == 0){
 						captured = manCapture((unsigned char **)board, row, field, friendly, friendlyKing, enemy, enemyKing);
 					}else{
-						moved = manMove(row, field, friendly, friendlyKing, enemy, enemyKing, direction);
+						moved = manMove((unsigned char **)board, row, field, friendly, friendlyKing, enemy, enemyKing, direction);
 					}
 					
 					if(moved == 1 || captured == 1){
@@ -809,20 +829,32 @@ unsigned char playerInput()
 {
 	int stuffToDo = 0;
 	
+	//Check if we can capture, capture and check if we can still make moves all in one loop :)
 	for(int row = 0; row < 10; row++)
 	{
 		for(int field = 0; field < 10; field++)
 		{
-			if(board[row][field] == FRIENDLY){
+			if(board[row][field] == FRIENDLY)
+			{
 				stuffToDo = 1;
-				if(capture(row,field,0)) return 1;
+				if(manCapture((unsigned char **)board, row, field, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING))
+				{
+					createKing((unsigned char **)board);
+					return 1;
+				}
 			}
-			else if(board[row][field] == FRIENDLYKING){
+			else if(board[row][field] == FRIENDLYKING)
+			{
 				stuffToDo = 1;
-				if(capture(row,field,1)) return 1;
+				if(capture(row, field, 1))
+				{
+					createKing((unsigned char **)board);
+					return 1;
+				}
 			}
 		}
 	}
+	//If there are no friendly units on the board, return 0, which will end the game.
 	if(!stuffToDo) return 0;
 	
 	int pRow = -1;
@@ -882,6 +914,7 @@ unsigned char playerInput()
 		
 		if(checkIfCanMove((unsigned char **)board,pRow,pField,pDir, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION)){
 			move((unsigned char **)board,pRow,pField,pDir, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+			createKing((unsigned char **)board);
 			printBoard((unsigned char **)board,pRow,pField,100,100);
 			return 1;
 		}else{
@@ -1006,54 +1039,28 @@ int main(){
 	printf("test");
 	vector = kingCapture(location,board ,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING);
 	printf("test");
-//	stripKingCapture(vector, 0);	
+//	stripKingCapture(vector, 0);
 //	printVector(&vector);
 
 //	vector->size;
 
 	*/
-	
-	//createEmptyBoard();
-	//board[4][5] = ENEMY;
-	//board[6][1] = ENEMY;
-	//board[5][4] = FRIENDLY;
-	//board[6][3] = ENEMY;
-	//board[6][7] = FRIENDLY;
-	//printf("main: initial board:\n");
-	//printBoard((unsigned char **)board,100,100,100,100);
-	//printf("main: calling minimaxAlgorithm\n");
-	//minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
-	
 	/*
 	createEmptyBoard();
-	
-	board[3][2] = ENEMY;
-	board[3][4] = ENEMY;
-	board[3][6] = ENEMY;
-	board[3][8] = ENEMY;
-	
-	board[6][1] = FRIENDLY;
-	board[6][3] = FRIENDLY;
-	board[6][5] = FRIENDLY;
-	board[6][7] = FRIENDLY;
-	
-	printBoard((unsigned char **)board,100,100,100,100);
-
-	for(int i = 0;i<6;i++)
-	{
-		minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,4);	
-		minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,2);
-	}
-	
-	printBoard((unsigned char **)board,100,100,100,100);
+	board[2][7] = FRIENDLY;
+	board[5][2] = ENEMY;
+	minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
+	minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
+	//minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
+	//minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
+	//minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
+	//minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
 	*/
 	
 	createBoard();
 	printBoard((unsigned char **)board,100,100,100,100);
 	play();
 	
-//	printBoard((unsigned char **)board,100,100,100,100);
-//	printCountPieces();	
 	return 0;
 }
 
