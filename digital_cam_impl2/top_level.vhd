@@ -257,6 +257,14 @@ architecture my_structural of digital_cam_impl2 is
     hex6 : out std_logic_vector(6 downto 0)
     );
   end component;
+  
+      component dikkekoek is
+        port (
+            clk_clk                                 : in std_logic                     := 'X';             -- clk
+            reset_reset_n                           : in std_logic                     := 'X';             -- reset_n
+            camera_input_external_connection_export : in std_logic_vector(11 downto 0) := (others => 'X')  -- export
+        );
+    end component dikkekoek;
 
   -- use the Altera MegaWizard to generate the ALTPLL module; generate 3 clocks, 
   -- clk0 @ 100 MHz
@@ -337,7 +345,12 @@ architecture my_structural of digital_cam_impl2 is
   signal address_main : std_logic_vector (16 downto 0);
 
 begin
-
+    u0 : component dikkekoek
+        port map (
+            clk_clk                                 => clk_50,                                 --                              clk.clk
+            reset_reset_n                           => slide_sw_RESET,                           --                            reset.reset_n
+            camera_input_external_connection_export => colour_main  -- camera_input_external_connection.export
+        );
   -- take the inverted push buttons because KEY# on DE2-115 board generates
   -- a signal 111000111; with 1 with not pressed and 0 when pressed/pushed;
   take_snapshot <= not btn_take_snapshot; -- KEY0

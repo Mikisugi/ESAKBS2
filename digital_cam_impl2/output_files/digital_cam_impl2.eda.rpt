@@ -1,5 +1,5 @@
 EDA Netlist Writer report for digital_cam_impl2
-Thu May 16 14:48:00 2019
+Tue May 21 12:53:56 2019
 Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu May 16 14:48:00 2019 ;
+; EDA Netlist Writer Status ; Successful - Tue May 21 12:53:56 2019 ;
 ; Revision Name             ; digital_cam_impl2                     ;
 ; Top-level Entity Name     ; digital_cam_impl2                     ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                           ;
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                      ;
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_85c_slow.vho      ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_0c_slow.vho       ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_min_1200mv_0c_fast.vho     ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2.vho                        ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_85c_vhd_slow.sdo  ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_0c_vhd_slow.sdo   ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_min_1200mv_0c_vhd_fast.sdo ;
-; D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_vhd.sdo                    ;
-+--------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                                         ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                                    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_85c_slow.vho      ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_0c_slow.vho       ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_min_1200mv_0c_fast.vho     ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2.vho                        ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_85c_vhd_slow.sdo  ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_7_1200mv_0c_vhd_slow.sdo   ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_min_1200mv_0c_vhd_fast.sdo ;
+; C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/digital_cam_impl2_vhd.sdo                    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -89,21 +89,21 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
-    Info: Processing started: Thu May 16 14:47:47 2019
+    Info: Processing started: Tue May 21 12:53:46 2019
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off digital_cam_impl2 -c digital_cam_impl2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file digital_cam_impl2_7_1200mv_85c_slow.vho in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_7_1200mv_0c_slow.vho in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_min_1200mv_0c_fast.vho in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2.vho in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_7_1200mv_85c_vhd_slow.sdo in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_7_1200mv_0c_vhd_slow.sdo in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_min_1200mv_0c_vhd_fast.sdo in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digital_cam_impl2_vhd.sdo in folder "D:/Documenten/ICT/ictesa2b/periode_2/KBSESA2/test/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_7_1200mv_85c_slow.vho in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_7_1200mv_0c_slow.vho in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_min_1200mv_0c_fast.vho in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2.vho in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_7_1200mv_85c_vhd_slow.sdo in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_7_1200mv_0c_vhd_slow.sdo in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digital_cam_impl2_vhd.sdo in folder "C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4718 megabytes
-    Info: Processing ended: Thu May 16 14:48:00 2019
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Peak virtual memory: 4751 megabytes
+    Info: Processing ended: Tue May 21 12:53:56 2019
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:09
 
 

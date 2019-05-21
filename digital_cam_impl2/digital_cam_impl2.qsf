@@ -235,22 +235,6 @@ set_location_assignment PIN_R4 -to DRAM_BA_1
 set_location_assignment PIN_U7 -to DRAM_BA_0
 
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name VHDL_FILE segment.vhd
-set_global_assignment -name VHDL_FILE Colour_Recognition.vhd
-set_global_assignment -name VHDL_FILE sdram_rw.vhd
-set_global_assignment -name VHDL_FILE sdram_controller.vhd
-set_global_assignment -name VHDL_FILE debounce.vhd
-set_global_assignment -name VHDL_FILE vga.vhd
-set_global_assignment -name VHDL_FILE top_level.vhd
-set_global_assignment -name VHDL_FILE RGB.vhd
-set_global_assignment -name VHDL_FILE ov7670_registers.vhd
-set_global_assignment -name VHDL_FILE ov7670_controller.vhd
-set_global_assignment -name VHDL_FILE ov7670_capture.vhd
-set_global_assignment -name VHDL_FILE i2c_sender.vhd
-set_global_assignment -name VHDL_FILE frame_buffer.vhd
-set_global_assignment -name VHDL_FILE address_Generator.vhd
-set_global_assignment -name QIP_FILE my_frame_buffer_15to0.qip
-set_global_assignment -name QIP_FILE my_altpll.qip
 set_location_assignment PIN_V21 -to HEX4[0]
 set_location_assignment PIN_U21 -to HEX4[1]
 set_location_assignment PIN_AB20 -to HEX4[2]
@@ -294,4 +278,21 @@ set_location_assignment PIN_Y26 -to HEX3[4]
 set_location_assignment PIN_W27 -to HEX3[5]
 set_location_assignment PIN_W28 -to HEX3[6]
 set_location_assignment PIN_N21 -to btn_group_pixels
+set_global_assignment -name QIP_FILE dikkekoek/synthesis/dikkekoek.qip
+set_global_assignment -name VHDL_FILE segment.vhd
+set_global_assignment -name VHDL_FILE Colour_Recognition.vhd
+set_global_assignment -name VHDL_FILE sdram_rw.vhd
+set_global_assignment -name VHDL_FILE sdram_controller.vhd
+set_global_assignment -name VHDL_FILE debounce.vhd
+set_global_assignment -name VHDL_FILE vga.vhd
+set_global_assignment -name VHDL_FILE top_level.vhd
+set_global_assignment -name VHDL_FILE RGB.vhd
+set_global_assignment -name VHDL_FILE ov7670_registers.vhd
+set_global_assignment -name VHDL_FILE ov7670_controller.vhd
+set_global_assignment -name VHDL_FILE ov7670_capture.vhd
+set_global_assignment -name VHDL_FILE i2c_sender.vhd
+set_global_assignment -name VHDL_FILE frame_buffer.vhd
+set_global_assignment -name VHDL_FILE address_Generator.vhd
+set_global_assignment -name QIP_FILE my_frame_buffer_15to0.qip
+set_global_assignment -name QIP_FILE my_altpll.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

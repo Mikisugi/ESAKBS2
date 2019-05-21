@@ -1,0 +1,104 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\jasper\Desktop\VHDL\quartusLiteFiles\Projecten\ESAKBS2\digital_cam_impl2\dikkekoek.qsys --block-symbol-file --output-directory=C:\Users\jasper\Desktop\VHDL\quartusLiteFiles\Projecten\ESAKBS2\digital_cam_impl2\dikkekoek --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading digital_cam_impl2/dikkekoek.qsys
+Progress: Reading input file
+Progress: Adding camera_input [altera_avalon_pio 16.1]
+Progress: Parameterizing module camera_input
+Progress: Adding clk_0 [clock_source 16.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 16.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 16.1]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 16.1]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: dikkekoek.camera_input: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: dikkekoek.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\jasper\Desktop\VHDL\quartusLiteFiles\Projecten\ESAKBS2\digital_cam_impl2\dikkekoek.qsys --synthesis=VHDL --output-directory=C:\Users\jasper\Desktop\VHDL\quartusLiteFiles\Projecten\ESAKBS2\digital_cam_impl2\dikkekoek\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading digital_cam_impl2/dikkekoek.qsys
+Progress: Reading input file
+Progress: Adding camera_input [altera_avalon_pio 16.1]
+Progress: Parameterizing module camera_input
+Progress: Adding clk_0 [clock_source 16.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 16.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 16.1]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 16.1]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: dikkekoek.camera_input: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: dikkekoek.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dikkekoek: Generating dikkekoek "dikkekoek" for QUARTUS_SYNTH
+Info: camera_input: Starting RTL generation for module 'dikkekoek_camera_input'
+Info: camera_input:   Generation command is [exec C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/bin/perl.exe -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/europa -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/perl_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/common -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=dikkekoek_camera_input --dir=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0001_camera_input_gen/ --quartus_dir=C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus --verilog --config=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0001_camera_input_gen//dikkekoek_camera_input_component_configuration.pl  --do_build_sim=0  ]
+Info: camera_input: Done RTL generation for module 'dikkekoek_camera_input'
+Info: camera_input: "dikkekoek" instantiated altera_avalon_pio "camera_input"
+Info: jtag_uart_0: Starting RTL generation for module 'dikkekoek_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/bin/perl.exe -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/europa -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/perl_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/common -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=dikkekoek_jtag_uart_0 --dir=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0002_jtag_uart_0_gen/ --quartus_dir=C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus --verilog --config=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0002_jtag_uart_0_gen//dikkekoek_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'dikkekoek_jtag_uart_0'
+Info: jtag_uart_0: "dikkekoek" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: nios2_gen2_0: "dikkekoek" instantiated altera_nios2_gen2 "nios2_gen2_0"
+Info: onchip_memory2_0: Starting RTL generation for module 'dikkekoek_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/bin/perl.exe -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/bin64/perl/lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/europa -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/perl_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/common -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dikkekoek_onchip_memory2_0 --dir=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0003_onchip_memory2_0_gen/ --quartus_dir=C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus --verilog --config=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0003_onchip_memory2_0_gen//dikkekoek_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0: Done RTL generation for module 'dikkekoek_onchip_memory2_0'
+Info: onchip_memory2_0: "dikkekoek" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "dikkekoek" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "dikkekoek" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "dikkekoek" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'dikkekoek_nios2_gen2_0_cpu'
+Info: cpu:   Generation command is [exec C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/quartus/bin64//eperlcmd.exe -I C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/quartus/bin64//perl/lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/europa -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin/perl_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/sopc_builder/bin -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/users/jasper/desktop/vhdl/quartuslitefiles/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=dikkekoek_nios2_gen2_0_cpu --dir=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0006_cpu_gen/ --quartus_bindir=C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/quartus/bin64/ --verilog --config=C:/Users/jasper/AppData/Local/Temp/alt8037_375000282550870497.dir/0006_cpu_gen//dikkekoek_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2019.05.21 12:48:12 (*) Starting Nios II generation
+Info: cpu: # 2019.05.21 12:48:12 (*)   Checking for plaintext license.
+Info: cpu: # 2019.05.21 12:48:13 (*)   Couldn't query license setup in Quartus directory C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/quartus/bin64/
+Info: cpu: # 2019.05.21 12:48:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2019.05.21 12:48:13 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2019.05.21 12:48:13 (*)   Plaintext license not found.
+Info: cpu: # 2019.05.21 12:48:13 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2019.05.21 12:48:13 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2019.05.21 12:48:13 (*)   Creating all objects for CPU
+Info: cpu: # 2019.05.21 12:48:15 (*)   Generating RTL from CPU objects
+Info: cpu: # 2019.05.21 12:48:15 (*)   Creating plain-text RTL
+Info: cpu: # 2019.05.21 12:48:16 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'dikkekoek_nios2_gen2_0_cpu'
+Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
+Info: nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
+Info: jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info: nios2_gen2_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_gen2_0_data_master_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
+Info: Reusing file C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/dikkekoek/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_001"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/dikkekoek/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/Projecten/ESAKBS2/digital_cam_impl2/dikkekoek/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: dikkekoek: Done "dikkekoek" with 27 modules, 40 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
