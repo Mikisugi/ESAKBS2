@@ -277,9 +277,11 @@ unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigne
 						b[possibleNewRow][possibleNewField] = board[row][field];
 						b[row][field] = BLACK;
 						b[possibleEnemyRow][possibleEnemyField] = BLACK;
-						printBoard((unsigned char **)b,possibleNewRow, possibleNewField, row, field);	
-						printf("%s %d %s %d%c", "old row", row, "old field", field,'\n');
-						printf("%s %d %s %d%c", "new row", possibleNewRow, "new field", possibleNewField,'\n');
+						#if DEBUG
+							printBoard((unsigned char **)b,possibleNewRow, possibleNewField, row, field);	
+							printf("%s %d %s %d%c", "old row", row, "old field", field,'\n');
+							printf("%s %d %s %d%c", "new row", possibleNewRow, "new field", possibleNewField,'\n');
+						#endif
 						//printCountPieces();
 						manCapture((unsigned char **)b, possibleNewRow, possibleNewField, friendly, friendlyKing, enemy, enemyKing);
 						memcpy(tempBoard,b,100);
@@ -299,15 +301,17 @@ unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned f
 	if(possibleNewRow > -1 && possibleNewRow < 10){
 		for(signed char fieldDirection = -1; fieldDirection < 2; fieldDirection = fieldDirection + 2){
 			possibleNewField = field + fieldDirection;
-		
-			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){	
+
+			if(possibleNewField > -1 && possibleNewField < 10 && board[possibleNewRow][possibleNewField] == BLACK){
 				tempBoard[possibleNewRow][possibleNewField] = tempBoard[row][field];
 				tempBoard[row][field] = BLACK;
-				printBoard((unsigned char **)tempBoard,possibleNewRow, possibleNewField, row, field);	
+				#if DEBUG
+					printBoard((unsigned char **)tempBoard,possibleNewRow, possibleNewField, row, field);
+				#endif
 				return 1;
 			}
 		}
-	}	
+	}
 	return 0;
 }
 
@@ -370,7 +374,9 @@ int capture(int row,int field,int king){
 		board[row-2][field-2] = board[row][field];
 		board[row-1][field-1] = BLACK;
 		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row-2,field-2,row,field);
+		#if DEBUG
+			printBoard((unsigned char **)board,row-2,field-2,row,field);
+		#endif
 		return 1;
 	}
 	
@@ -381,7 +387,9 @@ int capture(int row,int field,int king){
 		board[row-2][field+2] = board[row][field];
 		board[row-1][field+1] = BLACK;
 		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row-2,field+2,row,field);
+		#if DEBUG
+			printBoard((unsigned char **)board,row-2,field+2,row,field);
+		#endif
 		return 1;
 	}
 		
@@ -392,7 +400,9 @@ int capture(int row,int field,int king){
 		board[row+2][field-2] = board[row][field];
 		board[row+1][field-1] = BLACK;
 		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row+2,field-2,row,field);
+		#if DEBUG
+			printBoard((unsigned char **)board,row+2,field-2,row,field);
+		#endif
 		return 1;
 	}
 	
@@ -403,7 +413,9 @@ int capture(int row,int field,int king){
 		board[row+2][field+2] = board[row][field];
 		board[row+1][field+1] = BLACK;
 		board[row][field] = BLACK;
-		printBoard((unsigned char **)board,row+2,field+2,row,field);
+		#if DEBUG
+			printBoard((unsigned char **)board,row+2,field+2,row,field);
+		#endif
 		return 1;
 	}
 	
@@ -423,19 +435,27 @@ void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, u
 	switch(dir){
 		case 1:
 			b[row-1][field-1] = stone;
-			printBoard((unsigned char **)b,row-1,field-1,row,field);
+			#if DEBUG
+				printBoard((unsigned char **)b,row-1,field-1,row,field);
+			#endif
 			break;
 		case 2:
 			b[row-1][field+1] = stone;
-			printBoard((unsigned char **)b,row-1,field+1,row,field);
+			#if DEBUG
+				printBoard((unsigned char **)b,row-1,field+1,row,field);
+			#endif
 			break;
 		case 3:
 			b[row+1][field-1] = stone;
-			printBoard((unsigned char **)b,row+1,field-1,row,field);
+			#if DEBUG
+				printBoard((unsigned char **)b,row+1,field-1,row,field);
+			#endif
 			break;
 		case 4:
 			b[row+1][field+1] = stone;
-			printBoard((unsigned char **)b,row+1,field+1,row,field);
+			#if DEBUG
+				printBoard((unsigned char **)b,row+1,field+1,row,field);
+			#endif
 			break;
 	}
 	memcpy(tempBoard,b,100);
@@ -471,6 +491,8 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 	
+	createKing((unsigned char **)b);
+	
 	if(depth > 0)
 	{
 		node_t * head = NULL;
@@ -494,7 +516,9 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 					int captured = manCapture((unsigned char **)newBoard, row, field, friendly, friendlyKing, enemy, enemyKing);
 					if(captured)
 					{
-						printf("R%i: [%i][%i] can capture\n",depth,row,field);
+						#if DEBUG
+							printf("R%i: [%i][%i] can capture\n",depth,row,field);
+						#endif
 						int enemiesLeft = 0;
 						for(unsigned char r = 0; r < 10; r++)
 						{
@@ -506,10 +530,14 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						}
 						if(enemiesLeft)
 						{
-							printf("R%i: there are enemies left after the capture\n",depth);
-							printf("R%i: calling minimaxAlgorithmRecursive with depth %i\n",depth,depth-1);
+							#if DEBUG
+								printf("R%i: there are enemies left after the capture\n",depth);
+								printf("R%i: calling minimaxAlgorithmRecursive with depth %i\n",depth,depth-1);
+							#endif
 							int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
-							printf("R%i: adding score %i to linked list\n",depth,score);
+							#if DEBUG
+								printf("R%i: adding score %i to linked list\n",depth,score);
+							#endif
 							current = head;
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
@@ -517,11 +545,15 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						}
 						else
 						{
-							printf("R%i: there are enemies left after the capture\n",depth);
-							printf("R%i: calling minimaxAlgorithmRecursive with depth 0\n",depth);
+							#if DEBUG
+								printf("R%i: there are enemies left after the capture\n",depth);
+								printf("R%i: calling minimaxAlgorithmRecursive with depth 0\n",depth);
+							#endif
 							//TODO should i do this? this is a dirty fix for when after a capture, the same stone is used twice.
 							int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, 0);
-							printf("R%i: adding score %i to list\n",depth,score);
+							#if DEBUG
+								printf("R%i: adding score %i to list\n",depth,score);
+							#endif
 							current = head;
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
@@ -529,17 +561,23 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						}
 					}
 					
-					printf("R%i: checking if [%i][%i] can move\n",depth,row,field);
+					#if DEBUG
+						printf("R%i: checking if [%i][%i] can move\n",depth,row,field);
+					#endif
 					for(int d = 1;d<=4;d++)
 					{
 						if(checkIfCanMove((unsigned char **)b, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction) == 1)
 						{
-							printf("R%i: [%i][%i] can move with dir %i\n",depth,row,field,d);
+							#if DEBUG
+								printf("R%i: [%i][%i] can move with dir %i\n",depth,row,field,d);
+							#endif
 							unsigned char newBoard[10][10];
 							memcpy(newBoard,b,100);
 							move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
 							int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
-							printf("R%i: adding score %i to linked list\n",depth,score);
+							#if DEBUG
+								printf("R%i: adding score %i to linked list\n",depth,score);
+							#endif
 							current = head;
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
@@ -549,6 +587,9 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 				}
 				else if(b[row][field] == friendlyKing)
 				{
+					#if DEBUG
+						printf("R%i: yo dude lmao HAHAHA this is a king SAYONARA NIGGA\n",depth);
+					#endif
 					//TODO: kingCapture
 					//TODO: kingMove
 				}
@@ -568,13 +609,15 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		free(current->next);
 		current->next = NULL;
 		
-		printf("R%i list: \n",depth);
-		current = head;
-		while(current != NULL)
-		{
-			printf("score: %i\n",current->score);
-			current = current->next;
-		}
+		#if DEBUG
+			printf("R%i list: \n",depth);
+			current = head;
+			while(current != NULL)
+			{
+				printf("score: %i\n",current->score);
+				current = current->next;
+			}
+		#endif
 		
 		current = head;
 		
@@ -582,21 +625,29 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		{
 			if(direction == FRIENDLYDIRECTION && current->score > bestScore)
 			{
-				printf("score %i is bigger than best score %i, overwriting\n",current->score,bestScore);
+				#if DEBUG
+					printf("score %i is bigger than best score %i, overwriting\n",current->score,bestScore);
+				#endif
 				bestScore = current->score;
 			}
 			else if(direction == ENEMYDIRECTION && current->score < bestScore)
 			{
-				printf("score %i is smaller than best score %i, overwriting\n",current->score,bestScore);
+				#if DEBUG
+					printf("score %i is smaller than best score %i, overwriting\n",current->score,bestScore);
+				#endif
 				bestScore = current->score;
 			}
-			else
-			{
-				printf("score %i is not better than best score %i, not overwriting\n",current->score,bestScore);
-			}
+			#if DEBUG
+				else
+				{
+					printf("score %i is not better than best score %i, not overwriting\n",current->score,bestScore);
+				}
+			#endif
 			current = current->next;
 		}
-		printf("R%i: iterated, bestScore is %i\n",depth,bestScore);
+		#if DEBUG
+			printf("R%i: iterated, bestScore is %i\n",depth,bestScore);
+		#endif
 	}
 	else
 	{
@@ -612,7 +663,9 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 				else if(b[row][field] == ENEMYKING)	bestScore = bestScore - 9;
 			}
 		}
-		printf("R%i: calculated score: %i\n",depth,bestScore);
+		#if DEBUG
+			printf("R%i: calculated score: %i\n",depth,bestScore);
+		#endif
 	}
 	
 	return bestScore;
@@ -632,6 +685,8 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 {
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
+	
+	createKing((unsigned char **)b);
 	
 	//if(direction == FRIENDLYDIRECTION) best->score = -1000;
 	//else best->score = 1000;
@@ -657,21 +712,32 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 				int captured = manCapture((unsigned char **)newBoard, row, field, friendly, friendlyKing, enemy, enemyKing);
 				if(captured)
 				{
-					printf("S : [%i][%i] can capture\n",row,field);
+					#if DEBUG
+						printf("S : [%i][%i] can capture\n",row,field);
+					#endif
 					int enemiesLeft = 0;
 					for(unsigned char r = 0; r < 10; r++)
 					{
 						for(unsigned char f = 0; f < 10; f++)
 						{
 							if(newBoard[row][field] == enemy || newBoard[row][field] == enemyKing)
+							{
 								enemiesLeft = 1;
+							}
 						}
 					}
+					#if DEBUG
+						printf("enemiesLeft: %i\n",enemiesLeft);
+					#endif
 					if(enemiesLeft == 1)
 					{
-						printf("S : there are enemies left");
+						#if DEBUG
+							printf("S : there are enemies left");
+						#endif
 						int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
-						printf("S : adding score %i to linked list\n",score);
+						#if DEBUG
+							printf("S : adding score %i to linked list\n",score);
+						#endif
 						current = head;
 						while (current->next != NULL) current = current->next;
 						current->next = malloc(sizeof(nodemove_t));
@@ -683,9 +749,14 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 					}
 					else
 					{
-						printf("S : there are no enemies left");
+						#if DEBUG
+							printf("S : there are no enemies left");
+						#endif
+						// if there are no enemies left
 						int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, 0);
-						printf("S : adding score %i to list\n",score);
+						#if DEBUG
+							printf("S : adding score %i to list\n",score);
+						#endif
 						current = head;
 						while (current->next != NULL) current = current->next;
 						current->next = malloc(sizeof(nodemove_t));
@@ -701,12 +772,16 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 				{
 					if(checkIfCanMove((unsigned char **)b, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction) == 1)
 					{
-						printf("S : [%i][%i] dir %i can move\n",row,field,d);
+						#if DEBUG
+							printf("S : [%i][%i] dir %i can move\n",row,field,d);
+						#endif
 						unsigned char newBoard[10][10];
 						memcpy(newBoard,b,100);
 						move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
 						int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
-						printf("S : adding score %i to linked list\n",score);
+						#if DEBUG
+							printf("S : adding score %i to linked list\n",score);
+						#endif
 						current = head;
 						while (current->next != NULL) current = current->next;
 						current->next = malloc(sizeof(nodemove_t));
@@ -735,13 +810,15 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	free(current->next);
 	current->next = NULL;
 	
-	printf("S : final list: \n");
-	current = head;
-	while(current != NULL)
-	{
-		printf("score: %i\nrow: %i\nfield: %i\ndir: %i\nisCapture: %i\n\n",current->score,current->row,current->field,current->dir,current->isCapture);
-		current = current->next;
-	}
+	#if DEBUG
+		printf("S : final list: \n");
+		current = head;
+		while(current != NULL)
+		{
+			printf("score: %i\nrow: %i\nfield: %i\ndir: %i\nisCapture: %i\n\n",current->score,current->row,current->field,current->dir,current->isCapture);
+			current = current->next;
+		}
+	#endif
 	
 	nodemove_t * bestMove = malloc(sizeof(nodemove_t));
 	
@@ -753,31 +830,41 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	{
 		if(direction == FRIENDLYDIRECTION && current->score > bestMove->score)
 		{
-			printf("score %i is bigger than best score %i, overwriting\n",current->score,bestMove->score);
+			#if DEBUG
+				printf("score %i is bigger than best score %i, overwriting\n",current->score,bestMove->score);
+			#endif
 			bestMove = current;
 		}
 		else if(direction == ENEMYDIRECTION && current->score < bestMove->score)
 		{
-			printf("score %i is smaller than best score %i, overwriting\n",current->score,bestMove->score);
+			#if DEBUG
+				printf("score %i is smaller than best score %i, overwriting\n",current->score,bestMove->score);
+			#endif
 			bestMove = current;
 		}
-		else printf("score %i is not better than best score %i, not overwriting\n",current->score,bestMove->score);
+		#if DEBUG
+			else printf("score %i is not better than best score %i, not overwriting\n",current->score,bestMove->score);
+		#endif
 		
 		current = current->next;
 	}
+	
 	if(bestMove != NULL)
 	{
 		if(bestMove->isCapture == 1)
 		{
 			int captured = manCapture((unsigned char **)board, bestMove->row, bestMove->field, friendly, friendlyKing, enemy, enemyKing);
-			if(!captured) printf("ERROR: not captured\n");
+			#if DEBUG
+				if(!captured) printf("ERROR: not captured\n");
+			#endif
 		}
 		else
 		{
 			move((unsigned char **)board, bestMove->row, bestMove->field, bestMove->dir, friendly, friendlyKing, enemy, enemyKing, direction);
 		}
 		
-		createKing((unsigned char **)board);
+		//TODO: make this look prettier?
+		printBoard((unsigned char **)board, bestMove->row, bestMove->field,100,100);
 		
 		return 1;
 	}
@@ -787,6 +874,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	}
 }
 
+//Oude algoritme. Plan B als minimax aan het eind helemaal ontploft
 unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 	unsigned char captured = 0;
 	unsigned char moved = 0;
@@ -808,7 +896,9 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 					}
 					
 					if(moved == 1 || captured == 1){
-						printf("moved or captured\n");
+						#if DEBUG
+							printf("moved or captured\n");
+						#endif
 						return 1;
 					}
 				}
@@ -816,10 +906,14 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 		}
 		if(couldNotCapture == 1 && moved == 0){				
 			couldNotMove = 1;
-			printf("could not move\n");
+			#if DEBUG
+				printf("could not move\n");
+			#endif
 		}else if(captured == 0){
 			couldNotCapture = 1;
-			printf("could not capture\n");
+			#if DEBUG
+				printf("could not capture\n");
+			#endif
 		}
 	}
 	return 0;
@@ -837,23 +931,18 @@ unsigned char playerInput()
 			if(board[row][field] == FRIENDLY)
 			{
 				stuffToDo = 1;
-				if(manCapture((unsigned char **)board, row, field, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING))
-				{
-					createKing((unsigned char **)board);
-					return 1;
-				}
+				if(manCapture((unsigned char **)board, row, field, FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING)) return 1;
 			}
 			else if(board[row][field] == FRIENDLYKING)
 			{
 				stuffToDo = 1;
-				if(capture(row, field, 1))
-				{
-					createKing((unsigned char **)board);
-					return 1;
-				}
+				if(capture(row, field, 1)) return 1;
 			}
 		}
 	}
+	
+	createKing((unsigned char **)board);
+	
 	//If there are no friendly units on the board, return 0, which will end the game.
 	if(!stuffToDo) return 0;
 	
@@ -940,7 +1029,7 @@ void play(){
 				friendlyMoved = playerInput();	
 			}else{
 				//friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
+				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,4);
 				//friendlyMoved = 1;
 				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
 			}
@@ -1043,14 +1132,15 @@ int main(){
 //	printVector(&vector);
 
 //	vector->size;
-
 	*/
+	
 	/*
 	createEmptyBoard();
 	board[2][7] = FRIENDLY;
 	board[5][2] = ENEMY;
-	minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
-	minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
+	printBoard((unsigned char **)board,100,100,100,100);
+	minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,4);
+	minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,4);
 	//minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
 	//minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
 	//minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);

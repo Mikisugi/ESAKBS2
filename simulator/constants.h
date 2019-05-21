@@ -1,6 +1,6 @@
 #define UNICODE_ENABLED 1
 #define COLORS_ENABLED 1
-
+#define DEBUG 0
 #define PLAYER_INPUT 1
 
 #define EMPTY 0
