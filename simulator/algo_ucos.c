@@ -6,22 +6,24 @@
 #include "vector.h"
 #include "includes.h"
 
-//Definition of Task Stacks
-#define   TASK_STACKSIZE       2048
-OS_STK    task1_stk[TASK_STACKSIZE];
+//definition of Task Stacks
+#define   TASK_STACKSIZE 2048
+OS_STK    taskStartGame_stk[TASK_STACKSIZE];
 
 //definition of Task Priorities
-#define TASK1_PRIORITY      1
+#define TASKSTARTGAME_PRIORITY 1
 
 //the main board
 unsigned char board [10][10];
 
+//Node for the linked list of scores made in minimaxAlgorithmRecursive
 typedef struct Node
 {
 	struct Node * next;
 	int score;
 } node_t;
 
+//Node for the linked list of moves and scores made in minimaxAlgorithm
 typedef struct NodeMove
 {
 	struct NodeMove * next;
@@ -52,7 +54,7 @@ void play();
 void createBoard();
 void createEmptyBoard();
 
-void task1(void* pdata)
+void taskStartGame(void* pdata)
 {
 	createBoard();
 	printBoard((unsigned char **)board,100,100,100,100);
@@ -61,7 +63,7 @@ void task1(void* pdata)
 
 int main(void)
 {
-  OSTaskCreateExt(task1,NULL,(void *)&task1_stk[TASK_STACKSIZE-1],TASK1_PRIORITY,TASK1_PRIORITY,task1_stk,TASK_STACKSIZE,NULL,0);
+  OSTaskCreateExt(task1,NULL,(void *)&taskStartGame_stk[TASK_STACKSIZE-1],TASKSTARTGAME_PRIORITY,TASKSTARTGAME_PRIORITY,taskStartGame_stk,TASK_STACKSIZE,NULL,0);
   OSStart();
   return 0;
 }
@@ -100,8 +102,8 @@ changedField	= The field where the piece has gone
 oldRow		= The row where the piece previously was
 oldField	= The field where the piece previously was
 */
-void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField){
-
+void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField)
+{
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 	
@@ -648,13 +650,14 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		if(direction == FRIENDLYDIRECTION) bestScore = -1000;
 		else bestScore = 1000;
 		
-		//remove last item in the list
-		/* if there is only one item in the list, remove it */
+		//remove the last item in the list
+		
+		//if there is only one item in the list, remove it
 		if (head->next == NULL) free(head);
-		/* get to the second to last node in the list */
+		//get to the second to last node in the list
 		current = head;
 		while (current->next->next != NULL) current = current->next;
-		/* now current points to the second to last item of the list, so let's remove current->next */
+		//now current points to the second to last item of the list, so let's remove current->next
 		free(current->next);
 		current->next = NULL;
 		
@@ -715,6 +718,15 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		#if DEBUG
 			printf("R%i: calculated score: %i\n",depth,bestScore);
 		#endif
+	}
+	
+	//free the whole list
+	node_t * tmp;
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
 	
 	return bestScore;
