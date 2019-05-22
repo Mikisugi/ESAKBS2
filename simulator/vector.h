@@ -23,7 +23,24 @@ typedef struct {
 	Location captureLocation;
 	Location newLocation;
 	unsigned char piece;
+} VectorCapture;
+
+typedef struct {
+	Location captureLocation;
+	unsigned char piece;
 } Capture;
+
+typedef struct Move{
+	Location oldLocation;
+	Location newLocation;
+	Capture * capture;
+	struct Move * nextMove;
+} _move;
+
+typedef struct {
+	struct Move * move;
+	unsigned char board[10][10];
+} VectorMove;
 
 Vector *vectorInit();
 int vectorCount(Vector * v);
@@ -32,7 +49,7 @@ void vectorSet(Vector * v, int index, void * e);
 void *vectorGet(Vector * v, int index);
 void vectorDelete(Vector * v, int index);
 void vectorFree(Vector * v);
-void printVector(Vector *vector);
+void printVector(Vector *vector, unsigned char depth);
 
 
 /*

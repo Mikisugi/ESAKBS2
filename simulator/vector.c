@@ -142,7 +142,7 @@ void printLocation(Location *location){
 	printf("Row: %d Field: %d\n", location->row, location->field);
 }
 
-void printCapture(Capture *capture){	
+void printCapture(VectorCapture *capture){	
 	printf("Old ");	
 	printLocation(&capture->oldLocation);
 	printf("Capture ");
@@ -167,18 +167,23 @@ void printCapture(Capture *capture){
 	printf("\n\n");
 }
 
-void printVector(Vector *vector){
-	printf("bladiebladiebladie bla\n");
+void printVector(Vector *vector, unsigned char depth){
+	depth++;
 	printf("Count: %d\n Capacity: %d\n", vector->count, vector->size);
 	for(unsigned char i = 0; i < vector->count; i++){
-		printf("Current Count: %d\n", i);
-		Capture * capture = vector->data[i];
-		printCapture(capture);
-	//	if(capture->nextCaptures == NULL){
-			printVector(&capture->nextCaptures);
-	/*	}else{
+		if(vector->data[i] != NULL){
+			printf("Depth: %d\n", depth);
+			printf("Current Count: %d\n", i);
+			VectorCapture * capture = (VectorCapture *)vector->data[i];
+			printCapture(capture);
+			if(capture->nextCaptures != NULL){
+				printVector(capture->nextCaptures, depth);
+			}else{
+				printf("\nNULL\n");
+			}
+		}else{
 			printf("\nNULL\n");
-		}*/
+		}
 	}	
 	printf("\n\n");
 }
