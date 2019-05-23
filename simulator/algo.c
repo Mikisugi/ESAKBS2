@@ -736,6 +736,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 				}
 				else if(b[row][field] == friendlyKing)
 				{
+					/*
 					int nextDirection;
 					if(direction == FRIENDLYDIRECTION) nextDirection = ENEMYDIRECTION;
 					if(direction == ENEMYDIRECTION) nextDirection = FRIENDLYDIRECTION;
@@ -829,6 +830,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							current->score = score;
 						}
 					}
+					*/
 				}
 			}
 		}
@@ -1041,6 +1043,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 			}
 			else if(b[row][field] == friendlyKing)
 			{
+				/*
 				thereAreFriendliesLeft = 1;
 				int nextDirection;
 				if(direction == FRIENDLYDIRECTION) nextDirection = ENEMYDIRECTION;
@@ -1145,6 +1148,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						current->isCapture = 0;
 					}
 				}
+				*/
 			}
 		}
 	}
@@ -1301,14 +1305,16 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	
 	if(bestMove->isCapture == 1)
 	{
-		if(board[bestMove->row][bestMove->field] == friendly)
+		//if(board[bestMove->row][bestMove->field] == friendly)
 			manCapture((unsigned char **)board, bestMove->row, bestMove->field, friendly, friendlyKing, enemy, enemyKing);
+		/*
 		if(board[bestMove->row][bestMove->field] == friendlyKing)
 		{
 			copyBoard(bestMove->kingCaptureVectorMove->board,board);
 			//TODO print every move in VectorMove
 			//Vector * captured = kingCapture((unsigned char **)board, bestMove->row, bestMove->field, friendly, friendlyKing, enemy, enemyKing);
 		}
+		*/
 	}
 	else
 	{
