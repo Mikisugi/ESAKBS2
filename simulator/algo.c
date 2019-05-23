@@ -305,7 +305,7 @@ void addToMoveList(VectorCapture * capture, struct Move * origin){
 	newMove->capture.piece = capture->piece;
 	newMove->capture.captureLocation = capture->captureLocation;
 	
-	origin->nextMove = newMove;	
+	origin->nextMove = newMove;
 }
 
 void copyBoard(unsigned char oldBoard[10][10], unsigned char newBoard[10][10]){
@@ -348,15 +348,24 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			if(capture->nextCaptures == NULL || capture->nextCaptures->count == 0){
 				#if DEBUG
 					printf("add\n");
+					printf("malloccing vectorMove\n");
 				#endif
-				VectorMove * vectorMove;// = malloc(sizeof(vectorMove));
+				VectorMove * vectorMove = malloc(sizeof(vectorMove));
+				#if DEBUG
+					printf("mallocced vectorMove\n");
+				#endif
 				vectorMove->move = moveList;
 				printf("starting copy\n");
-				copyBoard(tempBoard, vectorMove->board);	
-				printf("board copied\n");
+				copyBoard(tempBoard, vectorMove->board);
+				#if DEBUG
+					printf("board copied\n");
+					printf("adding moves\n");
+				#endif
 				vectorAdd(moveVector, (void *)vectorMove);
-				printf("moves added\n");
-				printf("------------------------------------------------\n");
+				#if DEBUG
+					printf("moves added\n");
+				#endif
+				
 			}else{
 				printf("Of ANDERS\n");
 				struct Move * newMoveList; 
@@ -370,6 +379,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 					newMoveList = moveList;
 				}
 				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, tempBoard, depth);
+			}
 		}
 	}		
 }
@@ -1534,7 +1544,7 @@ void createBoard(){
 		}	
 	}
 }
-*/
+
 void createEmptyBoard()
 {
 	unsigned char x = 1;
@@ -1614,7 +1624,8 @@ int main(){
 	*/
 	
 	createBoard();
-//	play();
+	printBoard((unsigned char **)board,100,100,100,100);
+	play();
 	
 	return 0;
 }

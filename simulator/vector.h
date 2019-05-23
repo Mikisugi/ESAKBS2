@@ -33,7 +33,7 @@ typedef struct {
 typedef struct Move{
 	Location oldLocation;
 	Location newLocation;
-	Capture * capture;
+	Capture capture;
 	struct Move * nextMove;
 } _move;
 
