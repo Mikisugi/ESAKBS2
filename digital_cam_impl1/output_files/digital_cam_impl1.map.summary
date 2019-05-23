@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu May 23 10:45:35 2019
+Quartus Prime Version : 16.1.2 Build 203 01/18/2017 SJ Lite Edition
+Revision Name : digital_cam_impl1
+Top-level Entity Name : digital_cam_impl1
+Family : Cyclone IV E
+Total logic elements : 620
+    Total combinational functions : 424
+    Dedicated logic registers : 370
+Total registers : 370
+Total pins : 246
+Total virtual pins : 0
+Total memory bits : 1,576,960
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
