@@ -307,9 +307,7 @@ void addToMoveList(VectorCapture * capture, struct Move * origin){
 }
 
 void copyBoard(unsigned char oldBoard[10][10], unsigned char newBoard[10][10]){
-	for(unsigned char i = 0; i < 10; i++){
-		memcpy(newBoard[i], oldBoard[i], sizeof(unsigned char) * 10);
-	}
+		memcpy(newBoard, oldBoard, sizeof(newBoard) * 10);	
 }
 
 void copyMoveList(struct Move * originalOrigin, struct Move * newOrigin, unsigned char depth){
@@ -328,21 +326,22 @@ void copyMoveList(struct Move * originalOrigin, struct Move * newOrigin, unsigne
 
 }
 
-void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector * moveVector, unsigned char board[10][10], unsigned char depth){
+void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector * moveVector, unsigned char tempBoard[10][10], unsigned char depth){
 	depth++;
 	for(unsigned char i = 0; i < captureVector->count; i++){
 		if(captureVector->data[i] != NULL){	
 			VectorCapture * capture = (VectorCapture *)captureVector->data[i];
 			addToMoveList(capture, moveList);
 			
-			board[capture->newLocation.row][capture->newLocation.field] = board[capture->oldLocation.row][capture->oldLocation.field];
-			board[capture->oldLocation.row][capture->oldLocation.field] = BLACK;
-			board[capture->captureLocation.row][capture->captureLocation.field] = BLACK;	
+			tempBoard[capture->newLocation.row][capture->newLocation.field] = board[capture->oldLocation.row][capture->oldLocation.field];
+			tempBoard[capture->oldLocation.row][capture->oldLocation.field] = BLACK;
+			tempBoard[capture->captureLocation.row][capture->captureLocation.field] = BLACK;	
 
-			if(capture->nextCaptures == NULL){
+			if(capture->nextCaptures == NULL || capture->nextCaptures->count == 0){
+				printf("add\n");
 				VectorMove * vectorMove = malloc(sizeof(vectorMove));
 				vectorMove->move = moveList;
-				copyBoard(board, vectorMove->board);
+				copyBoard(tempBoard, board);
 				vectorAdd(moveVector, (void *)vectorMove);
 			}else{
 				struct Move * newMoveList; 
@@ -352,12 +351,12 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				}else{
 					newMoveList = moveList;
 				}
-				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, board, depth);
+				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, tempBoard, depth);				}
 			}
 		}		
 	}
 }
-
+/*
 unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
 
 	unsigned char b[10][10];
@@ -608,7 +607,8 @@ typedef struct Node
 	struct Node * next;
 	int score;
 } node_t;
-
+*/
+/*
 int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
 	int bestScore;
@@ -803,12 +803,12 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		else bestScore = 1000;
 		
 		//remove last item in the list
-		/* if there is only one item in the list, remove it */
+		*//* if there is only one item in the list, remove it *//*
 		if (head->next == NULL) free(head);
-		/* get to the second to last node in the list */
+		*//* get to the second to last node in the list *//*
 		current = head;
 		while (current->next->next != NULL) current = current->next;
-		/* now current points to the second to last item of the list, so let's remove current->next */
+		*//* now current points to the second to last item of the list, so let's remove current->next *//*
 		free(current->next);
 		current->next = NULL;
 		
@@ -851,7 +851,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 			printf("R%i: iterated, bestScore is %i\n",depth,bestScore);
 		#endif
 		
-		/*
+		*//*
 		//free the whole list
 		#if DEBUG
 			printf("R%i: freeing the list\n",depth);
@@ -865,7 +865,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		#if DEBUG
 			printf("R%i: done freeing\n",depth);
 		#endif
-		*/
+		*//*
 	}
 	else
 	{
@@ -898,7 +898,8 @@ typedef struct NodeMove
 	unsigned char dir;
 	unsigned char isCapture;
 } nodemove_t;
-
+*/
+/*
 int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
 	createKing((unsigned char **)tempBoard);
@@ -1215,7 +1216,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		head = capturesHead;
 		current = capturesCurrent;
 		
-		/*
+		*
 		//free the capture list TODO: this freezes the program
 		#if DEBUG
 			printf("S : freeing the capture list\n");
@@ -1229,7 +1230,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		#if DEBUG
 			printf("S : done freeing\n");
 		#endif
-		*/
+		*//*
 	}
 	
 	current = head;
@@ -1275,7 +1276,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	//TODO: make this look prettier?
 	printBoard((unsigned char **)board, bestMove->row, bestMove->field,100,100);
 	
-	/*
+	*
 	//free the whole list TODO: this freezes the program for some reason
 	#if DEBUG
 		printf("S : freeing the list\n");
@@ -1289,11 +1290,11 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	#if DEBUG
 		printf("S : done freeing\n");
 	#endif
-	*/
+	*//*
 	
 	return 1;
 }
-
+*//*
 //Oude algoritme. Plan B als minimax aan het eind helemaal ontploft
 unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 	unsigned char captured = 0;
@@ -1338,7 +1339,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	}
 	return 0;
 }
-
+*
 unsigned char playerInput()
 {
 	int stuffToDo = 0;
@@ -1483,6 +1484,7 @@ void createBoard(){
 		board[y][x] = BLACK;
 		if(y < 4){
 			board[y][x] = ENEMY;
+
 		}
 		if(y > 5){		
 			board[y][x] = FRIENDLY;
@@ -1528,18 +1530,19 @@ int main(){
 //	printCountPieces();
 
 	
-	createBoard();
+	createEmptyBoard();
 	board[8][7] = ENEMY;
 	board[6][5] = FRIENDLYKING;
 	board[5][4] = ENEMY;
 	board[5][2] = ENEMY;
 	board[2][5] = ENEMY;
-/*
-	Vector testVector;
+
+/*	Vector testVector;
 	vectorInit(&testVector);
 	Capture capture;
-	vectorAdd(&testVector, (void*)&capture);
-*
+	vectorAdd(&testVector, (void*)&capture);*/
+	printBoard((unsigned char **)board, 100,100,100,100);
+
 	
 	Location location;
 	location.row = 6;
@@ -1548,16 +1551,21 @@ int main(){
 	printf("test");
 	vector = kingCapture(location,board ,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING);
 	printf("\n\ntestietestietest\n\n");
-//	stripKingCapture(vector, 0);
+	stripCaptureVector(vector, 0);
 	printVector(vector, 0);
 
-	stripCaptureVector(vector, 0);	
+//	stripCaptureVector(vector, 0);	
 	printf("----------------------------------------------------\nstripped VECTOR DINGES\n----------------------------------------------------\n");
-	printVector(vector, 0);
+//	printVector(vector, 0);
 
 //	vector->size;
-	*/
 	
+	Vector * moveVector = malloc(sizeof(Vector));
+	struct Move * moveList = malloc(sizeof(struct Move));
+	generateCaptureList(vector, moveList, moveVector, board, 0);
+
+	printBoard((unsigned char **)board, 100,100,100,100);
+
 	/*
 	createEmptyBoard();
 	board[6][1] = FRIENDLYKING;
@@ -1572,8 +1580,8 @@ int main(){
 	//minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,3);
 	//minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,3);
 	*/
-	createBoard();
-	printBoard((unsigned char **)board,100,100,100,100);
+//	createBoard();
+//	printBoard((unsigned char **)board,100,100,100,100);
 	play();
 	
 	return 0;
