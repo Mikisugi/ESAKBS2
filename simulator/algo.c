@@ -1023,7 +1023,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 					//#endif
 					
 					stripCaptureVector(captures, 0);
-			
+
 					struct Move * moveList = malloc(sizeof(struct Move));
 					Vector * moveVector = vectorInit();
 					generateCaptureList(captures, moveList, moveVector, (unsigned char **)tempBoard, -1);
