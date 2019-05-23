@@ -57,62 +57,42 @@ entity digital_cam_impl1 is
 	 led15 : out std_logic;
 	 led14 : out std_logic;
 	 
+	 --SDRAM
+	 DRAM_ADDR                           : out       std_logic_vector(12 downto 0);  
+    DRAM_BA                             : out       std_logic_vector(1 downto 0);
+    DRAM_CAS_N                          : out       std_logic;
+    DRAM_CKE                                : out       std_logic;
+    DRAM_CS_N                           : out       std_logic;
+    DRAM_DQ                             : inout std_logic_vector(31 downto 0);
+    DRAM_DQM                                : out       std_logic_vector(3 downto 0);
+    DRAM_RAS_N                          : out       std_logic;
+    DRAM_WE_N                           : out       std_logic;
+    DRAM_CLK                                : out       std_logic;
+       
+    -- SRAM
+    SRAM_DQ                             : inout     std_logic_vector(15 downto 0);
+    SRAM_ADDR                           : out       std_logic_vector(19 downto 0);
+    SRAM_LB_N                           : out       std_logic;
+    SRAM_UB_N                           : out       std_logic;
+    SRAM_CE_N                           : out       std_logic;
+    SRAM_OE_N                           : out       std_logic;
+    SRAM_WE_N                           : out       std_logic;
+       
+    -- FLASH
+    FL_ADDR                             : out       std_logic_vector(22 downto 0);
+    FL_CE_N                             : out       std_logic;
+    FL_OE_N                             : out       std_logic;
+    FL_WE_N                             : out       std_logic;
+    FL_RESET_N                          : out       std_logic;
+    FL_DQ                                   : inout std_logic_vector(7 downto 0)
+	 
 	 -- here we placed all the variables that will be used by the C code
 	 -- empty: 				001
 	 -- friendly stone:	010
 	 -- friendly king:	011
 	 -- enemy stone:		100
 	 -- enemy king:		101
-	 vak1 : out std_logic_vector(2 downto 0);
-	 vak2 : out std_logic_vector(2 downto 0);
-	 vak3 : out std_logic_vector(2 downto 0);
-	 vak4 : out std_logic_vector(2 downto 0);
-	 vak5 : out std_logic_vector(2 downto 0);
-	 vak6 : out std_logic_vector(2 downto 0);
-	 vak7 : out std_logic_vector(2 downto 0);
-	 vak8 : out std_logic_vector(2 downto 0);
-	 vak9 : out std_logic_vector(2 downto 0);
-	 vak10 : out std_logic_vector(2 downto 0);
-	 vak11 : out std_logic_vector(2 downto 0);
-	 vak12 : out std_logic_vector(2 downto 0);
-	 vak13 : out std_logic_vector(2 downto 0);
-	 vak14 : out std_logic_vector(2 downto 0);
-	 vak15 : out std_logic_vector(2 downto 0);
-	 vak16 : out std_logic_vector(2 downto 0);
-	 vak17 : out std_logic_vector(2 downto 0);
-	 vak18 : out std_logic_vector(2 downto 0);
-	 vak19 : out std_logic_vector(2 downto 0);
-	 vak20 : out std_logic_vector(2 downto 0);
-	 vak21 : out std_logic_vector(2 downto 0);
-	 vak22 : out std_logic_vector(2 downto 0);
-	 vak23 : out std_logic_vector(2 downto 0);
-	 vak24 : out std_logic_vector(2 downto 0);
-	 vak25 : out std_logic_vector(2 downto 0);
-	 vak26 : out std_logic_vector(2 downto 0);
-	 vak27 : out std_logic_vector(2 downto 0);
-	 vak28 : out std_logic_vector(2 downto 0);
-	 vak29 : out std_logic_vector(2 downto 0);
-	 vak30 : out std_logic_vector(2 downto 0);
-	 vak31 : out std_logic_vector(2 downto 0);
-	 vak32 : out std_logic_vector(2 downto 0);
-	 vak33 : out std_logic_vector(2 downto 0);
-	 vak34 : out std_logic_vector(2 downto 0);
-	 vak35 : out std_logic_vector(2 downto 0);
-	 vak36 : out std_logic_vector(2 downto 0);
-	 vak37 : out std_logic_vector(2 downto 0);
-	 vak38 : out std_logic_vector(2 downto 0);
-	 vak39 : out std_logic_vector(2 downto 0);
-	 vak40 : out std_logic_vector(2 downto 0);
-	 vak41 : out std_logic_vector(2 downto 0);
-	 vak42 : out std_logic_vector(2 downto 0);
-	 vak43 : out std_logic_vector(2 downto 0);
-	 vak44 : out std_logic_vector(2 downto 0);
-	 vak45 : out std_logic_vector(2 downto 0);
-	 vak46 : out std_logic_vector(2 downto 0);
-	 vak47 : out std_logic_vector(2 downto 0);
-	 vak48 : out std_logic_vector(2 downto 0);
-	 vak49 : out std_logic_vector(2 downto 0);
-	 vak50 : out std_logic_vector(2 downto 0)
+
   );
 end digital_cam_impl1;
 
@@ -270,6 +250,46 @@ architecture my_structural of digital_cam_impl1 is
     hex6 : out std_logic_vector(6 downto 0)
     );
   end component;
+  
+    component nios_system is
+        port (
+            flash_ADDR                          : out   std_logic_vector(22 downto 0);                    -- ADDR
+            flash_CE_N                          : out   std_logic;                                        -- CE_N
+            flash_OE_N                          : out   std_logic;                                        -- OE_N
+            flash_WE_N                          : out   std_logic;                                        -- WE_N
+            flash_RST_N                         : out   std_logic;                                        -- RST_N
+            flash_DQ                            : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- DQ
+            sdram_addr                          : out   std_logic_vector(12 downto 0);                    -- addr
+            sdram_ba                            : out   std_logic_vector(1 downto 0);                     -- ba
+            sdram_cas_n                         : out   std_logic;                                        -- cas_n
+            sdram_cke                           : out   std_logic;                                        -- cke
+            sdram_cs_n                          : out   std_logic;                                        -- cs_n
+            sdram_dq                            : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
+            sdram_dqm                           : out   std_logic_vector(3 downto 0);                     -- dqm
+            sdram_ras_n                         : out   std_logic;                                        -- ras_n
+            sdram_we_n                          : out   std_logic;                                        -- we_n
+            sdram_clk_clk                       : out   std_logic;                                        -- clk
+            sram_DQ                             : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DQ
+            sram_ADDR                           : out   std_logic_vector(19 downto 0);                    -- ADDR
+            sram_LB_N                           : out   std_logic;                                        -- LB_N
+            sram_UB_N                           : out   std_logic;                                        -- UB_N
+            sram_CE_N                           : out   std_logic;                                        -- CE_N
+            sram_OE_N                           : out   std_logic;                                        -- OE_N
+            sram_WE_N                           : out   std_logic;                                        -- WE_N
+            system_pll_ref_clk_clk              : in    std_logic                     := 'X';             -- clk
+            system_pll_ref_reset_reset          : in    std_logic                     := 'X';             -- reset
+            cam_in_0_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_1_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_2_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_3_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_4_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_5_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_6_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_7_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_8_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X'); -- export
+            cam_in_9_external_connection_export : in    std_logic_vector(14 downto 0) := (others => 'X')  -- export
+        );
+    end component nios_system;
 
 
 
@@ -309,13 +329,114 @@ architecture my_structural of digital_cam_impl1 is
   signal btn_prev : std_logic := '0';
   
   signal vak01 : std_logic_vector(2 downto 0);
+  
+    signal vaka1 		 :std_logic_vector(2 downto 0);
+	 signal vak2 		 :std_logic_vector(2 downto 0);
+	 signal vak3 		 :std_logic_vector(2 downto 0);
+	 signal vak4 		 :std_logic_vector(2 downto 0);
+	 signal vak5 		 :std_logic_vector(2 downto 0);
+	 signal vak6 		 :std_logic_vector(2 downto 0);
+	 signal vak7 		 :std_logic_vector(2 downto 0);
+	 signal vak8 		 :std_logic_vector(2 downto 0);
+	 signal vak9 		 :std_logic_vector(2 downto 0);
+	 signal vak10 		 :std_logic_vector(2 downto 0);
+	 signal vak11 		 :std_logic_vector(2 downto 0);
+	 signal vak12 		 :std_logic_vector(2 downto 0);
+	 signal vak13 		 :std_logic_vector(2 downto 0);
+	 signal vak14 		 :std_logic_vector(2 downto 0);
+	 signal vak15 		 :std_logic_vector(2 downto 0);
+	 signal vak16 		 :std_logic_vector(2 downto 0);
+	 signal vak17 		 :std_logic_vector(2 downto 0);
+	 signal vak18 		 :std_logic_vector(2 downto 0);
+	 signal vak19 		 :std_logic_vector(2 downto 0);
+	 signal vak20 		 :std_logic_vector(2 downto 0);
+	 signal vak21 		 :std_logic_vector(2 downto 0);
+	 signal vak22 		 :std_logic_vector(2 downto 0);
+	 signal vak23 		 :std_logic_vector(2 downto 0);
+	 signal vak24 		 :std_logic_vector(2 downto 0);
+	 signal vak25 		 :std_logic_vector(2 downto 0);
+	 signal vak26 		 :std_logic_vector(2 downto 0);
+	 signal vak27 		 :std_logic_vector(2 downto 0);
+	 signal vak28 		 :std_logic_vector(2 downto 0);
+	 signal vak29 		 :std_logic_vector(2 downto 0);
+	 signal vak30 		 :std_logic_vector(2 downto 0);
+	 signal vak31 		 :std_logic_vector(2 downto 0);
+	 signal vak32 		 :std_logic_vector(2 downto 0);
+	 signal vak33 		 :std_logic_vector(2 downto 0);
+	 signal vak34 		 :std_logic_vector(2 downto 0);
+	 signal vak35 		 :std_logic_vector(2 downto 0);
+	 signal vak36 		 :std_logic_vector(2 downto 0);
+	 signal vak37 		 :std_logic_vector(2 downto 0);
+	 signal vak38 		 :std_logic_vector(2 downto 0);
+	 signal vak39 		 :std_logic_vector(2 downto 0);
+	 signal vak40 		 :std_logic_vector(2 downto 0);
+	 signal vak41 		 :std_logic_vector(2 downto 0);
+	 signal vak42 		 :std_logic_vector(2 downto 0);
+	 signal vak43 		 :std_logic_vector(2 downto 0);
+	 signal vak44 		 :std_logic_vector(2 downto 0);
+	 signal vak45 		 :std_logic_vector(2 downto 0);
+	 signal vak46 		 :std_logic_vector(2 downto 0);
+	 signal vak47 		 :std_logic_vector(2 downto 0);
+	 signal vak48 	    :std_logic_vector(2 downto 0);
+	 signal vak49 		 :std_logic_vector(2 downto 0);
+	 signal vak50 		 :std_logic_vector(2 downto 0);
+
 
 begin
+
+  u0 : nios_system
+        port map (
+			system_pll_ref_clk_clk => clk_50,
+         system_pll_ref_reset_reset => btn_resend ,
+       
+        -- SDRAM
+        sdram_addr => DRAM_ADDR,
+        sdram_ba => DRAM_BA,
+        sdram_cas_n => DRAM_CAS_N,
+        sdram_cke => DRAM_CKE,
+        sdram_cs_n => DRAM_CS_N,
+        sdram_dq => DRAM_DQ,
+        sdram_dqm => DRAM_DQM,
+        sdram_ras_n => DRAM_RAS_N,
+        sdram_we_n => DRAM_WE_N,
+        sdram_clk_clk => DRAM_CLK,
+       
+        -- SRAM 
+        sram_DQ => SRAM_DQ,
+        sram_ADDR => SRAM_ADDR,
+        sram_LB_N => SRAM_LB_N,
+        sram_UB_N => sram_UB_N,
+        sram_CE_N => sram_CE_N,
+        sram_OE_N => sram_OE_N,
+        sram_WE_N => sram_WE_N,
+       
+        -- FLASH memory
+        flash_ADDR => FL_ADDR,
+        flash_CE_N => FL_CE_N,
+        flash_OE_N => FL_OE_N,
+        flash_WE_N => FL_WE_N,
+        flash_RST_N => FL_RESET_N,
+        flash_DQ => FL_DQ,
+		  
+		  cam_in_0_external_connection_export => vaka1 & vak2 & vak3 & vak4 & vak5, 
+        cam_in_1_external_connection_export => vak6 & vak7 & vak8 & vak9 & vak10,
+        cam_in_2_external_connection_export => vak11 & vak12 & vak13 & vak14 & vak15,
+        cam_in_3_external_connection_export => vak16 & vak17 & vak18 & vak19 & vak20,
+        cam_in_4_external_connection_export => vak21 & vak22 & vak23 & vak24 & vak25,
+        cam_in_5_external_connection_export => vak26 & vak27 & vak28 & vak29 & vak30,
+        cam_in_6_external_connection_export => vak31 & vak32 & vak33 & vak34 & vak35,
+        cam_in_7_external_connection_export => vak36 & vak37 & vak38 & vak39 & vak40,
+        cam_in_8_external_connection_export => vak41 & vak42 & vak43 & vak44 & vak45,
+        cam_in_9_external_connection_export => vak46 & vak47 & vak48 & vak49 & vak50
+		  
+
+				); 
+
 
 	led16 <= vak01(2);
 	led15 <= vak01(1);
 	led14 <= vak01(0);
-	vak1 <= vak01;
+	vaka1 <= vak01;
 
   vga_r <= red(7 downto 0);
   vga_g <= green(7 downto 0);
