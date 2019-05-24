@@ -430,6 +430,7 @@ unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigne
 	return 0;
 }
 
+/*
 unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 	signed char possibleNewField;
 	signed char possibleNewRow = row + direction;
@@ -450,6 +451,7 @@ unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned f
 	}
 	return 0;
 }
+*/
 
 int checkIfCanMove(unsigned char * tempBoard[], int row, int field, int dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 
@@ -1342,7 +1344,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	
 	return 1;
 }
-
+/*
 //Oude algoritme. Plan B als minimax aan het eind helemaal ontploft
 unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 	unsigned char captured = 0;
@@ -1387,6 +1389,7 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	}
 	return 0;
 }
+*/
 
 unsigned char playerInput()
 {
