@@ -1,5 +1,5 @@
 Flow report for digital_cam_impl1
-Thu May 23 10:48:06 2019
+Thu May 23 18:38:14 2019
 Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 
 
@@ -38,26 +38,26 @@ agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Flow Summary                                                                     ;
-+------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu May 23 10:48:06 2019       ;
-; Quartus Prime Version              ; 16.1.2 Build 203 01/18/2017 SJ Lite Edition ;
-; Revision Name                      ; digital_cam_impl1                           ;
-; Top-level Entity Name              ; digital_cam_impl1                           ;
-; Family                             ; Cyclone IV E                                ;
-; Device                             ; EP4CE115F29C7                               ;
-; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 612 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 424 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 370 / 114,480 ( < 1 % )                     ;
-; Total registers                    ; 370                                         ;
-; Total pins                         ; 246 / 529 ( 47 % )                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 1,576,960 / 3,981,312 ( 40 % )              ;
-; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
-; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
-+------------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Flow Summary                                                                              ;
++------------------------------------+------------------------------------------------------+
+; Flow Status                        ; EDA Netlist Writer Failed - Thu May 23 18:38:14 2019 ;
+; Quartus Prime Version              ; 16.1.2 Build 203 01/18/2017 SJ Lite Edition          ;
+; Revision Name                      ; digital_cam_impl1                                    ;
+; Top-level Entity Name              ; digital_cam_impl1                                    ;
+; Family                             ; Cyclone IV E                                         ;
+; Device                             ; EP4CE115F29C7                                        ;
+; Timing Models                      ; Final                                                ;
+; Total logic elements               ; 10,373 / 114,480 ( 9 % )                             ;
+;     Total combinational functions  ; 9,412 / 114,480 ( 8 % )                              ;
+;     Dedicated logic registers      ; 6,063 / 114,480 ( 5 % )                              ;
+; Total registers                    ; 6182                                                 ;
+; Total pins                         ; 229 / 529 ( 43 % )                                   ;
+; Total virtual pins                 ; 0                                                    ;
+; Total memory bits                  ; 1,681,408 / 3,981,312 ( 42 % )                       ;
+; Embedded Multiplier 9-bit elements ; 16 / 532 ( 3 % )                                     ;
+; Total PLLs                         ; 2 / 4 ( 50 % )                                       ;
++------------------------------------+------------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -65,39 +65,46 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/23/2019 10:45:03 ;
+; Start date & time ; 05/23/2019 18:34:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; digital_cam_impl1   ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                  ;
-+-------------------------------------+----------------------------------------+---------------+-------------------+----------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name       ; Section Id     ;
-+-------------------------------------+----------------------------------------+---------------+-------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 268490109088213.155860110318984        ; --            ; --                ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                   ; --            ; --                ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                 ; <None>        ; --                ; --             ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --                ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --                ; --             ;
-; MISC_FILE                           ; my_altpll.cmp                          ; --            ; --                ; --             ;
-; MISC_FILE                           ; my_altpll.ppf                          ; --            ; --                ; --             ;
-; MISC_FILE                           ; my_frame_buffer_15to0.cmp              ; --            ; --                ; --             ;
-; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                      ; --            ; --                ; --             ;
-; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                      ; --            ; --                ; --             ;
-; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                             ; --            ; --                ; --             ;
-; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                             ; --            ; --                ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --                ; Top            ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; digital_cam_impl2 ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --                ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; digital_cam_impl2 ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --                ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; digital_cam_impl2 ; Top            ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --                ; --             ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --                ; --             ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --                ; --             ;
-+-------------------------------------+----------------------------------------+---------------+-------------------+----------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                         ;
++-------------------------------------+---------------------------------------------------------------+---------------+-------------------+----------------+
+; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name       ; Section Id     ;
++-------------------------------------+---------------------------------------------------------------+---------------+-------------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 93094393028683.155862924428364                                ; --            ; --                ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                          ; --            ; --                ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                        ; <None>        ; --                ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                            ; --            ; --                ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                             ; --            ; --                ; --             ;
+; MISC_FILE                           ; nios_system/synthesis/../nios_system.cmp                      ; --            ; --                ; --             ;
+; MISC_FILE                           ; nios_system/synthesis/../../nios_system.qsys                  ; --            ; --                ; --             ;
+; MISC_FILE                           ; my_altpll.cmp                                                 ; --            ; --                ; --             ;
+; MISC_FILE                           ; my_altpll.ppf                                                 ; --            ; --                ; --             ;
+; MISC_FILE                           ; my_frame_buffer_15to0.cmp                                     ; --            ; --                ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                             ; --            ; --                ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                             ; --            ; --                ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                    ; --            ; --                ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                    ; --            ; --                ; --             ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                        ; --            ; --                ; Top            ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                        ; --            ; digital_cam_impl2 ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                        ; --            ; --                ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                        ; --            ; digital_cam_impl2 ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                        ; --            ; --                ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                        ; --            ; digital_cam_impl2 ; Top            ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                           ; --            ; --                ; --             ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                         ; --            ; --                ; --             ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --                ; --             ;
+; SLD_FILE                            ; nios_system/synthesis/nios_system.regmap                      ; --            ; --                ; --             ;
+; SLD_FILE                            ; nios_system/synthesis/nios_system.debuginfo                   ; --            ; --                ; --             ;
+; SLD_INFO                            ; QSYS_NAME nios_system HAS_SOPCINFO 1 GENERATION_ID 1558616733 ; --            ; nios_system       ; --             ;
+; SOPCINFO_FILE                       ; nios_system/synthesis/../../nios_system.sopcinfo              ; --            ; --                ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --                ; --             ;
++-------------------------------------+---------------------------------------------------------------+---------------+-------------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -105,26 +112,26 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:32     ; 1.0                     ; 4861 MB             ; 00:01:02                           ;
-; Fitter                    ; 00:01:53     ; 1.0                     ; 5457 MB             ; 00:02:10                           ;
-; Assembler                 ; 00:00:12     ; 1.0                     ; 4710 MB             ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:09     ; 1.2                     ; 4857 MB             ; 00:00:08                           ;
-; EDA Netlist Writer        ; 00:00:07     ; 1.0                     ; 4697 MB             ; 00:00:05                           ;
-; Total                     ; 00:02:53     ; --                      ; --                  ; 00:03:36                           ;
+; Analysis & Synthesis      ; 00:02:02     ; 1.0                     ; 5203 MB             ; 00:02:41                           ;
+; Fitter                    ; 00:01:25     ; 1.0                     ; 5669 MB             ; 00:01:47                           ;
+; Assembler                 ; 00:00:07     ; 1.0                     ; 4756 MB             ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:11     ; 1.2                     ; 4975 MB             ; 00:00:12                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 4766 MB             ; 00:00:04                           ;
+; Total                     ; 00:03:49     ; --                      ; --                  ; 00:04:51                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                         ;
-+---------------------------+------------------+------------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; LAPTOP-VJ8JV7BF  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; LAPTOP-VJ8JV7BF  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; LAPTOP-VJ8JV7BF  ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; LAPTOP-VJ8JV7BF  ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer        ; LAPTOP-VJ8JV7BF  ; Windows 10 ; 10.0       ; x86_64         ;
-+---------------------------+------------------+------------+------------+----------------+
++------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                ;
++---------------------------+-------------------------+------------+------------+----------------+
+; Module Name               ; Machine Hostname        ; OS Name    ; OS Version ; Processor type ;
++---------------------------+-------------------------+------------+------------+----------------+
+; Analysis & Synthesis      ; Laptop-Jasper-Hoogeveen ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; Laptop-Jasper-Hoogeveen ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; Laptop-Jasper-Hoogeveen ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; Laptop-Jasper-Hoogeveen ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; Laptop-Jasper-Hoogeveen ; Windows 10 ; 10.0       ; x86_64         ;
++---------------------------+-------------------------+------------+------------+----------------+
 
 
 ------------

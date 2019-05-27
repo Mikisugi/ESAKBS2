@@ -268,607 +268,531 @@
 					"strict" : false
 				},
 				{
-					"name" : "vak1[0]",
+					"name" : "DRAM_ADDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "vak1[1]",
+					"name" : "DRAM_ADDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "vak1[2]",
+					"name" : "DRAM_ADDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "vak2[0]",
+					"name" : "DRAM_ADDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "vak2[1]",
+					"name" : "DRAM_ADDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "vak2[2]",
+					"name" : "DRAM_ADDR[5]",
 					"strict" : false
 				},
 				{
-					"name" : "vak3[0]",
+					"name" : "DRAM_ADDR[6]",
 					"strict" : false
 				},
 				{
-					"name" : "vak3[1]",
+					"name" : "DRAM_ADDR[7]",
 					"strict" : false
 				},
 				{
-					"name" : "vak3[2]",
+					"name" : "DRAM_ADDR[8]",
 					"strict" : false
 				},
 				{
-					"name" : "vak4[0]",
+					"name" : "DRAM_ADDR[9]",
 					"strict" : false
 				},
 				{
-					"name" : "vak4[1]",
+					"name" : "DRAM_ADDR[10]",
 					"strict" : false
 				},
 				{
-					"name" : "vak4[2]",
+					"name" : "DRAM_ADDR[11]",
 					"strict" : false
 				},
 				{
-					"name" : "vak5[0]",
+					"name" : "DRAM_ADDR[12]",
 					"strict" : false
 				},
 				{
-					"name" : "vak5[1]",
+					"name" : "DRAM_BA[0]",
 					"strict" : false
 				},
 				{
-					"name" : "vak5[2]",
+					"name" : "DRAM_BA[1]",
 					"strict" : false
 				},
 				{
-					"name" : "vak6[0]",
+					"name" : "DRAM_CAS_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak6[1]",
+					"name" : "DRAM_CS_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak6[2]",
+					"name" : "DRAM_DQM[0]",
 					"strict" : false
 				},
 				{
-					"name" : "vak7[0]",
+					"name" : "DRAM_DQM[1]",
 					"strict" : false
 				},
 				{
-					"name" : "vak7[1]",
+					"name" : "DRAM_DQM[2]",
 					"strict" : false
 				},
 				{
-					"name" : "vak7[2]",
+					"name" : "DRAM_DQM[3]",
 					"strict" : false
 				},
 				{
-					"name" : "vak8[0]",
+					"name" : "DRAM_RAS_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak8[1]",
+					"name" : "DRAM_WE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak8[2]",
+					"name" : "SRAM_ADDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "vak9[0]",
+					"name" : "SRAM_ADDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "vak9[1]",
+					"name" : "SRAM_ADDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "vak9[2]",
+					"name" : "SRAM_ADDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "vak10[0]",
+					"name" : "SRAM_ADDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "vak10[1]",
+					"name" : "SRAM_ADDR[5]",
 					"strict" : false
 				},
 				{
-					"name" : "vak10[2]",
+					"name" : "SRAM_ADDR[6]",
 					"strict" : false
 				},
 				{
-					"name" : "vak11[0]",
+					"name" : "SRAM_ADDR[7]",
 					"strict" : false
 				},
 				{
-					"name" : "vak11[1]",
+					"name" : "SRAM_ADDR[8]",
 					"strict" : false
 				},
 				{
-					"name" : "vak11[2]",
+					"name" : "SRAM_ADDR[9]",
 					"strict" : false
 				},
 				{
-					"name" : "vak12[0]",
+					"name" : "SRAM_ADDR[10]",
 					"strict" : false
 				},
 				{
-					"name" : "vak12[1]",
+					"name" : "SRAM_ADDR[11]",
 					"strict" : false
 				},
 				{
-					"name" : "vak12[2]",
+					"name" : "SRAM_ADDR[12]",
 					"strict" : false
 				},
 				{
-					"name" : "vak13[0]",
+					"name" : "SRAM_ADDR[13]",
 					"strict" : false
 				},
 				{
-					"name" : "vak13[1]",
+					"name" : "SRAM_ADDR[14]",
 					"strict" : false
 				},
 				{
-					"name" : "vak13[2]",
+					"name" : "SRAM_ADDR[15]",
 					"strict" : false
 				},
 				{
-					"name" : "vak14[0]",
+					"name" : "SRAM_ADDR[16]",
 					"strict" : false
 				},
 				{
-					"name" : "vak14[1]",
+					"name" : "SRAM_ADDR[17]",
 					"strict" : false
 				},
 				{
-					"name" : "vak14[2]",
+					"name" : "SRAM_ADDR[18]",
 					"strict" : false
 				},
 				{
-					"name" : "vak15[0]",
+					"name" : "SRAM_ADDR[19]",
 					"strict" : false
 				},
 				{
-					"name" : "vak15[1]",
+					"name" : "SRAM_LB_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak15[2]",
+					"name" : "SRAM_UB_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak16[0]",
+					"name" : "SRAM_CE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak16[1]",
+					"name" : "SRAM_OE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak16[2]",
+					"name" : "SRAM_WE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak17[0]",
+					"name" : "FL_ADDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "vak17[1]",
+					"name" : "FL_ADDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "vak17[2]",
+					"name" : "FL_ADDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "vak18[0]",
+					"name" : "FL_ADDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "vak18[1]",
+					"name" : "FL_ADDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "vak18[2]",
+					"name" : "FL_ADDR[5]",
 					"strict" : false
 				},
 				{
-					"name" : "vak19[0]",
+					"name" : "FL_ADDR[6]",
 					"strict" : false
 				},
 				{
-					"name" : "vak19[1]",
+					"name" : "FL_ADDR[7]",
 					"strict" : false
 				},
 				{
-					"name" : "vak19[2]",
+					"name" : "FL_ADDR[8]",
 					"strict" : false
 				},
 				{
-					"name" : "vak20[0]",
+					"name" : "FL_ADDR[9]",
 					"strict" : false
 				},
 				{
-					"name" : "vak20[1]",
+					"name" : "FL_ADDR[10]",
 					"strict" : false
 				},
 				{
-					"name" : "vak20[2]",
+					"name" : "FL_ADDR[11]",
 					"strict" : false
 				},
 				{
-					"name" : "vak21[0]",
+					"name" : "FL_ADDR[12]",
 					"strict" : false
 				},
 				{
-					"name" : "vak21[1]",
+					"name" : "FL_ADDR[13]",
 					"strict" : false
 				},
 				{
-					"name" : "vak21[2]",
+					"name" : "FL_ADDR[14]",
 					"strict" : false
 				},
 				{
-					"name" : "vak22[0]",
+					"name" : "FL_ADDR[15]",
 					"strict" : false
 				},
 				{
-					"name" : "vak22[1]",
+					"name" : "FL_ADDR[16]",
 					"strict" : false
 				},
 				{
-					"name" : "vak22[2]",
+					"name" : "FL_ADDR[17]",
 					"strict" : false
 				},
 				{
-					"name" : "vak23[0]",
+					"name" : "FL_ADDR[18]",
 					"strict" : false
 				},
 				{
-					"name" : "vak23[1]",
+					"name" : "FL_ADDR[19]",
 					"strict" : false
 				},
 				{
-					"name" : "vak23[2]",
+					"name" : "FL_ADDR[20]",
 					"strict" : false
 				},
 				{
-					"name" : "vak24[0]",
+					"name" : "FL_ADDR[21]",
 					"strict" : false
 				},
 				{
-					"name" : "vak24[1]",
+					"name" : "FL_ADDR[22]",
 					"strict" : false
 				},
 				{
-					"name" : "vak24[2]",
+					"name" : "FL_CE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak25[0]",
+					"name" : "FL_OE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak25[1]",
+					"name" : "FL_WE_N",
 					"strict" : false
 				},
 				{
-					"name" : "vak25[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak26[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak26[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak26[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak27[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak27[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak27[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak28[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak28[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak28[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak29[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak29[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak29[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak30[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak30[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak30[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak31[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak31[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak31[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak32[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak32[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak32[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak33[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak33[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak33[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak34[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak34[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak34[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak35[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak35[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak35[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak36[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak36[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak36[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak37[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak37[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak37[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak38[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak38[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak38[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak39[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak39[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak39[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak40[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak40[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak40[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak41[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak41[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak41[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak42[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak42[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak42[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak43[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak43[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak43[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak44[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak44[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak44[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak45[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak45[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak45[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak46[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak46[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak46[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak47[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak47[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak47[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak48[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak48[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak48[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak49[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak49[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak49[2]",
-					"strict" : false
-				},
-				{
-					"name" : "vak50[0]",
-					"strict" : false
-				},
-				{
-					"name" : "vak50[1]",
-					"strict" : false
-				},
-				{
-					"name" : "vak50[2]",
+					"name" : "FL_RESET_N",
 					"strict" : false
 				},
 				{
 					"name" : "ov7670_siod",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[7]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[8]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[9]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[10]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[11]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[12]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[13]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[14]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[15]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[16]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[17]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[18]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[19]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[20]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[21]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[22]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[23]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[24]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[25]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[26]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[27]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[28]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[29]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[30]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_DQ[31]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[10]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[11]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[12]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[13]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[14]",
+					"strict" : false
+				},
+				{
+					"name" : "SRAM_DQ[15]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[0]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[1]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[2]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[3]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[4]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[5]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[6]",
+					"strict" : false
+				},
+				{
+					"name" : "FL_DQ[7]",
 					"strict" : false
 				},
 				{
@@ -925,6 +849,22 @@
 				},
 				{
 					"name" : "ov7670_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
 					"strict" : false
 				}
 			]
