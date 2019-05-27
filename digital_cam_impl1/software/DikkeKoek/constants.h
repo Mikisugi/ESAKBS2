@@ -1,7 +1,7 @@
 #define UNICODE_ENABLED 0
 #define COLORS_ENABLED 0
-#define DEBUG 1
-#define PLAYER_INPUT 1
+#define DEBUG 0
+#define PLAYER_INPUT 0
 
 #define EMPTY 0
 #define BLACK 1
