@@ -241,9 +241,9 @@ void deleteMoveVector(Vector * vector){
 		struct Move * moveList = (struct Move *) vector->data[i];
 		struct Move * nextMoveList;
 		while(moveList != NULL){
-			nextMove = moveList->nextMove;
+			nextMoveList = moveList->nextMove;
 			free(moveList);
-			moveList = nextMove;
+			moveList = nextMoveList;
 		}
 	}
 	free(vector);
