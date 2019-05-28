@@ -9,24 +9,63 @@
 //definition of Task Stacks
 #define   TASK_STACKSIZE 2048
 OS_STK    taskStartGame_stk[TASK_STACKSIZE];
-//definition of Task Priorities
-#define TASKSTARTGAME_PRIORITY 1
+OS_STK    taskPlayer_stk[TASK_STACKSIZE];
+OS_STK    taskEnemy_stk[TASK_STACKSIZE];
+
+//semafoor om play() stop te zetten terwijl het algoritme bezig is
+OS_EVENT *    sem;
+
+void printCountPieces();
+void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned char changedField, unsigned char oldRow, unsigned char oldField);
+Vector * kingCapture(Location currentLocation, unsigned char * tempBoard [], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing);
+void deleteCaptureVector(VectorCapture *capture);
+void deleteMoveVector(Vector * vector);
+unsigned char stripCaptureVector(Vector *vector, unsigned char count);
+void initMoveList(VectorCapture * capture, struct Move * newMove);
+void addToMoveList(struct Move * newMove, struct Move * origin);
+void copyMoveList(struct Move * originalOrigin, struct Move * newOrigin, unsigned char depth);
+unsigned char countMoveList(struct Move * moveList);
+void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector * moveVector, unsigned char depth);
+unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing);
+int checkIfCanMove(unsigned char * tempBoard[], int row, int field, int dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction);
+int capture(int row,int field,int king);
+void move(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction);
+void createKing(unsigned char * tempBoard[]);
+int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth);
+int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth);
+unsigned char playerInput();
+void play();
+void createBoard();
+void createEmptyBoard();
 
 //the main board
 unsigned char board [10][10];
 
+struct nodeMove
+{
+	int score;
+	unsigned char row;
+	unsigned char field;
+	unsigned char dir;
+	unsigned char isCapture;
+	struct Move * kingCaptureMoveList;
+};
+
 void taskStartGame(void* pdata)
 {
-	createBoard();
-	printBoard((unsigned char **)board,100,100,100,100);
 	play();
 }
 
 int main(void)
 {
-  OSTaskCreateExt(taskStartGame,NULL,(void *)&taskStartGame_stk[TASK_STACKSIZE-1],TASKSTARTGAME_PRIORITY,TASKSTARTGAME_PRIORITY,taskStartGame_stk,TASK_STACKSIZE,NULL,0);
-  OSStart();
-  return 0;
+	//volgens rtos week 2 slides moet dit dus wel
+	OSInit(void);
+	//werkt dit?
+	//OSTaskCreate(taskStartGame, NULL, &taskStartGame_stk[TASK_STACKSIZE - 1], 0);
+	OSTaskCreateExt(taskStartGame,NULL,(void *)&taskStartGame_stk[TASK_STACKSIZE-1],TASKSTARTGAME_PRIORITY,TASKSTARTGAME_PRIORITY,taskStartGame_stk,TASK_STACKSIZE,NULL,0);
+	sem = OSSemCreate(1);
+	OSStart();
+	return 0;
 }
 
 /*
@@ -328,7 +367,6 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 	return oldCount;
 }
 
-
 void initMoveList(VectorCapture * capture, struct Move * newMove){
 	newMove->oldLocation = capture->oldLocation;
 	newMove->newLocation = capture->newLocation;
@@ -378,13 +416,19 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 	depth++;
 	for(unsigned char i = 0; i < captureVector->count; i++){
 		if(captureVector->data[i] != NULL){
-			printf("kaasten\n");
+			#if DEBUG
+				printf("kaasten\n");
+			#endif
 			VectorCapture * capture = (VectorCapture *)captureVector->data[i];
 			struct Move * newMove = malloc(sizeof(struct Move));
-			printf("add to move list\n");
+			#if DEBUG
+				printf("add to move list\n");
+			#endif
 			initMoveList(capture, newMove);
 			if(moveList == NULL){
-				printf("NEW LIST\n");
+				#if DEBUG
+					printf("NEW LIST\n");
+				#endif
 				moveList = newMove;
 			}else{
 				addToMoveList(newMove, moveList);
@@ -393,28 +437,33 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			if(capture->nextCaptures == NULL || capture->nextCaptures->count == 0){
 				#if DEBUG
 					printf("add\n");
-					printf("malloccing vectorMove\n");
+					printf("starting copy\n");
 				#endif
-				#if DEBUG
-					printf("mallocced vectorMove\n");
-				#endif
-				printf("starting copy\n");
-
 				vectorAdd(moveVector, (void *)moveList);
 				#if DEBUG
 					printf("moves added\n");
 				#endif
 
 			}else{
-				printf("Of ANDERS\n");
+				#if DEBUG
+					printf("Of ANDERS\n");
+				#endif
 				struct Move * newMoveList;
 				if(countMoveList(moveList) - 2 == depth){
-					printf("DIT\n");
+					#if DEBUG
+						printf("DIT\n");
+					#endif
 					newMoveList = malloc(sizeof(struct Move));
-					printf("its the evil wizard again\n");
+					#if DEBUG
+						printf("its the evil wizard again\n");
+					#endif
 					copyMoveList(moveList, newMoveList, depth);
-				}else{
-					printf("DAT\n");
+				}
+				else
+				{
+					#if DEBUG
+						printf("DAT\n");
+					#endif
 					newMoveList = moveList;
 				}
 				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, depth);
@@ -915,16 +964,6 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 	return bestScore;
 }
 
-struct nodeMove
-{
-	int score;
-	unsigned char row;
-	unsigned char field;
-	unsigned char dir;
-	unsigned char isCapture;
-	struct Move * kingCaptureMoveList;
-};
-
 int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
 	createKing((unsigned char **)tempBoard);
@@ -1314,6 +1353,7 @@ unsigned char playerInput()
 			else if(board[row][field] == FRIENDLYKING)
 			{
 				stuffToDo = 1;
+				//friendly king doesn't use kingCapture
 				if(capture(row, field, 1)) return 1;
 			}
 		}
@@ -1394,30 +1434,58 @@ unsigned char playerInput()
 	}
 }
 
+void taskPlayer(void* pdata)
+{
+	int err;
+	OSSemPend(sem, 0, &err);
+
+	printf("FRIENDLY TURN\n");
+	#if PLAYER_INPUT
+		friendlyMoved = playerInput();
+	#else
+		pdata = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,2);
+		//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
+	#endif
+
+	OSSemPost(sem, 0, &err);
+}
+
+void taskEnemy(void * pdata)
+{
+	int err;
+	OSSemPend(sem, 0, &err);
+
+	printf("ENEMY TURN\n");
+	pdata = minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,2);
+	//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+
+	OSSemPost(sem, 0, &err);
+}
+
 void play(){
+	createBoard();
+	printBoard((unsigned char **)board,100,100,100,100);
+
 	unsigned char friendlyMoved = 1;
 	unsigned char enemyMoved = 1;
-	unsigned char turn = 0;
-	unsigned char turnCounter = 0;
 
+	//0 = speler's beurt
+	//1 = enemy's beurt
+	unsigned char turn = 0;
+
+	//telt het aantal beurten om aan het eind te printen
+	unsigned char turnCounter = 0;
+	int err;
 	while(friendlyMoved == 1 && enemyMoved == 1){
 		if(turn == 0){
-			printf("FRIENDLY TURN\n");
-			if(PLAYER_INPUT){
-				friendlyMoved = playerInput();
-			}else{
-				//friendlyMoved = bfAlgorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-				friendlyMoved = minimaxAlgorithm((unsigned char **)board,FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION,2);
-				//friendlyMoved = 1;
-				//friendlyMoved = algorithm(FRIENDLY, FRIENDLYKING, ENEMY, ENEMYKING, FRIENDLYDIRECTION);
-			}
+			OSTaskCreateExt(taskPlayer,friendlyMoved,(void *)&taskPlayer_stk[TASK_STACKSIZE-1],0,0,taskPlayer_stk,TASK_STACKSIZE,NULL,0);
+			//OSTaskCreate(taskPlayer, friendlyMoved, &taskPlayer_stk[TASK_STACKSIZE - 1], 0);
+			OSSemPend(sem, 0, &err);
 			turn = 1;
 		}else{
-			printf("ENEMY TURN\n");
-			//enemyMoved = bfAlgorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
-			enemyMoved = minimaxAlgorithm((unsigned char **)board,ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION,2);
-			//enemyMoved = 1;
-			//enemyMoved = algorithm(ENEMY, ENEMYKING, FRIENDLY, FRIENDLYKING, ENEMYDIRECTION);
+			OSTaskCreateExt(taskEnemy,enemyMoved,(void *)&taskEnemy_stk[TASK_STACKSIZE-1],0,0,taskEnemy_stk,TASK_STACKSIZE,NULL,0);
+			//OSTaskCreate(taskEnemy, enemyMoved, &taskEnemy_stk[TASK_STACKSIZE - 1], 0);
+			OSSemPend(sem, 0, &err);
 			turn = 0;
 		}
 		turnCounter++;
