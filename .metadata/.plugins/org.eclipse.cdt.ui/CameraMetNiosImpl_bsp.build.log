@@ -1,0 +1,6 @@
+16:12:25 **** Clean-only build of configuration Nios II for project CameraMetNiosImpl_bsp ****
+make clean 
+[BSP clean complete]
+
+16:12:25 Build Finished (took 615ms)
+

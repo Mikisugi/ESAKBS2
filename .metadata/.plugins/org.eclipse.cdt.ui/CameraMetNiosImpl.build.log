@@ -1,0 +1,21 @@
+13:31:03 **** Incremental Build of configuration Nios II for project CameraMetNiosImpl ****
+make all 
+Info: Building ../CameraMetNiosImpl_bsp/
+C:/Users/jasper/Desktop/VHDL/quartusLiteFiles/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../CameraMetNiosImpl_bsp/
+Makefile not up to date.
+../../camerametnios.sopcinfo has been modified since the BSP was generated.
+
+Generate the BSP to update the Makefile, and then build again.
+
+To generate from Eclipse:
+ 1. Right-click the BSP project.
+ 2. In the Nios II Menu, click Generate BSP.
+
+To generate from the command line:
+ nios2-bsp-generate-files --settings=<settings file> --bsp-dir=<target bsp files directory>
+
+make[1]: *** [public.mk] Error 1
+make: *** [../CameraMetNiosImpl_bsp/-recurs-make-lib] Error 2
+
+13:31:04 Build Finished (took 1s.386ms)
+

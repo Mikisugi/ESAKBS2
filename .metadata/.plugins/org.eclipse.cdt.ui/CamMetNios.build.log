@@ -1,0 +1,8 @@
+13:12:22 **** Incremental Build of configuration Nios II for project CamMetNios ****
+make all 
+makefile:244: ../CameraMetNios//public.mk: No such file or directory
+makefile:450: ../CameraMetNios//mem_init.mk: No such file or directory
+make: *** No rule to make target `../CameraMetNios//mem_init.mk'.  Stop.
+
+13:12:22 Build Finished (took 216ms)
+

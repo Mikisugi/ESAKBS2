@@ -1,5 +1,5 @@
-#define UNICODE_ENABLED 0
-#define COLORS_ENABLED 0
+#define UNICODE_ENABLED 1
+#define COLORS_ENABLED 1
 #define DEBUG 0
 #define PLAYER_INPUT 0
 
