@@ -71,6 +71,7 @@ int main(void)
 #define   TASK_STACKSIZE 2048
 OS_STK    taskStartGame_stk[TASK_STACKSIZE];
 <<<<<<< HEAD
+<<<<<<< HEAD
 OS_STK    taskPlayer_stk[TASK_STACKSIZE];
 OS_STK    taskEnemy_stk[TASK_STACKSIZE];
 
@@ -100,6 +101,8 @@ void play();
 void createBoard();
 void createEmptyBoard();
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 
 //definition of Task Priorities
 #define TASKSTARTGAME_PRIORITY 1
@@ -109,9 +112,12 @@ void createEmptyBoard();
 unsigned char board [10][10];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct nodeMove
 {
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 //Node for the linked list of scores made in minimaxAlgorithmRecursive
 typedef struct Node
 {
@@ -122,6 +128,9 @@ typedef struct Node
 typedef struct NodeMove
 {
 	struct NodeMove * next;
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 	int score;
 	unsigned char row;
@@ -129,9 +138,12 @@ typedef struct NodeMove
 	unsigned char dir;
 	unsigned char isCapture;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct Move * kingCaptureMoveList;
 };
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 	VectorMove * kingCaptureVectorMove;
 } nodemove_t;
 
@@ -154,6 +166,9 @@ unsigned char playerInput();
 void play();
 void createBoard();
 void createEmptyBoard();
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 
 void taskStartGame(void* pdata)
@@ -454,8 +469,11 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void initMoveList(VectorCapture * capture, struct Move * newMove){
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 void addToMoveList(VectorCapture * capture, struct Move * origin){
 	printf("add move list loop\n");
 	while(origin->nextMove != NULL){
@@ -466,6 +484,9 @@ void addToMoveList(VectorCapture * capture, struct Move * origin){
 	struct Move * newMove  = malloc(sizeof(struct Move));
 	printf("summon the evil wizard malloc for the second time\n");
 
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 	newMove->oldLocation = capture->oldLocation;
 	newMove->newLocation = capture->newLocation;
@@ -509,6 +530,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			#endif
 			VectorCapture * capture = (VectorCapture *)captureVector->data[i];
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct Move * newMove = malloc(sizeof(struct Move));
 			#if DEBUG
 				printf("add to move list\n");
@@ -523,6 +545,8 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				addToMoveList(newMove, moveList);
 			}
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 			printf("add to move list\n");
 			addToMoveList(capture, moveList);
 
@@ -530,6 +554,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			tempBoard[capture->newLocation.row][capture->newLocation.field] = board[capture->oldLocation.row][capture->oldLocation.field];
 			tempBoard[capture->oldLocation.row][capture->oldLocation.field] = BLACK;
 			tempBoard[capture->captureLocation.row][capture->captureLocation.field] = BLACK;
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 
 			if(capture->nextCaptures == NULL || capture->nextCaptures->count == 0){
@@ -538,8 +565,11 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 					printf("starting copy\n");
 				#endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 				vectorAdd(moveVector, (void *)moveList);
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 				VectorMove * vectorMove = malloc(sizeof(vectorMove));
 				#if DEBUG
 					printf("mallocced vectorMove\n");
@@ -552,6 +582,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 					printf("adding moves\n");
 				#endif
 				vectorAdd(moveVector, (void *)vectorMove);
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 				#if DEBUG
 					printf("moves added\n");
@@ -563,6 +596,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				#endif
 				struct Move * newMoveList;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if(countMoveList(moveList) - 2 == depth){
 					#if DEBUG
 						printf("DIT\n");
@@ -572,10 +606,15 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 						printf("its the evil wizard again\n");
 					#endif
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 				if(i > 0){
 					printf("DIT\n");
 					newMoveList = malloc(sizeof(struct Move));
 					printf("its the evil wizard again");
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 					copyMoveList(moveList, newMoveList, depth);
 				}
@@ -1440,6 +1479,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		newHead = capturesHead->next;
 		free(capturesHead);
 		capturesHead = newHead;
+<<<<<<< HEAD
 
 		//print the captures list
 		#if DEBUG
@@ -1456,6 +1496,24 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		head = capturesHead;
 		current = capturesCurrent;
 
+=======
+
+		//print the captures list
+		#if DEBUG
+			printf("S : captures list:\n");
+			capturesCurrent = capturesHead;
+			while(capturesCurrent != NULL)
+			{
+				printf("score: %i\nrow: %i\nfield: %i\ndir: %i\nisCapture: %i\n\n",capturesCurrent->score,capturesCurrent->row,capturesCurrent->field,capturesCurrent->dir,capturesCurrent->isCapture);
+				capturesCurrent = capturesCurrent->next;
+			}
+		#endif
+
+		//capture list becomes the normal list
+		head = capturesHead;
+		current = capturesCurrent;
+
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 		//free the capture list TODO: this freezes the program
 		/*
 		#if DEBUG
