@@ -72,6 +72,7 @@ int main(void)
 OS_STK    taskStartGame_stk[TASK_STACKSIZE];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 OS_STK    taskPlayer_stk[TASK_STACKSIZE];
 OS_STK    taskEnemy_stk[TASK_STACKSIZE];
 
@@ -103,6 +104,8 @@ void createEmptyBoard();
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 
 //definition of Task Priorities
 #define TASKSTARTGAME_PRIORITY 1
@@ -113,9 +116,12 @@ unsigned char board [10][10];
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct nodeMove
 {
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 //Node for the linked list of scores made in minimaxAlgorithmRecursive
@@ -129,6 +135,9 @@ typedef struct NodeMove
 {
 	struct NodeMove * next;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -139,9 +148,12 @@ typedef struct NodeMove
 	unsigned char isCapture;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct Move * kingCaptureMoveList;
 };
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 	VectorMove * kingCaptureVectorMove;
@@ -167,6 +179,9 @@ void play();
 void createBoard();
 void createEmptyBoard();
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -470,8 +485,11 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 void initMoveList(VectorCapture * capture, struct Move * newMove){
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 void addToMoveList(VectorCapture * capture, struct Move * origin){
@@ -485,6 +503,9 @@ void addToMoveList(VectorCapture * capture, struct Move * origin){
 	printf("summon the evil wizard malloc for the second time\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -531,6 +552,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			VectorCapture * capture = (VectorCapture *)captureVector->data[i];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct Move * newMove = malloc(sizeof(struct Move));
 			#if DEBUG
 				printf("add to move list\n");
@@ -547,6 +569,8 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 			printf("add to move list\n");
 			addToMoveList(capture, moveList);
 
@@ -555,6 +579,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			tempBoard[capture->oldLocation.row][capture->oldLocation.field] = BLACK;
 			tempBoard[capture->captureLocation.row][capture->captureLocation.field] = BLACK;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -566,8 +593,11 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				#endif
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				vectorAdd(moveVector, (void *)moveList);
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 				VectorMove * vectorMove = malloc(sizeof(vectorMove));
@@ -583,6 +613,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				#endif
 				vectorAdd(moveVector, (void *)vectorMove);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -597,6 +630,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 				struct Move * newMoveList;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if(countMoveList(moveList) - 2 == depth){
 					#if DEBUG
 						printf("DIT\n");
@@ -608,11 +642,16 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 				if(i > 0){
 					printf("DIT\n");
 					newMoveList = malloc(sizeof(struct Move));
 					printf("its the evil wizard again");
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -1407,6 +1446,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 			current = current->next;
 		}
 	#endif
+<<<<<<< HEAD
 
 	//remove last item in the list
 	//if there is only one item in the list, remove it
@@ -1435,6 +1475,36 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		}
 	#endif
 
+=======
+
+	//remove last item in the list
+	//if there is only one item in the list, remove it
+	if (head->next == NULL)
+	{
+		#if DEBUG
+			printf("S : the list is empty, free head and return 0\n");
+		#endif
+		free(head);
+		return 0;
+	}
+	//get to the second to last node in the list
+	current = head;
+	while (current->next->next != NULL) current = current->next;
+	//now current points to the second to last item of the list, so let's remove current->next
+	free(current->next);
+	current->next = NULL;
+
+	#if DEBUG
+		printf("S : final list:\n");
+		current = head;
+		while(current != NULL)
+		{
+			printf("score: %i\nrow: %i\nfield: %i\ndir: %i\nisCapture: %i\n\n",current->score,current->row,current->field,current->dir,current->isCapture);
+			current = current->next;
+		}
+	#endif
+
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 	nodemove_t * bestMove = malloc(sizeof(nodemove_t));
 
 	if(direction == FRIENDLYDIRECTION) bestMove->score = -1000;
@@ -1480,6 +1550,9 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		free(capturesHead);
 		capturesHead = newHead;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 
 		//print the captures list
 		#if DEBUG
@@ -1496,6 +1569,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		head = capturesHead;
 		current = capturesCurrent;
 
+<<<<<<< HEAD
 =======
 
 		//print the captures list
@@ -1513,6 +1587,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		head = capturesHead;
 		current = capturesCurrent;
 
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 		//free the capture list TODO: this freezes the program
 		/*

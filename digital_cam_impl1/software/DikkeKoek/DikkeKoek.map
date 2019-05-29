@@ -419,7 +419,11 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .text           0x0000000000000244    0x241e4
+=======
+.text           0x0000000000000244    0x24748
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 .text           0x0000000000000244    0x24748
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -472,6 +476,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text          0x0000000000000244       0x3c ../DikkeKoek_bsp//obj/HAL/src/crt0.o
                 0x0000000000000244                _start
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  .text          0x0000000000000280     0x3b4c obj/default/algo_ucos.o
@@ -1211,6 +1216,8 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
  .text          0x0000000000000280     0x40b0 obj/default/algo_ucos.o
                 0x0000000000000280                taskStartGame
                 0x00000000000002d4                main
@@ -1946,6 +1953,9 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  .text          0x0000000000024958       0x34 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exit.o)
                 0x0000000000024958                _exit
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -1957,7 +1967,11 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  *(.eh_frame_hdr)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 0x0000000000024428                . = ALIGN (0x4)
+=======
+                0x000000000002498c                . = ALIGN (0x4)
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
                 0x000000000002498c                . = ALIGN (0x4)
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -1976,6 +1990,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  *(.eh_frame)
  *(.gcc_except_table .gcc_except_table.*)
  *(.dynamic)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 0x0000000000024428                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
@@ -2213,10 +2228,127 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+                0x000000000002498c                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+ *(.ctors)
+ *(SORT(.ctors.*))
+                0x000000000002498c                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x000000000002498c                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+ *(.dtors)
+ *(SORT(.dtors.*))
+                0x000000000002498c                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+ *(.jcr)
+                0x000000000002498c                . = ALIGN (0x4)
+
+.rodata         0x000000000002498c     0x1398
+                0x000000000002498c                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x000000000002498c                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x000000000002498c      0xaa6 obj/default/algo_ucos.o
+ *fill*         0x0000000000025432        0x2 
+ .rodata        0x0000000000025434       0x86 obj/default/vector.o
+ *fill*         0x00000000000254ba        0x2 
+ .rodata.str1.4
+                0x00000000000254bc        0x2 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-impure.o)
+ *fill*         0x00000000000254be        0x2 
+ .rodata.str1.4
+                0x00000000000254c0        0x2 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-puts.o)
+ *fill*         0x00000000000254c2        0x2 
+ .rodata.str1.4
+                0x00000000000254c4       0x42 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfprintf.o)
+ .rodata.zeroes.4404
+                0x0000000000025506       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfprintf.o)
+ .rodata.blanks.4403
+                0x0000000000025516       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfprintf.o)
+ *fill*         0x0000000000025526        0x2 
+ .rodata.str1.4
+                0x0000000000025528        0x5 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfscanf.o)
+ *fill*         0x000000000002552d        0x1 
+ .rodata.basefix.4359
+                0x000000000002552e       0x22 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfscanf.o)
+ .rodata._ctype_
+                0x0000000000025550      0x101 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-ctype_.o)
+                0x0000000000025550                _ctype_
+ .rodata._ctype_b
+                0x0000000000025651      0x180 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-ctype_.o)
+ *fill*         0x00000000000257d1        0x3 
+ .rodata.str1.4
+                0x00000000000257d4       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-dtoa.o)
+                                         0x12 (size before relaxing)
+ .rodata.str1.4
+                0x00000000000257e4        0xa c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-locale.o)
+                                         0x12 (size before relaxing)
+ .rodata.str1.4
+                0x00000000000257ee        0x1 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mbrtowc.o)
+ *fill*         0x00000000000257ee        0x2 
+ .rodata.p05.2768
+                0x00000000000257f0        0xc c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mprec.o)
+ .rodata.__mprec_tinytens
+                0x00000000000257fc       0x28 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mprec.o)
+                0x00000000000257fc                __mprec_tinytens
+ .rodata.__mprec_bigtens
+                0x0000000000025824       0x28 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mprec.o)
+                0x0000000000025824                __mprec_bigtens
+ .rodata.__mprec_tens
+                0x000000000002584c       0xc8 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mprec.o)
+                0x000000000002584c                __mprec_tens
+ .rodata.str1.4
+                0x0000000000025914       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtod.o)
+                                          0xf (size before relaxing)
+ .rodata.fpinan.2773
+                0x0000000000025924       0x14 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtod.o)
+ .rodata.fpi.2737
+                0x0000000000025938       0x14 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtod.o)
+ .rodata.tinytens
+                0x000000000002594c       0x28 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtod.o)
+ .rodata.str1.4
+                0x0000000000025974       0x42 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfprintf.o)
+ .rodata.zeroes.4389
+                0x0000000000025974       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfprintf.o)
+ .rodata.blanks.4388
+                0x0000000000025984       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfprintf.o)
+ .rodata.str1.4
+                0x0000000000025994       0x2f c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfiprintf.o)
+ .rodata.zeroes.4349
+                0x0000000000025994       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfiprintf.o)
+ .rodata.blanks.4348
+                0x00000000000259a4       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfiprintf.o)
+ .rodata.__hexdig
+                0x00000000000259b4      0x100 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-gdtoa-gethex.o)
+                0x00000000000259b4                __hexdig
+ .rodata.str1.4
+                0x0000000000025ab4       0x2f c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfiprintf.o)
+ .rodata.zeroes.4333
+                0x0000000000025ab4       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfiprintf.o)
+ .rodata.blanks.4332
+                0x0000000000025ac4       0x10 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfiprintf.o)
+ .rodata        0x0000000000025ad4      0x100 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_clz.o)
+                0x0000000000025ad4                __clz_tab
+ .rodata        0x0000000000025bd4        0xa ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dev.o)
+ *fill*         0x0000000000025bde        0x2 
+ .rodata        0x0000000000025be0        0xf ../DikkeKoek_bsp/\libucosii_bsp.a(alt_main.o)
+ *fill*         0x0000000000025bef        0x1 
+ .rodata        0x0000000000025bf0      0x11e ../DikkeKoek_bsp/\libucosii_bsp.a(os_core.o)
+                0x0000000000025bf0                OSUnMapTbl
+ *fill*         0x0000000000025d0e        0x2 
+ .rodata        0x0000000000025d10        0xf ../DikkeKoek_bsp/\libucosii_bsp.a(alt_sys_init.o)
+ *fill*         0x0000000000025d1f        0x1 
+ .rodata        0x0000000000025d20        0x2 ../DikkeKoek_bsp/\libucosii_bsp.a(os_cpu_c.o)
+ *(.rodata1)
+                0x0000000000025d24                . = ALIGN (0x4)
+ *fill*         0x0000000000025d22        0x2 
+                0x0000000000025d24                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x000000000002498c                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+
+.rwdata         0x0000000000025d24     0x1b7c load address 0x00000000000278a0
+                0x0000000000025d24                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x0000000000025d24                . = ALIGN (0x4)
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  .data          0x0000000000024f14        0x0 ../DikkeKoek_bsp//obj/HAL/src/crt0.o
@@ -2381,6 +2513,8 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
  .data          0x0000000000025d24        0x0 ../DikkeKoek_bsp//obj/HAL/src/crt0.o
  .data          0x0000000000025d24        0x0 obj/default/algo_ucos.o
  .data          0x0000000000025d24        0x0 obj/default/vector.o
@@ -2541,6 +2675,9 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  .data          0x00000000000277dc        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exit.o)
                 0x000000000002f7dc                _gp = ABSOLUTE ((. + 0x8000))
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -2548,6 +2685,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
  .sdata._global_impure_ptr
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 0x00000000000269cc        0x4 c:/intelfpga_lite/16.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-impure.o)
@@ -2655,6 +2793,8 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
                 0x00000000000277dc        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-impure.o)
                 0x00000000000277dc                _global_impure_ptr
  .sdata._impure_ptr
@@ -2758,6 +2898,9 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 .bss            0x000000000002941c     0x544c
                 0x000000000002941c                __bss_start = ABSOLUTE (.)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -2766,6 +2909,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  .sbss.__malloc_max_total_mem
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 0x000000000002860c        0x4 c:/intelfpga_lite/16.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
@@ -2866,6 +3010,25 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
                 0x0000000000029430                __mlocale_changed
  .sbss.__nlocale_changed
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+                0x000000000002941c        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
+                0x000000000002941c                __malloc_max_total_mem
+ .sbss.__malloc_max_sbrked_mem
+                0x0000000000029420        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
+                0x0000000000029420                __malloc_max_sbrked_mem
+ .sbss.__malloc_top_pad
+                0x0000000000029424        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
+                0x0000000000029424                __malloc_top_pad
+ .sbss          0x0000000000029428        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-int_errno.o)
+                0x0000000000029428                errno
+ .sbss._PathLocale
+                0x000000000002942c        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-locale.o)
+                0x000000000002942c                _PathLocale
+ .sbss.__mlocale_changed
+                0x0000000000029430        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-locale.o)
+                0x0000000000029430                __mlocale_changed
+ .sbss.__nlocale_changed
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
                 0x0000000000029434        0x4 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-locale.o)
                 0x0000000000029434                __nlocale_changed
  .sbss          0x0000000000029438        0x4 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dev.o)
@@ -2911,6 +3074,9 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  .sbss          0x00000000000294b4        0x4 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_instruction_exception_entry.o)
                 0x00000000000294b4                alt_instruction_exception_handler
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -2920,6 +3086,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  .bss           0x00000000000286a8        0x0 ../DikkeKoek_bsp//obj/HAL/src/crt0.o
@@ -3278,6 +3445,183 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 <<<<<<< HEAD
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+ .bss           0x00000000000294b8        0x0 ../DikkeKoek_bsp//obj/HAL/src/crt0.o
+ .bss           0x00000000000294b8        0x0 obj/default/algo_ucos.o
+ .bss           0x00000000000294b8        0x0 obj/default/vector.o
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fgets.o)
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-findfp.o)
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fwalk.o)
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-impure.o)
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-malloc.o)
+ .bss           0x00000000000294b8        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_current_mallinfo
+                0x00000000000294b8       0x28 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mallocr.o)
+                0x00000000000294b8                __malloc_current_mallinfo
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-memchr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-memcpy.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-memset.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-printf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-putchar.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-puts.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-realloc.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-reallocr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-refill.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-sbrkr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-scanf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-stdio.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strlen.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtol.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfprintf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfscanf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-writer.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-wsetup.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(closer.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-ctype_.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-dtoa.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fclose.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fflush.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fread.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-freer.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fvwrite.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-int_errno.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-iswspace.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-locale.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-lseekr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-makebuf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mbrtowc.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mbtowc_r.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-memmove.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-mprec.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-putc.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-readr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-s_fpclassify.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-sccl.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-sf_nan.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-sprintf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strcmp.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtod.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtoll_r.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtoul.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strtoull_r.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfprintf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-ungetc.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-vfiprintf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-wbuf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-callocr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fputwc.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-fstatr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-gdtoa-gethex.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-gdtoa-hexnan.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-isattyr.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-strncmp.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-svfiprintf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-wcrtomb.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-wctomb_r.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_fixunsdfsi.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_udivdi3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_umoddi3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(lib2-divmod.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(eqsf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(gesf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(lesf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(adddf3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(divdf3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(eqdf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(gedf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(ledf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(muldf3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(subdf3.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(fixdfsi.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(floatsidf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(floatunsidf.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(truncdfsf2.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_clz.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mhw-mulx\libgcc.a(_clzsi2.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_close.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dev.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_errno.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_fstat.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_isatty.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_load.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_lseek.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_main.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_read.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_release_fd.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_sbrk.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_write.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_env_lock.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_malloc_lock.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_core.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_dbg.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_flag.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_mem.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_q.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_sem.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_task.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_time.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_sys_init.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_avalon_jtag_uart_init.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_alarm_start.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_do_ctors.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_do_dtors.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_icache_flush_all.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_iic.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_iic_isr_register.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_io_redirect.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_irq_entry.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_irq_handler.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_irq_vars.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_open.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_tick.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_cpu_a.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(os_cpu_c.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exception_entry.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_find_dev.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_find_file.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_get_fd.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_icache_flush.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-atexit.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-exit.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-memcmp.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-__atexit.o)
+ .bss           0x00000000000294e0        0x0 c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-__call_atexit.o)
+ .bss           0x00000000000294e0        0x0 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exit.o)
+ *(COMMON)
+ COMMON         0x00000000000294e0     0x2064 obj/default/algo_ucos.o
+                0x00000000000294e0                board
+                0x0000000000029544                taskStartGame_stk
+ COMMON         0x000000000002b544     0x3224 ../DikkeKoek_bsp/\libucosii_bsp.a(os_core.o)
+                0x000000000002b544                OSFlagTbl
+                0x000000000002b8b4                OSMemTbl
+                0x000000000002c4e4                OSTaskStatStk
+                0x000000000002cce4                OSQTbl
+                0x000000000002cec4                OSTaskIdleStk
+                0x000000000002d6c4                OSEventTbl
+                0x000000000002e204                OSTCBTbl
+                0x000000000002e714                OSTCBPrioTbl
+ COMMON         0x000000000002e768      0x100 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_irq_handler.o)
+                0x000000000002e768                alt_irq
+                0x000000000002e868                . = ALIGN (0x4)
+                0x000000000002e868                __bss_end = ABSOLUTE (.)
+
+.SDRAM          0x000000000002e868        0x0
+                [!provide]                        PROVIDE (_alt_partition_SDRAM_start, ABSOLUTE (.))
+ *(.SDRAM .SDRAM. SDRAM.*)
+                0x000000000002e868                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_SDRAM_end, ABSOLUTE (.))
+                0x000000000002e868                _end = ABSOLUTE (.)
+                0x000000000002e868                end = ABSOLUTE (.)
+                0x000000000002e868                __alt_stack_base = ABSOLUTE (.)
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
                 [!provide]                        PROVIDE (_alt_partition_SDRAM_load_addr, LOADADDR (.SDRAM))
 
@@ -3757,6 +4101,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .debug_info     0x0000000000000000    0x3f0a7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x7e ../DikkeKoek_bsp//obj/HAL/src/crt0.o
@@ -4206,6 +4551,8 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 .debug_info     0x0000000000000000    0x3f025
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x9f ../DikkeKoek_bsp//obj/HAL/src/crt0.o
@@ -4653,6 +5000,9 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  .debug_line    0x00000000000139ec      0x23a c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mhw-mulx\libc.a(lib_a-__call_atexit.o)
  .debug_line    0x0000000000013c26       0xce ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exit.o)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -4798,7 +5148,11 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .debug_str      0x0000000000000000     0x5abf
+=======
+.debug_str      0x0000000000000000     0x5b1d
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 .debug_str      0x0000000000000000     0x5b1d
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -4983,6 +5337,7 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
                                         0x1fc (size before relaxing)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  .debug_str     0x000000000000377b       0xf6 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_close.o)
                                         0x242 (size before relaxing)
  .debug_str     0x0000000000003871       0xc4 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_dev.o)
@@ -5092,6 +5447,8 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
  .debug_str     0x0000000000005a95       0x2a ../DikkeKoek_bsp/\libucosii_bsp.a(alt_exit.o)
                                         0x19a (size before relaxing)
 =======
+=======
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
  .debug_str     0x00000000000037b8      0x117 ../DikkeKoek_bsp/\libucosii_bsp.a(alt_close.o)
@@ -5318,7 +5675,11 @@ LOAD c:/users/jasper/desktop/vhdl/quartuslitefiles/nios2eds/bin/gnu/h-x86_64-min
                 [!provide]                        PROVIDE (__alt_stack_limit, __alt_stack_base)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 0x000000000002da58                PROVIDE (__alt_heap_start, end)
+=======
+                0x000000000002e868                PROVIDE (__alt_heap_start, end)
+>>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
                 0x000000000002e868                PROVIDE (__alt_heap_start, end)
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
