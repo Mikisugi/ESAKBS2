@@ -5,12 +5,12 @@ use ieee.numeric_std.ALL;
 entity segment is
   Port (
     avg_colour : in std_logic_vector(11 downto 0);
-    hex1 		: out std_logic_vector(6 downto 0);
-    hex2 		: out std_logic_vector(6 downto 0);
-    hex3 		: out std_logic_vector(6 downto 0);
-    hex4 		: out std_logic_vector(6 downto 0);
-    hex5 		: out std_logic_vector(6 downto 0);
-    hex6 		: out std_logic_vector(6 downto 0)
+    hex1 : out std_logic_vector(6 downto 0);
+    hex2 : out std_logic_vector(6 downto 0);
+    hex3 : out std_logic_vector(6 downto 0);
+    hex4 : out std_logic_vector(6 downto 0);
+    hex5 : out std_logic_vector(6 downto 0);
+    hex6 : out std_logic_vector(6 downto 0)
   );  
 end segment;
 

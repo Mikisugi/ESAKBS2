@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*#include <stdio.h>
 #include "includes.h"
 
@@ -59,6 +60,8 @@ int main(void)
 */
 
 
+=======
+>>>>>>> parent of cbefa07... bitch
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -73,6 +76,9 @@ OS_STK    taskStartGame_stk[TASK_STACKSIZE];
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cbefa07... bitch
 OS_STK    taskPlayer_stk[TASK_STACKSIZE];
 OS_STK    taskEnemy_stk[TASK_STACKSIZE];
 
@@ -101,6 +107,7 @@ unsigned char playerInput();
 void play();
 void createBoard();
 void createEmptyBoard();
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -110,10 +117,13 @@ void createEmptyBoard();
 //definition of Task Priorities
 #define TASKSTARTGAME_PRIORITY 1
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of cbefa07... bitch
 
 //the main board
 unsigned char board [10][10];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -141,11 +151,16 @@ typedef struct NodeMove
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+struct nodeMove
+{
+>>>>>>> parent of cbefa07... bitch
 	int score;
 	unsigned char row;
 	unsigned char field;
 	unsigned char dir;
 	unsigned char isCapture;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -185,6 +200,10 @@ void createEmptyBoard();
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+	struct Move * kingCaptureMoveList;
+};
+>>>>>>> parent of cbefa07... bitch
 
 void taskStartGame(void* pdata)
 {
@@ -347,10 +366,21 @@ void printBoard(unsigned char * tempBoard[], unsigned char changedRow, unsigned 
 	printf("\n\n\n");
 }
 
+<<<<<<< HEAD
 Vector * kingCapture(Location currentLocation, unsigned char tempBoard [10][10], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
 	#if DEBUG
 		printf("begin king capture\n");
 	#endif
+=======
+Vector * kingCapture(Location currentLocation, unsigned char * tempBoard [], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
+	#if DEBUG
+		printf("begin king capture\n");
+	#endif
+
+	unsigned char b[10][10];
+	memcpy(b,tempBoard,100);
+
+>>>>>>> parent of cbefa07... bitch
 	Vector *captureVector = vectorInit();
 	Location possibleEnemy, possibleLanding;
 	for(signed char rowDirection = -1; rowDirection < 2; rowDirection = rowDirection + 2){
@@ -366,7 +396,11 @@ Vector * kingCapture(Location currentLocation, unsigned char tempBoard [10][10],
 				#if DEBUG
 					printf("possible enemy row: %d, possible enemy field: %d\n", possibleEnemy.row, possibleEnemy.field);
 				#endif
+<<<<<<< HEAD
 				if(tempBoard[possibleEnemy.row][possibleEnemy.field] == enemy || tempBoard[possibleEnemy.row][possibleEnemy.field] == enemyKing){
+=======
+				if(b[possibleEnemy.row][possibleEnemy.field] == enemy || b[possibleEnemy.row][possibleEnemy.field] == enemyKing){
+>>>>>>> parent of cbefa07... bitch
 					#if DEBUG
 						printf("beeb boop enemy detected\n");
 					#endif
@@ -377,7 +411,11 @@ Vector * kingCapture(Location currentLocation, unsigned char tempBoard [10][10],
 					while(possibleLanding.row + rowDirection > -1 && possibleLanding.row + rowDirection < 10 && possibleLanding.field + fieldDirection > -1 && possibleLanding.field + fieldDirection < 10){
 						possibleLanding.row += rowDirection;
 						possibleLanding.field += fieldDirection;
+<<<<<<< HEAD
 						if(tempBoard[possibleLanding.row][possibleLanding.field] == BLACK){
+=======
+						if(b[possibleLanding.row][possibleLanding.field] == BLACK){
+>>>>>>> parent of cbefa07... bitch
 							#if DEBUG
 								printf("LANDINGMAYDAYMAYDAY %d \n", i);
 							#endif
@@ -390,12 +428,21 @@ Vector * kingCapture(Location currentLocation, unsigned char tempBoard [10][10],
 							capture->oldLocation = currentLocation;
 							capture->captureLocation = possibleEnemy;
 							capture->newLocation = possibleLanding;
+<<<<<<< HEAD
 							capture->piece = tempBoard[possibleEnemy.row][possibleEnemy.field];
 							tempBoard[currentLocation.row][currentLocation.field] = BLACK;
 							tempBoard[possibleLanding.row][possibleLanding.field] = friendlyKing;
 							tempBoard[possibleEnemy.row][possibleEnemy.field] = BLACK;
 
 							capture->nextCaptures = kingCapture(possibleLanding, tempBoard,friendly, friendlyKing, enemy, enemyKing);
+=======
+							capture->piece = b[possibleEnemy.row][possibleEnemy.field];
+							b[currentLocation.row][currentLocation.field] = BLACK;
+							b[possibleLanding.row][possibleLanding.field] = friendlyKing;
+							b[possibleEnemy.row][possibleEnemy.field] = BLACK;
+
+							capture->nextCaptures = kingCapture(possibleLanding, (unsigned char **)b, friendly, friendlyKing, enemy, enemyKing);
+>>>>>>> parent of cbefa07... bitch
 							#if DEBUG
 								printf("add stuff to vector\n");
 							#endif
@@ -404,9 +451,15 @@ Vector * kingCapture(Location currentLocation, unsigned char tempBoard [10][10],
 							#if DEBUG
 								printf("restore board\n");
 							#endif
+<<<<<<< HEAD
 							tempBoard[currentLocation.row][currentLocation.field] = friendlyKing;
 							tempBoard[possibleLanding.row][possibleLanding.field] = BLACK;
 							tempBoard[possibleEnemy.row][possibleEnemy.field] = capture->piece;
+=======
+							b[currentLocation.row][currentLocation.field] = friendlyKing;
+							b[possibleLanding.row][possibleLanding.field] = BLACK;
+							b[possibleEnemy.row][possibleEnemy.field] = capture->piece;
+>>>>>>> parent of cbefa07... bitch
 						}
 					}
 					break;
@@ -431,6 +484,22 @@ void deleteCaptureVector(VectorCapture *capture){
 	free(capture);
 }
 
+<<<<<<< HEAD
+=======
+void deleteMoveVector(Vector * vector){
+	for(unsigned char i = 0; i < vector->count; i++){
+		struct Move * moveList = (struct Move *) vector->data[i];
+		struct Move * nextMoveList;
+		while(moveList != NULL){
+			nextMoveList = moveList->nextMove;
+			free(moveList);
+			moveList = nextMoveList;
+		}
+	}
+	free(vector);
+}
+
+>>>>>>> parent of cbefa07... bitch
 unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 	unsigned char oldCount = 0;
 	count++;
@@ -445,6 +514,7 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 			#if DEBUG
 				printf("count === %d\n", count);
 			#endif
+<<<<<<< HEAD
 			VectorCapture *capture = ((VectorCapture *)vector->data[i]);
 			if(capture->nextCaptures != NULL){
 				#if DEBUG
@@ -474,6 +544,39 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 						// delete recursive
 						deleteCaptureVector(vector->data[i]);
 						vector->data[i] = NULL;
+=======
+			if(vector->data[i] != NULL){
+				VectorCapture *capture = ((VectorCapture *)vector->data[i]);
+				if(capture->nextCaptures != NULL){
+					#if DEBUG
+						printf("Next captures != NULL\n");
+						printf("Vector count != 0\n");
+					#endif
+					unsigned char newCount = stripCaptureVector(capture->nextCaptures, count);
+					#if DEBUG
+						printf("Oldcount: %i\n Newcount: %i\n I: %i\n", oldCount ,newCount, i);
+					#endif
+					if(oldCount < newCount){
+						for(signed char delI = i-1; delI >= 0; delI--){
+							#if DEBUG
+								printf("Deleting prevous items\n");
+							#endif
+							if(vector->data[delI] != NULL){
+								deleteCaptureVector(vector->data[delI]);
+								vector->data[delI] = NULL;
+							}
+						}
+						oldCount = newCount;
+					}else if(oldCount > newCount){
+						if(vector->data[i] != NULL){
+							#if DEBUG
+								printf("deleting current item\n");
+							#endif
+							// delete recursive
+							deleteCaptureVector(vector->data[i]);
+							vector->data[i] = NULL;
+						}
+>>>>>>> parent of cbefa07... bitch
 					}
 				}
 			}
@@ -483,6 +586,7 @@ unsigned char stripCaptureVector(Vector *vector, unsigned char count){
 	return oldCount;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -509,12 +613,16 @@ void addToMoveList(VectorCapture * capture, struct Move * origin){
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+void initMoveList(VectorCapture * capture, struct Move * newMove){
+>>>>>>> parent of cbefa07... bitch
 	newMove->oldLocation = capture->oldLocation;
 	newMove->newLocation = capture->newLocation;
 	newMove->nextMove = NULL;
 
 	newMove->capture.piece = capture->piece;
 	newMove->capture.captureLocation = capture->captureLocation;
+<<<<<<< HEAD
 
 	origin->nextMove = newMove;
 }
@@ -525,10 +633,23 @@ void copyBoard(unsigned char oldBoard[10][10], unsigned char newBoard[10][10]){
 			newBoard[rowI][fieldI] = oldBoard[rowI+3][fieldI];
 		}
 	}
+=======
+}
+
+void addToMoveList(struct Move * newMove, struct Move * origin){
+	printf("add move list loop\n");
+	while(origin->nextMove){
+		origin = origin->nextMove;
+	}
+	printf("found it\n");
+
+	origin->nextMove = newMove;
+>>>>>>> parent of cbefa07... bitch
 }
 
 void copyMoveList(struct Move * originalOrigin, struct Move * newOrigin, unsigned char depth){
 	while(depth > 0){
+<<<<<<< HEAD
 		depth--;
 		memcpy(newOrigin, originalOrigin, sizeof(struct Move));
 
@@ -538,11 +659,37 @@ void copyMoveList(struct Move * originalOrigin, struct Move * newOrigin, unsigne
 		newOrigin->nextMove = malloc(sizeof(struct Move));
 		newOrigin = newOrigin->nextMove;
 		originalOrigin = originalOrigin->nextMove;
+=======
+		depth = depth - 1;
+		newOrigin->oldLocation = originalOrigin->oldLocation;
+		newOrigin->newLocation = originalOrigin->newLocation;
+		newOrigin->capture = originalOrigin->capture;
+
+		if(originalOrigin->nextMove != NULL){
+			newOrigin->nextMove = malloc(sizeof(struct Move));
+			newOrigin = newOrigin->nextMove;
+			originalOrigin = originalOrigin->nextMove;
+		}
+>>>>>>> parent of cbefa07... bitch
 	}
 
 }
 
+<<<<<<< HEAD
 void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector * moveVector, unsigned char tempBoard[10][10], unsigned char depth){
+=======
+unsigned char countMoveList(struct Move * moveList)
+{
+	unsigned char counter = 0;
+	while(moveList != NULL){
+		counter++;
+		moveList = moveList->nextMove;
+	}
+	return counter;
+}
+
+void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector * moveVector, unsigned char depth){
+>>>>>>> parent of cbefa07... bitch
 	depth++;
 	for(unsigned char i = 0; i < captureVector->count; i++){
 		if(captureVector->data[i] != NULL){
@@ -553,6 +700,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cbefa07... bitch
 			struct Move * newMove = malloc(sizeof(struct Move));
 			#if DEBUG
 				printf("add to move list\n");
@@ -566,6 +716,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 			}else{
 				addToMoveList(newMove, moveList);
 			}
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -585,12 +736,15 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of cbefa07... bitch
 
 			if(capture->nextCaptures == NULL || capture->nextCaptures->count == 0){
 				#if DEBUG
 					printf("add\n");
 					printf("starting copy\n");
 				#endif
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -619,6 +773,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+				vectorAdd(moveVector, (void *)moveList);
+>>>>>>> parent of cbefa07... bitch
 				#if DEBUG
 					printf("moves added\n");
 				#endif
@@ -631,6 +788,9 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cbefa07... bitch
 				if(countMoveList(moveList) - 2 == depth){
 					#if DEBUG
 						printf("DIT\n");
@@ -639,6 +799,7 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 					#if DEBUG
 						printf("its the evil wizard again\n");
 					#endif
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
@@ -655,6 +816,8 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 =======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
+>>>>>>> parent of cbefa07... bitch
 					copyMoveList(moveList, newMoveList, depth);
 				}
 				else
@@ -664,14 +827,21 @@ void generateCaptureList(Vector* captureVector, struct Move * moveList, Vector *
 					#endif
 					newMoveList = moveList;
 				}
+<<<<<<< HEAD
 				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, tempBoard, depth);
+=======
+				generateCaptureList(capture->nextCaptures, newMoveList, moveVector, depth);
+>>>>>>> parent of cbefa07... bitch
 			}
 		}
 	}
 }
 
 unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigned char field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing){
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of cbefa07... bitch
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 
@@ -716,6 +886,10 @@ unsigned char manCapture(unsigned char * tempBoard[], unsigned char row, unsigne
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+/*
+>>>>>>> parent of cbefa07... bitch
 unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned field, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 	signed char possibleNewField;
 	signed char possibleNewRow = row + direction;
@@ -736,6 +910,10 @@ unsigned char manMove(unsigned char * tempBoard[], unsigned char row, unsigned f
 	}
 	return 0;
 }
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> parent of cbefa07... bitch
 
 int checkIfCanMove(unsigned char * tempBoard[], int row, int field, int dir, unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed direction){
 
@@ -915,7 +1093,10 @@ void createKing(unsigned char * tempBoard[])
 	memcpy(tempBoard,b,100);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of cbefa07... bitch
 int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction, int depth)
 {
 	int bestScore;
@@ -927,10 +1108,14 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 
 	if(depth > 0)
 	{
+<<<<<<< HEAD
 		node_t * head = NULL;
 		head = malloc(sizeof(node_t));
 
 		node_t * current = head;
+=======
+		Vector * scoreList = vectorInit();
+>>>>>>> parent of cbefa07... bitch
 
 		for(unsigned char row = 0; row < 10; row++)
 		{
@@ -981,6 +1166,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							//TODO should i do this? this is a dirty fix for when after a capture, the same stone is used twice.
 							score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, 0);
 						}
+<<<<<<< HEAD
 						#if DEBUG
 							printf("R%i: manCapture: adding score %i to linked list\n",depth,score);
 						#endif
@@ -995,11 +1181,23 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						}
 						current->next = malloc(sizeof(node_t));
 						current->score = score;
+=======
+
+						#if DEBUG
+							printf("R%i: manCapture: adding score %i to linked list\n",depth,score);
+						#endif
+						vectorAdd(scoreList,(void *)score);
+						//push((node_t **)head,score);
+>>>>>>> parent of cbefa07... bitch
 					}
 
 					#if DEBUG
 						printf("R%i: checking if [%i][%i] can move\n",depth,row,field);
 					#endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of cbefa07... bitch
 					for(int d = 1;d<=4;d++)
 					{
 						if(checkIfCanMove((unsigned char **)b, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction) == 1)
@@ -1011,6 +1209,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							memcpy(newBoard,b,100);
 							move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
 							int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
+<<<<<<< HEAD
 							#if DEBUG
 								printf("R%i: manMove: adding score %i to linked list\n",depth,score);
 							#endif
@@ -1018,12 +1217,22 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
 							current->score = score;
+=======
+
+							#if DEBUG
+								printf("R%i: manMove: adding score %i to linked list\n",depth,score);
+							#endif
+							vectorAdd(scoreList,(void *)score);
+>>>>>>> parent of cbefa07... bitch
 						}
 					}
 				}
 				else if(b[row][field] == friendlyKing)
 				{
+<<<<<<< HEAD
 					/*
+=======
+>>>>>>> parent of cbefa07... bitch
 					int nextDirection;
 					if(direction == FRIENDLYDIRECTION) nextDirection = ENEMYDIRECTION;
 					if(direction == ENEMYDIRECTION) nextDirection = FRIENDLYDIRECTION;
@@ -1042,8 +1251,16 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						stripCaptureVector(captures, 0);
 
 						struct Move * moveList = malloc(sizeof(struct Move));
+<<<<<<< HEAD
 						Vector * moveVector = vectorInit();
 						generateCaptureList(captures, moveList, moveVector, (unsigned char **)tempBoard, -1);
+=======
+						moveList->nextMove = NULL;
+						Vector * moveVector = malloc(sizeof(Vector));
+						moveVector = vectorInit();
+						generateCaptureList(captures, moveList, moveVector, -1);
+						deleteMoveVector(moveVector);
+>>>>>>> parent of cbefa07... bitch
 
 						//for every S in V
 						//TODO segfault if we do this multiple times
@@ -1051,7 +1268,11 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						for(int i = 0; i < moveVector->count; i++)
 						{
 							unsigned char newBoard[10][10];
+<<<<<<< HEAD
 							copyBoard(((VectorMove *)vectorGet(moveVector,i))->board,newBoard);
+=======
+							//copyBoard(((VectorMove *)vectorGet(moveVector,i))->board,newBoard);
+>>>>>>> parent of cbefa07... bitch
 
 							int enemiesLeft = 0;
 							for(unsigned char r = 0; r < 10; r++)
@@ -1087,10 +1308,15 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							#if DEBUG
 								printf("R%i: kingCapture: adding score %i to list\n",depth,score);
 							#endif
+<<<<<<< HEAD
 							current = head;
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
 							current->score = score;
+=======
+							vectorAdd(scoreList,(void *)score);
+
+>>>>>>> parent of cbefa07... bitch
 							#if DEBUG
 								printf("R%i: done %i\n",depth,i);
 							#endif
@@ -1111,6 +1337,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 							#if DEBUG
 								printf("R%i: kingMove: adding score %i to linked list\n",depth,score);
 							#endif
+<<<<<<< HEAD
 							current = head;
 							while (current->next != NULL) current = current->next;
 							current->next = malloc(sizeof(node_t));
@@ -1118,6 +1345,12 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 						}
 					}
 					*/
+=======
+							vectorAdd(scoreList,(void *)score);
+							//push((node_t **)head,score);
+						}
+					}
+>>>>>>> parent of cbefa07... bitch
 				}
 			}
 		}
@@ -1125,6 +1358,7 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 		if(direction == FRIENDLYDIRECTION) bestScore = -1000;
 		else bestScore = 1000;
 
+<<<<<<< HEAD
 		//remove last item in the list
 		//if there is only one item in the list, remove it
 		if (head->next == NULL) free(head);
@@ -1161,10 +1395,32 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 					printf("score %i is smaller than best score %i, overwriting\n",current->score,bestScore);
 				#endif
 				bestScore = current->score;
+=======
+		for(int count = 0; count < vectorCount(scoreList);count++)
+		{
+			int thisScore = (int)vectorGet(scoreList,count);
+			#if DEBUG
+				printf("thisScore: %i\n",thisScore);
+			#endif
+			if(direction == FRIENDLYDIRECTION && thisScore > bestScore)
+			{
+				#if DEBUG
+					printf("score %i is bigger than best score %i, overwriting\n",thisScore,bestScore);
+				#endif
+				bestScore = thisScore;
+			}
+			else if(direction == ENEMYDIRECTION && thisScore < bestScore)
+			{
+				#if DEBUG
+					printf("score %i is smaller than best score %i, overwriting\n",thisScore,bestScore);
+				#endif
+				bestScore = thisScore;
+>>>>>>> parent of cbefa07... bitch
 			}
 			#if DEBUG
 				else
 				{
+<<<<<<< HEAD
 					printf("score %i is not better than best score %i, not overwriting\n",current->score,bestScore);
 				}
 			#endif
@@ -1189,6 +1445,14 @@ int minimaxAlgorithmRecursive(unsigned char * tempBoard[], unsigned char friendl
 			printf("R%i: done freeing\n",depth);
 		#endif
 		*/
+=======
+					printf("score %i is not better than best score %i, not overwriting\n",thisScore,bestScore);
+				}
+			#endif
+		}
+
+		vectorFree(scoreList);
+>>>>>>> parent of cbefa07... bitch
 	}
 	else
 	{
@@ -1219,6 +1483,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	unsigned char b[10][10];
 	memcpy(b,tempBoard,100);
 
+<<<<<<< HEAD
 	//if(direction == FRIENDLYDIRECTION) best->score = -1000;
 	//else best->score = 1000;
 	//printf("S: made best score %i\n",best->score);
@@ -1226,6 +1491,9 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	nodemove_t * head = NULL;
 	head = malloc(sizeof(nodemove_t));
 	nodemove_t * current = head;
+=======
+	Vector * scoreList = vectorInit();
+>>>>>>> parent of cbefa07... bitch
 
 	int thereAreFriendliesLeft = 0;
 
@@ -1280,6 +1548,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, 0);
 					}
 					#if DEBUG
+<<<<<<< HEAD
 						printf("S : adding score %i to list\n",score);
 					#endif
 					current = head;
@@ -1290,6 +1559,18 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 					current->field = field;
 					current->dir = 0;
 					current->isCapture = 1;
+=======
+						printf("S : manCapture: adding score %i to list\n",score);
+					#endif
+
+					struct nodeMove * currentMove;
+					currentMove->score = score;
+					currentMove->row = row;
+					currentMove->field = field;
+					currentMove->dir = 0;
+					currentMove->isCapture = 1;
+					vectorAdd(scoreList,(void *)currentMove);
+>>>>>>> parent of cbefa07... bitch
 				}
 
 				for(int d = 1;d<=4;d++)
@@ -1303,6 +1584,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						memcpy(newBoard,b,100);
 						move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
 						int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
+<<<<<<< HEAD
 						#if DEBUG
 							printf("S : adding score %i to linked list\n",score);
 						#endif
@@ -1314,12 +1596,38 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						current->field = field;
 						current->dir = d;
 						current->isCapture = 0;
+=======
+
+						#if DEBUG
+							printf("S : manMove: adding score %i to linked list HI\n",score);
+						#endif
+
+						struct nodeMove * currentMove = malloc(sizeof(struct nodeMove));
+						currentMove->score = score;
+						currentMove->row = row;
+						currentMove->field = field;
+						currentMove->dir = d;
+						currentMove->isCapture = 0;
+
+						#if DEBUG
+							printf("S : manMove: calling vectorAdd\n");
+						#endif
+
+						vectorAdd(scoreList,(void *)currentMove);
+
+						#if DEBUG
+							printf("S : manMove: added score to list\n");
+						#endif
+>>>>>>> parent of cbefa07... bitch
 					}
 				}
 			}
 			else if(b[row][field] == friendlyKing)
 			{
+<<<<<<< HEAD
 				/*
+=======
+>>>>>>> parent of cbefa07... bitch
 				thereAreFriendliesLeft = 1;
 				int nextDirection;
 				if(direction == FRIENDLYDIRECTION) nextDirection = ENEMYDIRECTION;
@@ -1338,21 +1646,45 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 
 					stripCaptureVector(captures, 0);
 
+<<<<<<< HEAD
 					struct Move * moveList = malloc(sizeof(struct Move));
 					Vector * moveVector = vectorInit();
 					generateCaptureList(captures, moveList, moveVector, (unsigned char **)tempBoard, -1);
 
 					printf("moveVector\ncount: %i\n",moveVector->count);
+=======
+					Vector * moveVector = vectorInit();
+					generateCaptureList(captures, NULL, moveVector, -1);
+
+					#if DEBUG
+						printf("moveVector->count: %i\n",moveVector->count);
+					#endif
+>>>>>>> parent of cbefa07... bitch
 
 					//for every S in V
 					for(int i = 0; i < moveVector->count; i++)
 					{
+<<<<<<< HEAD
+=======
+						struct Move * moveList = (struct Move *)vectorGet(moveVector,i);
+>>>>>>> parent of cbefa07... bitch
 						#if DEBUG
 							printf("yes\n");
 						#endif
 
 						unsigned char newBoard[10][10];
+<<<<<<< HEAD
 						copyBoard(((VectorMove *)vectorGet(moveVector,i))->board,newBoard);
+=======
+
+						memcpy(newBoard, board, 100);
+						while(moveList->nextMove != NULL){
+							newBoard[moveList->newLocation.row][moveList->newLocation.field] = board[moveList->oldLocation.row][moveList->oldLocation.field];
+							newBoard[moveList->oldLocation.row][moveList->oldLocation.field] = BLACK;
+							newBoard[moveList->capture.captureLocation.row][moveList->capture.captureLocation.field] = BLACK;
+							moveList = moveList->nextMove;
+						}
+>>>>>>> parent of cbefa07... bitch
 
 						int enemiesLeft = 0;
 						for(unsigned char r = 0; r < 10; r++)
@@ -1386,6 +1718,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 							score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, 0);
 						}
 						#if DEBUG
+<<<<<<< HEAD
 							printf("S : adding score %i to list\n",score);
 						#endif
 						current = head;
@@ -1397,6 +1730,19 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						current->dir = 0;
 						current->isCapture = 1;
 						current->kingCaptureVectorMove = (VectorMove *)vectorGet(moveVector,i);
+=======
+							printf("S : kingCapture: adding score %i to list\n",score);
+						#endif
+
+						struct nodeMove * currentMove;
+						currentMove->score = score;
+						currentMove->row = row;
+						currentMove->field = field;
+						currentMove->dir = 0;
+						currentMove->isCapture = 1;
+						currentMove->kingCaptureMoveList = (struct Move *)vectorGet(moveVector,i);
+						vectorAdd(scoreList,(void *)currentMove);
+>>>>>>> parent of cbefa07... bitch
 					}
 				}
 
@@ -1412,6 +1758,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 						move((unsigned char **)newBoard, row, field, d, friendly, friendlyKing, enemy, enemyKing, direction);
 						int score = minimaxAlgorithmRecursive((unsigned char **)newBoard, enemy, enemyKing, friendly, friendlyKing, nextDirection, depth-1);
 						#if DEBUG
+<<<<<<< HEAD
 							printf("S : adding score %i to linked list\n",score);
 						#endif
 						current = head;
@@ -1425,6 +1772,20 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 					}
 				}
 				*/
+=======
+							printf("S : kingMove: adding score %i to linked list\n",score);
+						#endif
+
+						struct nodeMove * currentMove;
+						currentMove->score = score;
+						currentMove->row = row;
+						currentMove->field = field;
+						currentMove->dir = d;
+						currentMove->isCapture = 0;
+						vectorAdd(scoreList,(void *)currentMove);
+					}
+				}
+>>>>>>> parent of cbefa07... bitch
 			}
 		}
 	}
@@ -1437,6 +1798,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		return 0;
 	}
 
+<<<<<<< HEAD
 	#if DEBUG
 		printf("S : final list:\n");
 		current = head;
@@ -1517,6 +1879,19 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 	{
 		if(current->isCapture == 1) thereAreCaptures = 1;
 		current = current->next;
+=======
+	struct nodeMove bestMove;
+
+	if(direction == FRIENDLYDIRECTION) bestMove.score = -1000;
+	else bestMove.score = 1000;
+
+	//if there are captures in the list, remove all non-captures
+	int thereAreCaptures = 0;
+
+	for(int count = 0; count < vectorCount(scoreList); count++)
+	{
+		if(((struct nodeMove *)vectorGet(scoreList,count))->isCapture == 1) thereAreCaptures = 1;
+>>>>>>> parent of cbefa07... bitch
 	}
 
 	//stuff to do if there are in fact captures in the list
@@ -1526,6 +1901,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 			printf("S : it seems like there are captures in this list\n");
 		#endif
 
+<<<<<<< HEAD
 		//create captures linked list
 		nodemove_t * capturesHead = malloc(sizeof(nodemove_t));
 		nodemove_t * capturesCurrent = malloc(sizeof(nodemove_t));
@@ -1671,10 +2047,81 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		printf("S : done freeing\n");
 	#endif
 	*/
+=======
+		Vector * cScoreList = vectorInit();
+
+		for(int count = 0; count < vectorCount(scoreList); count++)
+		{
+			struct nodeMove * cNodeMove = ((struct nodeMove *)vectorGet(scoreList,count));
+
+			if(cNodeMove->isCapture == 1)
+			{
+				vectorAdd(cScoreList,(void *)cNodeMove);
+			}
+		}
+
+		//capture vector becomes the normal vector
+		scoreList = cScoreList;
+
+		vectorFree(cScoreList);
+	}
+
+	for(int count = 0; count < vectorCount(scoreList); count++)
+	{
+		struct nodeMove * currentnm = ((struct nodeMove *)vectorGet(scoreList,count));
+
+		if(direction == FRIENDLYDIRECTION && currentnm->score > bestMove.score && !(currentnm->row == 0 && currentnm->field == 0))
+		{
+			#if DEBUG
+				printf("S : score %i is bigger than best score %i, overwriting\n",currentnm->score,bestMove.score);
+			#endif
+			bestMove = * currentnm;
+		}
+		else if(direction == ENEMYDIRECTION && currentnm->score < bestMove.score && !(currentnm->row == 0 && currentnm->field == 0))
+		{
+			#if DEBUG
+				printf("S : score %i is smaller than best score %i, overwriting\n",currentnm->score,bestMove.score);
+			#endif
+			bestMove = * currentnm;
+		}
+		#if DEBUG
+			else printf("S : score %i is not better than best score %i, not overwriting\n",currentnm->score,bestMove.score);
+		#endif
+	}
+
+	vectorFree(scoreList);
+
+	#if DEBUG
+		printf("S : bestMove\nscore: %i\nrow: %i\nfield: %i\ndir: %i\nisCapture: %i\n\n",bestMove.score,bestMove.row,bestMove.field,bestMove.dir,bestMove.isCapture);
+	#endif
+
+	if(bestMove.isCapture == 1)
+	{
+		if(board[bestMove.row][bestMove.field] == friendly)
+			manCapture((unsigned char **)board, bestMove.row, bestMove.field, friendly, friendlyKing, enemy, enemyKing);
+		if(board[bestMove.row][bestMove.field] == friendlyKing)
+		{
+			//copyBoard(bestMove->kingCaptureVectorMove->board,board);
+			//TODO print every move in VectorMove
+			//Vector * captured = kingCapture((unsigned char **)board, bestMove->row, bestMove->field, friendly, friendlyKing, enemy, enemyKing);
+		}
+	}
+	else
+	{
+		move((unsigned char **)board, bestMove.row, bestMove.field, bestMove.dir, friendly, friendlyKing, enemy, enemyKing, direction);
+	}
+
+	//TODO: make this look prettier?
+	printBoard((unsigned char **)board, bestMove.row, bestMove.field,100,100);
+>>>>>>> parent of cbefa07... bitch
 
 	return 1;
 }
 
+<<<<<<< HEAD
+=======
+/*
+>>>>>>> parent of cbefa07... bitch
 //Oude algoritme. Plan B als minimax aan het eind helemaal ontploft
 unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsigned char enemy, unsigned char enemyKing, signed char direction){
 	unsigned char captured = 0;
@@ -1719,6 +2166,10 @@ unsigned char algorithm(unsigned char friendly, unsigned char friendlyKing, unsi
 	}
 	return 0;
 }
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> parent of cbefa07... bitch
 
 unsigned char playerInput()
 {

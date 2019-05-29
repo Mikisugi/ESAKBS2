@@ -23,7 +23,11 @@ void vectorAdd(Vector * v, void * e)
 	if (v->size == 0) {
 		v->size = 10;
 		v->data = malloc(sizeof(void*) * v->size);
+<<<<<<< HEAD
 		memset(v->data, '\0', sizeof(void) * v->size);
+=======
+		memset(v->data, NULL, sizeof(void) * v->size);
+>>>>>>> parent of cbefa07... bitch
 	}
 
 	// condition to increase v->data:

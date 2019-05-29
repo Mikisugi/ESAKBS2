@@ -37,11 +37,14 @@ typedef struct Move{
 	struct Move * nextMove;
 } _move;
 
+<<<<<<< HEAD
 typedef struct {
 	struct Move * move;
 	unsigned char board[10][10];
 } VectorMove;
 
+=======
+>>>>>>> parent of cbefa07... bitch
 Vector *vectorInit();
 int vectorCount(Vector * v);
 void vectorAdd(Vector * v, void * e);

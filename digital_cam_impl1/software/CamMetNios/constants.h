@@ -1,0 +1,14 @@
+#define UNICODE_ENABLED 1
+#define COLORS_ENABLED 1
+#define DEBUG 0
+#define PLAYER_INPUT 0
+
+#define EMPTY 0
+#define BLACK 1
+#define FRIENDLY 2
+#define FRIENDLYKING 3
+#define ENEMY 4
+#define ENEMYKING 5
+
+#define FRIENDLYDIRECTION -1
+#define ENEMYDIRECTION 1

@@ -1,16 +1,15 @@
 library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use ieee.std_logic_1164.ALL;
+use ieee.numeric_std.ALL;
 
 entity Colour_Recognition_register is
   Port (
-    activated			: in std_logic;
-    clk_i 				: in std_logic;
-	 dpixel 				: in std_logic_vector (11 downto 0);
+    activated	: in std_logic;
+    clk_i 		: in std_logic;
+	 dpixel 		: in std_logic_vector (11 downto 0);
     address_second 	: in std_logic_vector (16 downto 0);
-	 colour				: out std_logic_vector (11 downto 0);
-	 pixel				: out std_logic_vector (11 downto 0);
-	 ledw : out std_logic;
+	 colour		: out std_logic_vector (11 downto 0);
+	 pixel		: out std_logic_vector (11 downto 0);
 	 
 	 -- here we placed all the variables that will be used by the C code
 	 -- empty: 				001
@@ -18,56 +17,56 @@ entity Colour_Recognition_register is
 	 -- friendly king:	011
 	 -- enemy stone:		100
 	 -- enemy king:		101
-	 vak_1 				: out std_logic_vector(2 downto 0);
-	 vak_2 				: out std_logic_vector(2 downto 0);
-	 vak_3 				: out std_logic_vector(2 downto 0);
-	 vak_4 				: out std_logic_vector(2 downto 0);
-	 vak_5 				: out std_logic_vector(2 downto 0);
-	 vak_6 				: out std_logic_vector(2 downto 0);
-	 vak_7 				: out std_logic_vector(2 downto 0);
-	 vak_8 				: out std_logic_vector(2 downto 0);
-	 vak_9 				: out std_logic_vector(2 downto 0);
-	 vak_10 				: out std_logic_vector(2 downto 0);
-	 vak_11 				: out std_logic_vector(2 downto 0);
-	 vak_12 				: out std_logic_vector(2 downto 0);
-	 vak_13 				: out std_logic_vector(2 downto 0);
-	 vak_14 				: out std_logic_vector(2 downto 0);
-	 vak_15				: out std_logic_vector(2 downto 0);
-	 vak_16 				: out std_logic_vector(2 downto 0);
-	 vak_17 				: out std_logic_vector(2 downto 0);
-	 vak_18 				: out std_logic_vector(2 downto 0);
-	 vak_19 				: out std_logic_vector(2 downto 0);
-	 vak_20 				: out std_logic_vector(2 downto 0);
-	 vak_21 				: out std_logic_vector(2 downto 0);
-	 vak_22 				: out std_logic_vector(2 downto 0);
-	 vak_23 				: out std_logic_vector(2 downto 0);
-	 vak_24 				: out std_logic_vector(2 downto 0);
-	 vak_25 				: out std_logic_vector(2 downto 0);
-	 vak_26 				: out std_logic_vector(2 downto 0);
-	 vak_27 				: out std_logic_vector(2 downto 0);
-	 vak_28 				: out std_logic_vector(2 downto 0);
-	 vak_29 				: out std_logic_vector(2 downto 0);
-	 vak_30 				: out std_logic_vector(2 downto 0);
-	 vak_31 				: out std_logic_vector(2 downto 0);
-	 vak_32 				: out std_logic_vector(2 downto 0);
-	 vak_33 				: out std_logic_vector(2 downto 0);
-	 vak_34 				: out std_logic_vector(2 downto 0);
-	 vak_35 				: out std_logic_vector(2 downto 0);
-	 vak_36 				: out std_logic_vector(2 downto 0);
-	 vak_37 				: out std_logic_vector(2 downto 0);
-	 vak_38 				: out std_logic_vector(2 downto 0);
-	 vak_39 				: out std_logic_vector(2 downto 0);
-	 vak_40 				: out std_logic_vector(2 downto 0);
-	 vak_41 				: out std_logic_vector(2 downto 0);
-	 vak_42 				: out std_logic_vector(2 downto 0);
-	 vak_43 				: out std_logic_vector(2 downto 0);
-	 vak_44 				: out std_logic_vector(2 downto 0);
-	 vak_45 				: out std_logic_vector(2 downto 0);
-	 vak_46 				: out std_logic_vector(2 downto 0);
-	 vak_47 				: out std_logic_vector(2 downto 0);
-	 vak_48 				: out std_logic_vector(2 downto 0);
-	 vak_49 				: out std_logic_vector(2 downto 0);
-	 vak_50 				: out std_logic_vector(2 downto 0)
+	 vak_1 		: out std_logic_vector(2 downto 0);
+	 vak_2 		: out std_logic_vector(2 downto 0);
+	 vak_3 		: out std_logic_vector(2 downto 0);
+	 vak_4 		: out std_logic_vector(2 downto 0);
+	 vak_5 		: out std_logic_vector(2 downto 0);
+	 vak_6 		: out std_logic_vector(2 downto 0);
+	 vak_7 		: out std_logic_vector(2 downto 0);
+	 vak_8 		: out std_logic_vector(2 downto 0);
+	 vak_9 		: out std_logic_vector(2 downto 0);
+	 vak_10 		: out std_logic_vector(2 downto 0);
+	 vak_11 		: out std_logic_vector(2 downto 0);
+	 vak_12 		: out std_logic_vector(2 downto 0);
+	 vak_13 		: out std_logic_vector(2 downto 0);
+	 vak_14 		: out std_logic_vector(2 downto 0);
+	 vak_15 		: out std_logic_vector(2 downto 0);
+	 vak_16 		: out std_logic_vector(2 downto 0);
+	 vak_17 		: out std_logic_vector(2 downto 0);
+	 vak_18 		: out std_logic_vector(2 downto 0);
+	 vak_19 		: out std_logic_vector(2 downto 0);
+	 vak_20 		: out std_logic_vector(2 downto 0);
+	 vak_21 		: out std_logic_vector(2 downto 0);
+	 vak_22 		: out std_logic_vector(2 downto 0);
+	 vak_23 		: out std_logic_vector(2 downto 0);
+	 vak_24 		: out std_logic_vector(2 downto 0);
+	 vak_25 		: out std_logic_vector(2 downto 0);
+	 vak_26 		: out std_logic_vector(2 downto 0);
+	 vak_27 		: out std_logic_vector(2 downto 0);
+	 vak_28 		: out std_logic_vector(2 downto 0);
+	 vak_29 		: out std_logic_vector(2 downto 0);
+	 vak_30 		: out std_logic_vector(2 downto 0);
+	 vak_31 		: out std_logic_vector(2 downto 0);
+	 vak_32 		: out std_logic_vector(2 downto 0);
+	 vak_33 		: out std_logic_vector(2 downto 0);
+	 vak_34 		: out std_logic_vector(2 downto 0);
+	 vak_35 		: out std_logic_vector(2 downto 0);
+	 vak_36 		: out std_logic_vector(2 downto 0);
+	 vak_37 		: out std_logic_vector(2 downto 0);
+	 vak_38 		: out std_logic_vector(2 downto 0);
+	 vak_39 		: out std_logic_vector(2 downto 0);
+	 vak_40 		: out std_logic_vector(2 downto 0);
+	 vak_41 		: out std_logic_vector(2 downto 0);
+	 vak_42 		: out std_logic_vector(2 downto 0);
+	 vak_43 		: out std_logic_vector(2 downto 0);
+	 vak_44 		: out std_logic_vector(2 downto 0);
+	 vak_45 		: out std_logic_vector(2 downto 0);
+	 vak_46 		: out std_logic_vector(2 downto 0);
+	 vak_47 		: out std_logic_vector(2 downto 0);
+	 vak_48 		: out std_logic_vector(2 downto 0);
+	 vak_49 		: out std_logic_vector(2 downto 0);
+	 vak_50 		: out std_logic_vector(2 downto 0)
   );  
 end Colour_Recognition_register;
 
@@ -76,60 +75,41 @@ architecture Recognize_register of Colour_Recognition_register is
   component Colour_Recognition
   port(
 	 activated_ii	: in std_logic;
-	 clk_ii			: in std_logic;
+	 clk_ii		: in std_logic;
     dapixel 		: in std_logic_vector(11 downto 0);    
-    address			: in std_logic_vector (16 downto 0);
-	 limitPixel		: in unsigned(16 downto 0);
-    colour 			: out std_logic_vector(11 downto 0);
-	 pixel			: out std_logic_vector(11 downto 0);
-	 calc				: out std_logic;
-	 ledw : out std_logic
+    address		: in std_logic_vector (16 downto 0);
+	 limitPixel	: in unsigned(16 downto 0);
+    colour 		: out std_logic_vector(11 downto 0);
+	 pixel		: out std_logic_vector(11 downto 0)
     );
   end component;
   
-  -- array die de addressen van de vakjes bevat waar er kleur herkenning moet uitgevoerd worden
-  -- (vak nummer)(addres van de pixel links boven van het vak)
-  type limitPixelArray is array (0 to 49) of unsigned(16 downto 0);
+  type limitPixelArray is array (0 to 49) of unsigned(16 downto 0);	-- (vaknummer)(adres eerste pixel)
   signal limitPixel_main : limitPixelArray;
   
-  -- array die bevat wat een vakje nou eigenlijk bevat. friendly, enemy, ....
-  -- (vak nummer)(inhoud)
-  type vakInhoudArray is array (0 to 49) of std_logic_vector(2 downto 0);
+  type vakInhoudArray is array (0 to 49) of std_logic_vector(2 downto 0);	-- (vaknummer)(adres eerste pixel)
   signal vakInhoud_main : vakInhoudArray;
   
-  -- array die de pixel bevat die uiteindelijk terug naar de vga gaat
-  -- in essentie zouden al deze waardes hetzelfde moeten zijn
-  -- (vaknummer)(pixel)
-  type pixelArray is array (0 to 49) of std_logic_vector(11 downto 0);
+  type pixelArray is array (0 to 49) of std_logic_vector(11 downto 0);	-- (vaknummer)(kleur data)
   signal pixel_main : pixelArray;
   
-  -- array die de gemiddelde kleur bevat van een vakje
-  -- (vaknummer)(kleur)
-  type colourArray is array (0 to 49) of std_logic_vector(11 downto 0);
+  type colourArray is array (0 to 49) of std_logic_vector(11 downto 0);	-- (vaknummer)(kleur data)
   signal colour_main : colourArray;
-  
-  type calcArray is array (0 to 49) of std_logic;
-  signal calc : calcArray;
   
   signal activeSend 		: std_logic := '0';
   signal activeInhoud 	: std_logic := '0';
   
   signal limitPixel		: unsigned(16 downto 0);
   
-  type ledsArray is array (0 to 49) of std_logic;
-  signal leds : ledsArray;
-  
-  signal calcs : std_logic := '0';
+  signal once : std_logic := '0';
+  signal count_addr : integer := 0;
+  signal pixel_ad : unsigned(16 downto 0) := (others => '0');
   
 begin
 	
 	pixel <= pixel_main(0);
-	colour <= colour_main(0);
-	ledw <= leds(0);
-	calcs <= calc(0);
+	colour <= colour_main(49);
 	
-	-- hier worden alle addressen opgeslagen van de pixel die links boven in een vakje zit
-	-- eerst werd dit met een functie gedaan, alleen bleek dit zeer inefficient te zijn
 	limitPixel_main(0) <= to_unsigned(752, 17);
 	limitPixel_main(1) <= to_unsigned(784, 17);
 	limitPixel_main(2) <= to_unsigned(816, 17);
@@ -184,35 +164,26 @@ begin
 	process (clk_i)
 	begin
 		if rising_edge (clk_i) then
-			-- word gekeken wat er in een vakje zit
-			if (calcs = '1') then
+			if (activated = '1') then
 				for l in 0 to 49 loop
-					if (colour_main(l)(11 downto 8) < "0010" and colour_main(l)(7 downto 4) < "0010") then		-- empty
+					if (colour_main(l)(11 downto 8) < "0011" and colour_main(l)(7 downto 4) < "0011") then		-- empty
 						vakInhoud_main(l) <= "001";
-					elsif (colour_main(l)(11 downto 8) > "0101" and colour_main(l)(7 downto 4) < "0110") then	-- friendly
+					elsif (colour_main(l)(11 downto 8) > "0110" and colour_main(l)(7 downto 4) < "0101") then	-- friendly
 						vakInhoud_main(l) <= "010";
-					elsif (	colour_main(l)(11 downto 8) < "1111" and 
-								colour_main(l)(7 downto 4) < "1111" and
-								colour_main(l)(11 downto 8) > "0101" and
-								colour_main(l)(7 downto 4) > "0101") then	-- friendly king
+					elsif (colour_main(l)(11 downto 8) > "0110" and colour_main(l)(7 downto 4) > "0110") then	-- friendly king
 						vakInhoud_main(l) <= "011";
-					elsif (colour_main(l)(11 downto 8) < "0110" and colour_main(l)(7 downto 4) > "0101") then	-- enemy
+					elsif (colour_main(l)(11 downto 8) < "0101" and colour_main(l)(7 downto 4) > "0110") then	-- enemy
 						vakInhoud_main(l) <= "100";
-					elsif (	colour_main(l)(11 downto 8) < "0110" and 
-								colour_main(l)(7 downto 4) < "0110" and
-								colour_main(l)(11 downto 8) > "0001" and
-								colour_main(l)(7 downto 4) > "0001") then	-- enemy king
+					elsif (colour_main(l)(11 downto 8) < "0110" and colour_main(l)(7 downto 4) < "0110") then	-- enemy king
 						vakInhoud_main(l) <= "101";
 					else
 						vakInhoud_main(l) <= "111";
 					end if;
 				end loop;
---				calcs <= '0';
 				activeSend <= '1';
 				activeInhoud <= '0';
 			end if;
-			
-			-- wordt alles uit de array gehaald zodat het terug naar de top level kan
+				
 			if (activeSend = '1') then
 				vak_1 <= vakInhoud_main(0);
 				vak_2 <= vakInhoud_main(1);
@@ -269,20 +240,16 @@ begin
 		end if;
 	end process;
 	
-	-- hier wordt voor elk vakje een blokje gegenereerd waarin het gemiddelde voor een vakje wordt uitgerekent
-	-- je zou dit ook met 1 blokje kunnen doen, echter is dit zo gebouwd zodat als er een functie is waarbij 
-	-- specifieke pixels worden aangeroepen dan werkt dit sneller
-	gen: for i in 0 to 49 generate
-		Inst_Colour_Recognition: Colour_Recognition port map (
+  gen: for i in 0 to 49 generate
+	  Inst_Colour_Recognition: Colour_Recognition port map (
 			activated_ii => activated,
 			clk_ii => clk_i,
 			dapixel => dpixel,
 			address => address_second,
 			limitPixel => limitPixel_main(i),
 			colour => colour_main(i),
-			pixel => pixel_main(i),
-			calc => calc(i),
-			ledw => leds(i)
-		);
-	end generate;
+			pixel => pixel_main(i)
+	  );
+  end generate;
+  
 end Recognize_register;
