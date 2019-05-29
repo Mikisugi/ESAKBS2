@@ -37,6 +37,11 @@ typedef struct Move{
 	struct Move * nextMove;
 } _move;
 
+typedef struct {
+	struct Move * move;
+	unsigned char board[10][10];
+} VectorMove;
+
 Vector *vectorInit();
 int vectorCount(Vector * v);
 void vectorAdd(Vector * v, void * e);
