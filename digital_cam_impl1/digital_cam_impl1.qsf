@@ -51,7 +51,6 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulati
 set_location_assignment PIN_M23 -to btn_resend
 set_location_assignment PIN_Y2 -to clk_50
 set_location_assignment PIN_E21 -to led_config_finished
-set_location_assignment PIN_E22 -to config_start
 set_location_assignment PIN_AE15 -to ov7670_data[7]
 set_location_assignment PIN_AD15 -to ov7670_data[6]
 set_location_assignment PIN_AE16 -to ov7670_data[5]
@@ -163,13 +162,7 @@ set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 set_global_assignment -name CYCLONEIII_CONFIGURATION_DEVICE EPCS64
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_AB28 -to slide_sw_RESET
-set_location_assignment PIN_AC28 -to slide_sw_resend_reg_values
-set_location_assignment PIN_M23 -to btn_take_snapshot
-set_location_assignment PIN_M21 -to btn_display_snapshot
 set_location_assignment PIN_F19 -to LED_config_finished
-set_location_assignment PIN_G19 -to LED_dll_locked
-set_location_assignment PIN_E22 -to LED_snapshot_retrieved
 set_location_assignment PIN_W3 -to DRAM_DQ[0]
 set_location_assignment PIN_W2 -to DRAM_DQ[1]
 set_location_assignment PIN_V4 -to DRAM_DQ[2]
@@ -199,16 +192,12 @@ set_location_assignment PIN_R6 -to DRAM_ADDR[0]
 set_location_assignment PIN_V8 -to DRAM_ADDR[1]
 set_location_assignment PIN_U8 -to DRAM_ADDR[2]
 set_location_assignment PIN_P1 -to DRAM_ADDR[3]
-set_location_assignment PIN_U2 -to DRAM_LDQM
-set_location_assignment PIN_W4 -to DRAM_UDQM
 set_location_assignment PIN_AA6 -to DRAM_CKE
 set_location_assignment PIN_AE5 -to DRAM_CLK
 set_location_assignment PIN_V6 -to DRAM_WE_N
 set_location_assignment PIN_V7 -to DRAM_CAS_N
 set_location_assignment PIN_U6 -to DRAM_RAS_N
 set_location_assignment PIN_T4 -to DRAM_CS_N
-set_location_assignment PIN_R4 -to DRAM_BA_1
-set_location_assignment PIN_U7 -to DRAM_BA_0
 set_location_assignment PIN_V21 -to HEX4[0]
 set_location_assignment PIN_U21 -to HEX4[1]
 set_location_assignment PIN_AB20 -to HEX4[2]
@@ -256,7 +245,6 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity d
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity digital_cam_impl2 -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity digital_cam_impl2 -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity digital_cam_impl2 -section_id Top
-set_location_assignment PIN_H15 -to led_group_pixels
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[4]
@@ -543,7 +531,17 @@ set_location_assignment PIN_H14 -to EXT_IO[3]
 set_location_assignment PIN_F14 -to EXT_IO[4]
 set_location_assignment PIN_E10 -to EXT_IO[5]
 set_location_assignment PIN_D9 -to EXT_IO[6]
-set_global_assignment -name QIP_FILE nios_system/synthesis/nios_system.qip
+set_location_assignment PIN_AB23 -to Switch[1]
+set_location_assignment PIN_AA24 -to Switch[2]
+set_location_assignment PIN_AA23 -to Switch[3]
+set_location_assignment PIN_AA22 -to Switch[4]
+set_location_assignment PIN_Y24 -to Switch[5]
+set_location_assignment PIN_Y23 -to Switch[6]
+set_location_assignment PIN_H16 -to ledsw[0]
+set_location_assignment PIN_J16 -to ledsw[1]
+set_location_assignment PIN_H17 -to ledsw[2]
+set_location_assignment PIN_AB24 -to Switch[0]
+set_global_assignment -name VHDL_FILE Switches.vhd
 set_global_assignment -name VHDL_FILE segment.vhd
 set_global_assignment -name VHDL_FILE Colour_Recognition_register.vhd
 set_global_assignment -name VHDL_FILE Colour_Recognition.vhd
@@ -559,4 +557,5 @@ set_global_assignment -name VHDL_FILE address_Generator.vhd
 set_global_assignment -name QIP_FILE my_altpll.qip
 set_global_assignment -name QIP_FILE my_frame_buffer_15to0.qip
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_location_assignment PIN_J19 -to ledw
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
