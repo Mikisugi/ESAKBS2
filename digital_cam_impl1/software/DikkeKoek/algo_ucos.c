@@ -1588,6 +1588,7 @@ int minimaxAlgorithm(unsigned char * tempBoard[], unsigned char friendly, unsign
 		current = capturesCurrent;
 
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
+=======
 >>>>>>> parent of 1be5240... algorithm runs on FPGA
 		//free the capture list TODO: this freezes the program
 		/*
